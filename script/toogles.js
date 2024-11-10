@@ -30,22 +30,29 @@ hideSideBar.addEventListener("click", () => {
 // side bar function end
 
 // simple or quick action section 
-flightFromNigeriaIconUp.style.display = "none";
-internationalDestinationIconUp.style.display = "none";
-flightToCountryIconUp.style.display = "none";
+flightFromNigeriaIconDown.style.display = "none";
+internationalDestinationIconDown.style.display = "none";
+flightToCountryIconDown.style.display = "none";
 
 flightFromNigeriaBtn.addEventListener("click", () => {
     if (flightFromNigeria.style.height === "0px") {
         flightFromNigeria.style.height = "fit-content";
         internationalDestination.style.height = "0px";
         flightToCountry.style.height = "0px";
-        flightFromNigeriaIconUp.style.display = "flex";
-        flightFromNigeriaIconDown.style.display = "none";
+        flightFromNigeriaIconDown.style.display = "flex";
+        flightFromNigeriaIconUp.style.display = "none";
+        // international destination 
+        internationalDestinationIconDown.style.display = "none";
+        internationalDestinationIconUp.style.display = "flex";
+        // flight to country
+        flightToCountryIconDown.style.display = "none";
+        flightToCountryIconUp.style.display = "flex";
+        // inter 
         flightFromNigeria.style.transition = "width 0.5s ease, height 0.5s ease";
     } else {
         flightFromNigeria.style.height = "0px";
-        flightFromNigeriaIconUp.style.display = "none";
-        flightFromNigeriaIconDown.style.display = "flex";
+        flightFromNigeriaIconDown.style.display = "none";
+        flightFromNigeriaIconUp.style.display = "flex";
     }
 });
 
@@ -55,13 +62,20 @@ internationalDestinationBtn.addEventListener("click", () => {
         internationalDestination.style.height = "fit-content";
         flightFromNigeria.style.height = "0px";
         flightToCountry.style.height = "0px";
-        internationalDestinationIconUp.style.display = "flex";
-        internationalDestinationIconDown.style.display = "none";
+        internationalDestinationIconDown.style.display = "flex";
+        internationalDestinationIconUp.style.display = "none";
+        // covering up ends meet
+        flightFromNigeriaIconDown.style.display = "none";
+        flightFromNigeriaIconUp.style.display = "flex";
+         // flight to country
+         flightToCountryIconDown.style.display = "none";
+         flightToCountryIconUp.style.display = "flex";
+        // coverin gup ends meet
         internationalDestination.style.transition = "width 0.5s ease, height 0.5s ease";
     } else {
         internationalDestination.style.height = "0px";
-        internationalDestinationIconUp.style.display = "none";
-        internationalDestinationIconDown.style.display = "flex";
+        internationalDestinationIconDown.style.display = "none";
+        internationalDestinationIconUp.style.display = "flex";
     }
 });
 
@@ -71,12 +85,19 @@ flightToCountryBtn.addEventListener("click", () => {
         flightToCountry.style.height = "fit-content";
         internationalDestination.style.height = "0px";
         flightFromNigeria.style.height = "0px";
-        flightToCountryIconUp.style.display = "flex";
-        flightToCountryIconDown.style.display = "none";
+        flightToCountryIconDown.style.display = "flex";
+        flightToCountryIconUp.style.display = "none";
+        // international destination 
+        internationalDestinationIconDown.style.display = "none";
+        internationalDestinationIconUp.style.display = "flex";
+        // covering up ends meet
+        flightFromNigeriaIconDown.style.display = "none";
+        flightFromNigeriaIconUp.style.display = "flex";
+        // coverd ends meet
         flightToCountry.style.transition = "width 0.5s ease, height 0.5s ease";
     } else {
         flightToCountry.style.height = "0px";
-        flightToCountryIconUp.style.display = "none";
-        flightToCountryIconDown.style.display = "flex";
+        flightToCountryIconDown.style.display = "none";
+        flightToCountryIconUp.style.display = "flex";
     }
 });
