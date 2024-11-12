@@ -19,6 +19,25 @@ const flightToCountryIconDown = document.getElementById("flight-to-country-icon-
 const flightToCountry = document.getElementById("flight-to-country");
 // quick section ends here
 
+// // mationality and currency section stert
+// const linkStyle1 = document.getElementById("link-style-1");
+// const linkStyle2 = document.getElementById("link-style-2");
+// // mationality and currency section end
+
+
+//     if (window.location.pathname == "currency.html") {
+//         console.log("wrong fam");
+//     }
+
+
+//     // if (window.location.pathname === "currency.html") {
+//     //     linkStyle2.style.color = "red";
+//     // }
+
+//     console.log(window.location.pathname);
+    
+
+
 // side bar functions start
 showSideBar.addEventListener("click", () => {
     sideBar.style.display = "flex"
@@ -101,3 +120,5 @@ flightToCountryBtn.addEventListener("click", () => {
         flightToCountryIconUp.style.display = "flex";
     }
 });
+
+

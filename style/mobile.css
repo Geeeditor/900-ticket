@@ -797,6 +797,11 @@
         letter-spacing: 0.024px;
         color: #000;
     }
+    
+    .active {
+        border-bottom: 2px solid #B61C1C;
+        padding: 2px;
+    }
 
     .second-section h2 {
         margin-top: 1.5rem;
@@ -853,10 +858,11 @@
     }
 
     .region-and-language{
-        margin-top: 0.8rem;
+        margin-top: 1.5rem;
         text-align: center;
         background: #FFF2F2;
         border-top: solid 2px rgba(90, 88, 88,0.4);
+        padding:10px;
     }
 
     .region-and-language h1 {
@@ -867,5 +873,40 @@
         font-weight: 300;
         line-height: normal;
         letter-spacing: 0.018px;
+    }
+
+    /* flight section starts here  */
+    .flight-main {
+        padding: 2rem;
+        /* background: rgba(182, 28, 28, 0.25);*/
+    }
+
+    .flight-first-section {
+        display: flex;
+        padding:  4px 8px;
+        justify-content: center;
+        align-items: center;
+        gap:  4px;
+    }
+
+    .flight-first-section div {
+        display: flex;
+        padding:  5px 8px;
+        justify-content: center;
+        align-items: center;
+        gap:  5px;
+        border-radius: 8px;
+        background: #A2A2A2;
+    }
+
+    .flight-first-section div h1 {
+        color: #000;
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.035px;
     }
 }
