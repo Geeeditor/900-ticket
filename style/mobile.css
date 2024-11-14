@@ -896,11 +896,22 @@
         align-items: center;
         gap:  5px;
         border-radius: 8px;
-        background: #A2A2A2;
+        background-color: #A2A2A2;
+    }
+
+    .flight-active {
+        border-radius: 8px;
+        border:1px solid #B61C1C;
+        background-color: #b61c1c40;
+        color: #FFF;
+    }
+
+    .flight-first-section div a {
+        color: black;
     }
 
     .flight-first-section div h1 {
-        color: #000;
+        /* color: #fff; */
         text-align: center;
         text-transform: capitalize;
         font-size: 14px;
@@ -908,5 +919,172 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0.035px;
+    }
+
+    .flight-card-border {
+        margin-top: 1rem;
+    }
+
+    .flight-take-off {
+        padding: 10px;
+        position: relative;
+        text-transform: capitalize;
+    }
+
+    .flight-take-off label {
+        color:  #0B0B0B;
+        font-family: "Plus Jakarta Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+    }
+
+    .flight-take-off div {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm, 8px);
+        padding: 7px;
+        flex: 1 0 0;
+        border: 1px solid rgba(41, 40, 40, 0.5);
+        background: #FFF2F2;
+        border-radius: 0.6rem;
+        margin-top: 2px;
+    }
+
+    .flight-take-off div input {
+        width: 90%;
+        padding: 5px;
+        outline: none;
+        border: none;
+        background: #FFF2F2;
+    }
+
+    .flight-take-off div input::placeholder {
+        text-transform: capitalize;
+    }
+
+    .flight-swap-icon {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        padding: 0.8rem;
+        border-radius: 100%;
+        color: white;
+        background: var(--Priamry, #B61C1C);
+        box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.17), 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
+        left: 80%;
+        top: 40px;
+    }
+
+    .date-icon {
+        color: #B61C1C;
+    }
+
+    .flight-div-grid {
+        display: grid;
+        grid-template-columns:repeat(2,1fr) ;
+        gap: 7px;
+    }
+
+    .flight-button {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 12px;
+        text-transform: capitalize;
+        color: #FFF2F2;
+        font-family: "Plus Jakarta Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; /* 142.857% */
+        border-radius: var(--radi-mlg, 8px);
+        background: var(--Priamry, #B61C1C);
+        border: none;
+    }
+
+    /* notification section */
+    .notification-section {
+        margin-top: 1rem;
+        text-transform: capitalize;
+    }
+
+    .notification-section div:first-of-type {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .notification-section div:first-of-type h1 {
+        color: #000;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.03px;
+    }
+
+    .notification-section div:first-of-type a {
+        color: #000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.035px;
+        border-bottom: 1px solid black;
+    }
+
+    .notification-section main {
+        border: 1px solid rgba(65, 65, 65,0.5);
+        margin-top: 0.5rem;
+        padding: 8px 16px;
+        border-radius: 0.5rem;
+        background: #ffffff;
+    }
+
+    .notification-section main div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .notification-section main div div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .notification-section main div div span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .notification-section main div div span h1{
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.08px;
+    }
+
+    .notification-section h3 {
+        color: #000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.048px;
+        margin-top: 0.4rem;
+    }
+
+    /* ----do not touch  */
+    .none-labal {
+       visibility: hidden;
     }
 }
