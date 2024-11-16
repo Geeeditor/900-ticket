@@ -878,6 +878,9 @@
     /* flight section starts here  */
     .flight-main {
         padding: 2rem;
+        height: 92.4vh;
+        overflow: hidden;
+        position: relative;
         /* background: rgba(182, 28, 28, 0.25);*/
     }
 
@@ -1007,6 +1010,8 @@
     .notification-section {
         margin-top: 1rem;
         text-transform: capitalize;
+        height:42.5vh;
+        overflow: scroll;
     }
 
     .notification-section div:first-of-type {
@@ -1087,4 +1092,241 @@
     .none-labal {
        visibility: hidden;
     }
+
+/* ------ search page section ------ */
+
+.search-body {
+    padding: 12px;
+}
+
+    .search-section {
+        border-bottom:1px solid #000;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap:12px;
+    }
+
+    .search-section input {
+        width: 100%;
+        padding:10px;
+        border: none;
+        outline: none;
+        background: #FFF2F2;
+    }
+
+    .search-section input::placeholder{
+        font-size: 1.1rem;
+        text-transform: capitalize;
+    }
+
+    .search-section-second {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .search-section-second h1 {
+        font-size: 18px;
+        text-transform: capitalize;
+    }
+
+    .search-section-second p {
+        font-size: 15px;
+        text-transform: capitalize;
+        border-bottom: 1px solid #000;
+    }
+
+    .search-section-third {
+        margin-top: 1.2rem;
+    }
+
+    .search-section-third main {
+        margin-top: 0.8rem;
+        display: flex;
+        align-items:center;
+        gap:8px;
+    }
+
+
+    .search-section-third img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .search-section-third div p {
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.08px;
+    }
+
+    .search-section-third div small {
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.048px;
+    }
+
+    .search-section-fourth {
+        margin-top:1.3rem;
+    }
+
+    .search-section-fourth h1 {
+        font-size: 19px;
+        text-transform:capitalize;
+    }
+
+    .search-section-fourth main {
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:5px;
+    }
+
+    .search-section-fourth main p {
+        text-transform:capitalize;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 20px; /* 142.857% */
+        border: 1px solid #000;
+        padding:3px 4px;
+        width: fit-content;
+        margin-top: 0.6rem;
+        border-radius: 5px;
+    }
+
+    /* side bar that pops up when travler or classs is clicked */
+    .under-sideBar {
+        position: absolute;
+        height: 100vh;
+        width:100%;
+        background-color: rgba(0, 0, 0,0.3);
+        top: 1px;
+        right: 1px;
+    }
+
+    .main-under-sideBar {
+        position:absolute;
+        background-color:#fff;
+        top:45%;
+        height: 100vh;
+        width:100%;
+        opacity: 1;
+    }
+
+    .under-sideBar-first {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:8px;
+        padding: 12px;
+        border-bottom:1px solid #000;
+    }
+
+    .under-sideBar-first h1 {
+        font-family: normal;
+        line-height: 120%; /* 24px */
+        font-size:22px;
+        text-transform:capitalize;
+    }
+
+    /* side bar passengers */
+     .sideBar-passengers {
+        margin-top:1.2rem;
+        padding: 10px;
+     }
+
+     .sideBar-passengers h1 {
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.035px;
+     }
+
+     .sideBar-passengers section {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+     }
+
+     .sideBar-passengers section main div {
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin-top: 1.2rem;
+     }
+
+     .sideBar-passengers section main:last-of-type div {
+        display:flex;
+        align-items:center;
+        gap:8px;
+        margin-top: 2.2rem;
+     }
+
+     .sideBar-passengers section main div span p {
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.04px;
+     }
+
+     .sideBar-passengers section main div span small {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.035px;
+     }
+
+     /* cabiin class section */
+
+     .cabin-class-section {
+        margin-top: 1.2rem;
+        padding: 10px;
+     }
+
+     .cabin-class-section h1 {
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.035px;
+     }
+
+     .cabin-class-section section  {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+        text-align: center;
+     }
+
+     .cabin-class-section section h1 {
+        border: 1px solid #000;
+        /* color: var(--white, #FFF); */
+
+        /* sub1 */
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.024px;
+
+        padding: 13px;
+        border-radius: 5px;
+     }
 }

@@ -24,9 +24,12 @@
     let multiCity = document.querySelectorAll("#multi-city");
 
     // flight link styles
-    let flightLink1 = document.getElementById("flight-link1")
-    let flightLink2 = document.getElementById("flight-link2")
+    let flightLink1 = document.getElementById("flight-link1");
+    let flightLink2 = document.getElementById("flight-link2");
     
+
+    // search link section
+    let flyingFrom = document.querySelectorAll("#search-link");
     
     homes.forEach(home => {
         home.href = "../index.html";
@@ -88,3 +91,7 @@ roundTrip.forEach(link => {
         link.style.color = "white";
     } ;
 })
+
+flyingFrom.forEach(link => {
+    link.href = "search.html";
+});

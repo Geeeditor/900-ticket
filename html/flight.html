@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/air-datepicker/air-datepicker.css">
     <link rel="stylesheet" href="../style/mobile.css">
     <title>flight</title>
 </head>
@@ -27,28 +28,32 @@
         </section>
         <section class="flight-card-border">
                 <div class="flight-take-off">
-                    <label for="from">from</label>
-                    <div>
-                        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g id="flight_takeoff">
-                            <path id="Vector" d="M1.89002 14.0364H16.14V15.5364H1.89002V14.0364ZM16.5675 7.01637C16.41 6.41637 15.7875 6.05637 15.1875 6.22137L11.205 7.28637L6.03002 2.46387L4.58252 2.84637L7.68752 8.22387L3.96002 9.22137L2.48252 8.06637L1.39502 8.35887L3.33752 11.7264L15.765 8.40387C16.3725 8.23137 16.725 7.61637 16.5675 7.01637Z" fill="#B61C1C"/>
-                            </g>
-                        </svg>
-                        <input type="text" placeholder="flying from">
-                    </div>
-                    <svg class="flight-swap-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
-                      </svg>
+                 <a id="search-link" href="#">
+                     <label for="from">from</label>
+                     <div>
+                         <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <g id="flight_takeoff">
+                             <path id="Vector" d="M1.89002 14.0364H16.14V15.5364H1.89002V14.0364ZM16.5675 7.01637C16.41 6.41637 15.7875 6.05637 15.1875 6.22137L11.205 7.28637L6.03002 2.46387L4.58252 2.84637L7.68752 8.22387L3.96002 9.22137L2.48252 8.06637L1.39502 8.35887L3.33752 11.7264L15.765 8.40387C16.3725 8.23137 16.725 7.61637 16.5675 7.01637Z" fill="#B61C1C"/>
+                             </g>
+                         </svg>
+                         <input type="text" placeholder="flying from">
+                     </div>
+                     <svg class="flight-swap-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+                       </svg>
+                 </a>
                 </div>
 
                 <div class="flight-take-off">
-                    <label for="to">to</label>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" fill="none">
-                            <path d="M1.875 14.625H16.125V16.125H1.875V14.625ZM14.505 12.2625C15.105 12.42 15.72 12.0675 15.885 11.4675C16.0425 10.8675 15.69 10.2525 15.09 10.0875L11.1075 9.0225L9.0375 2.2575L7.59 1.875V8.085L3.8625 7.0875L3.165 5.3475L2.0775 5.055V8.9325L14.505 12.2625Z" fill="#B61C1C"/>
-                          </svg>
-                        <input type="text" placeholder="flying to">
-                    </div>
+                 <a id="search-link" href="#">
+                     <label for="to">to</label>
+                     <div>
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" fill="none">
+                             <path d="M1.875 14.625H16.125V16.125H1.875V14.625ZM14.505 12.2625C15.105 12.42 15.72 12.0675 15.885 11.4675C16.0425 10.8675 15.69 10.2525 15.09 10.0875L11.1075 9.0225L9.0375 2.2575L7.59 1.875V8.085L3.8625 7.0875L3.165 5.3475L2.0775 5.055V8.9325L14.505 12.2625Z" fill="#B61C1C"/>
+                           </svg>
+                         <input type="text" placeholder="flying to">
+                     </div>
+                 </a>
                 </div>
 
                 <div class="flight-take-off">
@@ -57,7 +62,7 @@
                         <svg class="date-icon" xmlns="http://www.w3.org/2000/svg" fill="none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
                           </svg>
-                          <input type="text" placeholder="select trip date">
+                          <input type="text" id="datePicker" placeholder="select trip date">
                     </div>
                 </div>
                 
@@ -113,8 +118,106 @@
                 <h3>nov 5</h3>
             </main>
         </section>
+
+        <!-- side bar that pop up from under -->
+         <section class="under-sideBar">
+            <main class="main-under-sideBar">
+               <div class="under-sideBar-first">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                    <path d="M1 1L25 25M1 25L25 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <h1>Passengers & Class</h1>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="20" viewBox="0 0 26 20" fill="none">
+                    <path d="M1 10.9167L8.38462 18.25L25 1.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </div>
+               <!-- break -->
+               <div class="sideBar-passengers">
+                 <h1>PASSENGERS</h1>
+                 <section>
+                     <main>
+                         <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" fill="none">
+                                <path d="M12 0C8.6875 0 6 2.6875 6 6C6 9.3125 8.6875 12 12 12C15.3125 12 18 9.3125 18 6C18 2.6875 15.3125 0 12 0ZM9 14C4.01562 14 0 18.0156 0 23V24C0 26.2188 1.78125 28 4 28H20C22.2188 28 24 26.2188 24 24V23C24 18.0156 19.9844 14 15 14H9Z" fill="#2E3436"/>
+                              </svg>
+                            <span>
+                                <p>Adult</p>
+                                <small>&gt;12 years</small>
+                            </span>
+                         </div>
+                         <!-- break -->
+                         <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" fill="none">
+                                <path d="M12 0C8.6875 0 6 2.6875 6 6C6 9.3125 8.6875 12 12 12C15.3125 12 18 9.3125 18 6C18 2.6875 15.3125 0 12 0ZM9 14C4.01562 14 0 18.0156 0 23V24C0 26.2188 1.78125 28 4 28H20C22.2188 28 24 26.2188 24 24V23C24 18.0156 19.9844 14 15 14H9Z" fill="#2E3436"/>
+                              </svg>
+                            <span>
+                                <p>Child</p>
+                                <small>2-12 years</small>
+                            </span>
+                         </div>
+                         <!-- break -->
+                         <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 28" fill="none">
+                                <path d="M12 0C8.6875 0 6 2.6875 6 6C6 9.3125 8.6875 12 12 12C15.3125 12 18 9.3125 18 6C18 2.6875 15.3125 0 12 0ZM9 14C4.01562 14 0 18.0156 0 23V24C0 26.2188 1.78125 28 4 28H20C22.2188 28 24 26.2188 24 24V23C24 18.0156 19.9844 14 15 14H9Z" fill="#2E3436"/>
+                              </svg>
+                            <span>
+                                <p>Infant</p>
+                                <small> &lt;2 years </small>
+                            </span>
+                         </div>
+                     </main>
+                     <main>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                                <path d="M16.6 13H9.4M25 13C25 19.6274 19.6274 25 13 25C6.37258 25 1 19.6274 1 13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13Z" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round"/>
+                              </svg>
+                              <p>0</p>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12.8372 8.65116C12.8372 8.18879 12.4624 7.81395 12 7.81395C11.5376 7.81395 11.1628 8.18879 11.1628 8.65116V11.1628H8.65116C8.18879 11.1628 7.81395 11.5376 7.81395 12C7.81395 12.4624 8.18879 12.8372 8.65116 12.8372H11.1628V15.3488C11.1628 15.8112 11.5376 16.186 12 16.186C12.4624 16.186 12.8372 15.8112 12.8372 15.3488V12.8372H15.3488C15.8112 12.8372 16.186 12.4624 16.186 12C16.186 11.5376 15.8112 11.1628 15.3488 11.1628H12.8372V8.65116Z" fill="#131313"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6275 5.37258 24 12 24C18.6275 24 24 18.6275 24 12C24 5.37258 18.6275 0 12 0ZM1.67442 12C1.67442 6.29734 6.29734 1.67442 12 1.67442C17.7026 1.67442 22.3256 6.29734 22.3256 12C22.3256 17.7026 17.7026 22.3256 12 22.3256C6.29734 22.3256 1.67442 17.7026 1.67442 12Z" fill="#131313"/>
+                              </svg>
+                        </div>
+                        <!-- break -->
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                                <path d="M16.6 13H9.4M25 13C25 19.6274 19.6274 25 13 25C6.37258 25 1 19.6274 1 13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13Z" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round"/>
+                              </svg>
+                              <p>0</p>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12.8372 8.65116C12.8372 8.18879 12.4624 7.81395 12 7.81395C11.5376 7.81395 11.1628 8.18879 11.1628 8.65116V11.1628H8.65116C8.18879 11.1628 7.81395 11.5376 7.81395 12C7.81395 12.4624 8.18879 12.8372 8.65116 12.8372H11.1628V15.3488C11.1628 15.8112 11.5376 16.186 12 16.186C12.4624 16.186 12.8372 15.8112 12.8372 15.3488V12.8372H15.3488C15.8112 12.8372 16.186 12.4624 16.186 12C16.186 11.5376 15.8112 11.1628 15.3488 11.1628H12.8372V8.65116Z" fill="#131313"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6275 5.37258 24 12 24C18.6275 24 24 18.6275 24 12C24 5.37258 18.6275 0 12 0ZM1.67442 12C1.67442 6.29734 6.29734 1.67442 12 1.67442C17.7026 1.67442 22.3256 6.29734 22.3256 12C22.3256 17.7026 17.7026 22.3256 12 22.3256C6.29734 22.3256 1.67442 17.7026 1.67442 12Z" fill="#131313"/>
+                              </svg>
+                        </div>
+                        <!-- break -->
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                                <path d="M16.6 13H9.4M25 13C25 19.6274 19.6274 25 13 25C6.37258 25 1 19.6274 1 13C1 6.37258 6.37258 1 13 1C19.6274 1 25 6.37258 25 13Z" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round"/>
+                              </svg>
+                              <p>0</p>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12.8372 8.65116C12.8372 8.18879 12.4624 7.81395 12 7.81395C11.5376 7.81395 11.1628 8.18879 11.1628 8.65116V11.1628H8.65116C8.18879 11.1628 7.81395 11.5376 7.81395 12C7.81395 12.4624 8.18879 12.8372 8.65116 12.8372H11.1628V15.3488C11.1628 15.8112 11.5376 16.186 12 16.186C12.4624 16.186 12.8372 15.8112 12.8372 15.3488V12.8372H15.3488C15.8112 12.8372 16.186 12.4624 16.186 12C16.186 11.5376 15.8112 11.1628 15.3488 11.1628H12.8372V8.65116Z" fill="#131313"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6275 5.37258 24 12 24C18.6275 24 24 18.6275 24 12C24 5.37258 18.6275 0 12 0ZM1.67442 12C1.67442 6.29734 6.29734 1.67442 12 1.67442C17.7026 1.67442 22.3256 6.29734 22.3256 12C22.3256 17.7026 17.7026 22.3256 12 22.3256C6.29734 22.3256 1.67442 17.7026 1.67442 12Z" fill="#131313"/>
+                              </svg>
+                        </div>
+                     </main>
+                 </section>
+               </div>
+               <!-- break -->
+                <div class="cabin-class-section">
+                    <h1>CABIN CLASS</h1>
+
+                    <section>
+                        <h1>Economy</h1>
+                        <h1>Premium Economy</h1>
+                        <h1>Business class</h1>
+                        <h1>First class</h1>
+                    </section>
+                </div>
+            </main>
+         </section>
     </main>
 
     <script src="../script/routes.js"></script>
+    <script type="module" src="../script/datePicker.js"></script>
 </body>
 </html>
