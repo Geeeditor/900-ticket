@@ -30,6 +30,19 @@
 
     // search link section
     let flyingFrom = document.querySelectorAll("#search-link");
+
+    // flight page side bae that pops up from under the screen 
+    let underSideBarLink1 = document.querySelectorAll(".under-side-bar-link1");
+    let underSideBar = document.querySelectorAll(".under-sideBar");
+
+    // same side bar but cancle section
+    let cancleUnderSideBar = document.querySelectorAll(".cancle-under-sideBar");
+
+    // texting something
+    let testing1 = document.querySelectorAll(".testing1");
+    let testing2 = document.querySelectorAll(".testing2");
+    let testing3 = document.querySelectorAll(".testing3");
+    let testing4 = document.querySelectorAll(".testing4");
     
     homes.forEach(home => {
         home.href = "../index.html";
@@ -95,3 +108,95 @@ roundTrip.forEach(link => {
 flyingFrom.forEach(link => {
     link.href = "search.html";
 });
+
+underSideBarLink1.forEach(link => {
+    link.addEventListener("click", () => {
+        underSideBar.forEach(sideBar => {
+            sideBar.style.display = "block";
+        })
+    })
+})
+
+cancleUnderSideBar.forEach(link => {
+    link.addEventListener("click", () => {
+        underSideBar.forEach(sideBar => {
+            sideBar.style.display = "none";
+        })
+    })
+})
+
+testing1.forEach(test => {
+    test.addEventListener("click", () => {
+        test.style.backgroundColor = "brown";
+        test.style.color = "white";
+        testing2.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing3.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing4.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+    })
+})
+
+testing2.forEach(test => {
+    test.addEventListener("click", () => {
+        test.style.backgroundColor = "brown";
+        test.style.color = "white";
+        testing1.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing3.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing4.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+    })
+})
+
+testing3.forEach(test => {
+    test.addEventListener("click", () => {
+        test.style.backgroundColor = "brown";
+        test.style.color = "white";
+        testing2.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing1.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing4.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+    })
+})
+
+testing4.forEach(test => {
+    test.addEventListener("click", () => {
+        test.style.backgroundColor = "brown";
+        test.style.color = "white";
+        testing2.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing3.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+        testing1.forEach(test => {
+            test.style.backgroundColor = "white";
+            test.style.color = "black";
+        })
+    })
+})
