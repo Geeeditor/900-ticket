@@ -43,6 +43,25 @@
     let testing2 = document.querySelectorAll(".testing2");
     let testing3 = document.querySelectorAll(".testing3");
     let testing4 = document.querySelectorAll(".testing4");
+
+    // booking-search-page under side bar links 
+
+    let fullOption = document.querySelectorAll("#full-option");
+    let showAvailFlight = document.querySelectorAll(".available-flight-sorting");
+    let fullOptionClose = document.querySelectorAll("#full-option-close");
+    // flight stop section
+    let flightStop = document.querySelectorAll("#flight-stop");
+    let showFlightStop = document.querySelectorAll(".flight-stop");
+    let flightStopClose = document.querySelectorAll("#flight-stop-close");
+    // flight time section
+    let flightTime = document.querySelectorAll("#flight-time");
+    let showFlightTime = document.querySelectorAll(".flight-time");
+    let flightTimeClose = document.querySelectorAll("#flight-time-close");
+    // flight price section
+    let flightPrice = document.querySelectorAll("#flight-price");
+    let showFlightPrice = document.querySelectorAll(".flight-price");
+    let flightPriceClose = document.querySelectorAll("#flight-price-close");
+
     
     homes.forEach(home => {
         home.href = "../index.html";
@@ -197,6 +216,73 @@ testing4.forEach(test => {
         testing1.forEach(test => {
             test.style.backgroundColor = "white";
             test.style.color = "black";
+        })
+    })
+})
+
+fullOption.forEach(link => {
+    link.addEventListener("click" , () => {
+        showAvailFlight.forEach(flightSideBar => {
+            flightSideBar.style.display = "block";
+        })
+    })
+})
+
+fullOptionClose.forEach(link => {
+    link.addEventListener("click" , () => {
+        showAvailFlight.forEach(flightSideBar => {
+            flightSideBar.style.display = "none";
+        })
+    })
+})
+
+// flight stop section
+flightStop.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightStop.forEach(flightSideBar => {
+            flightSideBar.style.display = "block";
+        })
+    })
+})
+
+flightStopClose.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightStop.forEach(flightSideBar => {
+            flightSideBar.style.display = "none";
+        })
+    })
+})
+
+// flight time section
+flightTime.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightTime.forEach(flightSideBar => {
+            flightSideBar.style.display = "block";
+        })
+    })
+})
+
+flightTimeClose.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightTime.forEach(flightSideBar => {
+            flightSideBar.style.display = "none";
+        })
+    })
+})
+
+// flight price section
+flightPrice.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightPrice.forEach(flightSideBar => {
+            flightSideBar.style.display = "block";
+        })
+    })
+})
+
+flightPriceClose.forEach(link => {
+    link.addEventListener("click" , () => {
+        showFlightPrice.forEach(flightSideBar => {
+            flightSideBar.style.display = "none";
         })
     })
 })
