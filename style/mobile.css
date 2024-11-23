@@ -1459,7 +1459,7 @@
         text-transform:capitalize;
      }
 
-     .avalible-flights main {
+     .avalible-flights  main {
         width: 390px;
         height: 61px;
         flex-shrink: 0;
@@ -1471,7 +1471,7 @@
         padding:2px;
      }
 
-     .avalible-flights main div {
+     .avalible-flights  main div {
         width:20%;
         text-align:center;
      }
@@ -1817,4 +1817,280 @@
         border-radius:2rem 2rem 0rem 0rem;
         padding:13px;
      }
+
+     /* booking flow section  */
+
+     .booking-flow-header {
+        display:flex;
+        align-items: center;
+        gap:10px;
+        margin-top: 0.7rem;
+        padding: 8px;
+     }
+
+     .booking-flow-header img {
+        width:35px;
+        height:35px;
+        border-radius:100%;
+        
+     }
+
+     .booking-flow-header .book-flow-box {
+        display:flex;
+        align-items: center;
+        gap: 5px;
+        text-transform:uppercase ;
+     }
+
+     .booking-flow-header .book-flow-box .booking-flow-flight-name span{
+        display:flex;
+        align-items: center;
+        gap: 8px;
+     }
+
+     .book-flow-flight-icon {
+        position: absolute;
+        top:9.8%;
+        left:33%;
+     }
+
+     .book-flow-eclips-icon {
+        position: absolute;
+        top:12.8%;
+        left:36.5%;
+     }
+
+     .booking-first-body {
+        padding:10px 55px;
+     }
+
+     .first-body-div {
+        display:flex;
+        align-items:center;
+        gap:10px;
+     }
+
+     .first-body-div span:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+
+     .first-body-div span:first-of-type p {
+        color: #000;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.048px;
+     }
+
+     .first-body-div span:first-of-type h2 {
+        color: #000;
+        text-align: center;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.056px;
+     }
+
+     .first-body-div span:last-of-type {
+        display: flex;
+        align-items: center;
+        gap:5px;
+     }
+
+     .first-body-div span:last-of-type p {
+         color: #000;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.048px;
+     }
+
+     .booking-line {
+        width: 1px;
+        height: 140px;
+        border: 1px solid red;
+     }
+
+     .second-body-div {
+        display:flex;
+        align-items: center;
+        gap:8px;
+        margin-left: 15.7%;
+     }
+
+     .second-body-div .center-span {
+        display:flex;
+        gap:5px;
+     }
+
+     .second-body-div .center-span svg {
+        margin-top: 4px;
+     }
+
+     .second-body-div .center-span span p {
+        color: #000;
+        font-family: Inter;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.04px;
+        padding:1px;
+     }
+
+     .flight-summary {
+        margin-top:1.5rem;
+        padding:15px;
+        background-color: #FFF;
+        width:89%;
+        margin:1rem auto;
+        border-radius: 20px;
+     }
+
+     .flight-summary h1 {
+        color: #000;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.064px;
+        text-align: center;
+     }
+
+     .flight-price-class {
+        margin-top:1rem;
+        margin-bottom: 1rem;
+        border-bottom:1px solid rgba(0, 0, 0, 0.4);
+        padding:13px;
+     }
+
+     .flight-price-class p:first-of-type{
+        color: #000;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.064px;
+     }
+
+     .flight-price-class p:last-of-type{
+        color: var(--sds-color-text-brand-tertiary);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.056px;
+     }
+
+     .flight-baggage {
+        margin-top:1rem;
+        margin-bottom: 0.4rem;
+        padding:13px;
+     }
+
+     .flight-baggage h2 {
+        margin-bottom: 0.5rem;
+     }
+
+     .flight-baggage span {
+        display:flex;
+        align-items: center;
+        gap:8px;
+        margin-bottom: 0.3rem;
+     }
+
+     .flexibility {
+        padding:13px;
+     }
+
+     .flexibility h2 {
+        color: #000;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.064px;
+     }
+
+     .seat-meal-more {
+        padding:13px;
+     }
+
+     .seat-meal-more h2 {
+        color: #000;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.064px;
+     }
+
+     .booking-flow-button div{
+        width: 90%;
+        margin :0.5rem auto;
+     }
+
+     .booking-flow-button div button{
+         color: var(--white, #FFF);
+    
+        /* sub1 */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.024px;
+        width:100%;
+        display: flex;
+        height: 40px;
+        padding: 10px 50px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        border: var(--sds-size-stroke-border) solid var(--Priamry, #B61C1C);
+        background: var(--Priamry, #B61C1C);
+     }
+
+     /* round trip section */
+    .avalible-flights .round-trip-main .round-trip-div {
+        display:flex;
+        align-items: center;
+        width:17rem;
+        gap:10px;
+    }
+
+    .avalible-flights .round-trip-span  {
+        margin-top: 1.5rem;
+        background-color:#ffffff;
+    }
+
+    .avalible-flights .round-trip-span2  {
+        margin-top: 1.5rem;
+        background-color:#ffffff;
+        height:6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding:7px;
+    }
+
+   
+    .avalible-flights .round-trip-main .round-trip-div .avail-first-div {
+        width: 5rem;
+    }
 }
