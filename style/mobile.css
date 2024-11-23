@@ -9,6 +9,7 @@
     body {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background: #FFF2F2;
+        width:100%;
     }
 
     a {
@@ -1099,6 +1100,7 @@
 
 .search-body {
     padding: 12px;
+    width: 93%;
 }
 
     .search-section {
@@ -1339,13 +1341,15 @@
         border-radius: 5px;
      }
 
-     .error-page-section {
+     /* .error-page-section {
         padding:10px;
-     }
+     } */
 
      .error-header {
         padding: 10px;
         border-bottom:1px solid #413f3f;
+        width:91%;
+        margin-left: 10px;
      }
 
      .error-header main {
@@ -1416,8 +1420,8 @@
         border-radius: 8px;
         border: var(--sds-size-stroke-border) solid var(--Priamry, #B61C1C);
         background: var(--Priamry, #B61C1C);
-        padding:8px;
-        width: 55%;
+        padding:0px;
+        width: 53%;
         font-size:1rem;
         color:white;
         text-transform: capitalize;
@@ -1826,6 +1830,7 @@
         gap:10px;
         margin-top: 0.7rem;
         padding: 8px;
+        width:90%;
      }
 
      .booking-flow-header img {
@@ -1862,6 +1867,8 @@
 
      .booking-first-body {
         padding:10px 55px;
+        width:63%;
+        /* display:none; */
      }
 
      .first-body-div {
@@ -1923,7 +1930,7 @@
         display:flex;
         align-items: center;
         gap:8px;
-        margin-left: 15.7%;
+        margin-left: 18.5%;
      }
 
      .second-body-div .center-span {
@@ -1947,10 +1954,11 @@
      }
 
      .flight-summary {
+        /* display:none; */
         margin-top:1.5rem;
         padding:15px;
         background-color: #FFF;
-        width:89%;
+        width:83%;
         margin:1rem auto;
         border-radius: 20px;
      }
@@ -2039,7 +2047,8 @@
      }
 
      .booking-flow-button div{
-        width: 90%;
+        /* display: none; */
+        width: 85%;
         margin :0.5rem auto;
      }
 
@@ -2092,5 +2101,437 @@
    
     .avalible-flights .round-trip-main .round-trip-div .avail-first-div {
         width: 5rem;
+    }
+
+    .layover-time {
+        width:94%;
+        /* display: none; */
+    }
+
+    .layover-time main {
+        display:flex;
+        align-items: center;
+        margin-left: 6.4rem;
+        gap:10px;
+        width:67%;
+    }
+
+    .layout-line {
+        width: 1px;
+        height: 88px;
+        border:2px dotted #000;
+    }
+
+    .layover-time main h2 {
+        display:flex;
+        align-items: center;
+        padding: 2px;
+        padding-left: 10px;
+        width: 90%;
+        height: 28px;
+        flex-shrink: 0;
+        color: #000;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.048px;
+        background: rgba(232, 185, 49, 0.25);
+    }
+
+    /* --- do not touch please */
+
+    .book-flow-over {
+        width:99%;
+    }
+
+    /* do not touch please */
+
+    /* complete your booking  section */
+
+    .complete-booking-header main {
+        display:flex;
+        align-items: center;
+        gap:20px;
+        padding:15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .complete-booking-header main h1 {
+        color: #000;
+
+        /* h6 */
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.03px;
+    }
+
+    .passenger-forum-section {
+        margin-top: 0.5rem;
+        padding: 10px;
+    }
+
+    .passenger-forum-section main .passenger-forum-header {
+        border-radius: 10px 10px 0px 0px;
+        background: var(--Priamry, #B61C1C);
+        height: 40px;
+        flex-shrink: 0;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:5px;
+        margin: 0 auto;
+    }
+
+    .passenger-forum-section main .passenger-forum-header h1 {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.024px;
+    }
+
+    .passenger-form-section {
+        border-radius: 8px;
+        background: var(--Background-Default-Default, #FFF);
+        /* width: 350px; */
+        height: 811px;
+        flex-shrink: 0;
+    }
+
+    .passenger-form-input-style {
+        padding-top: 0.8rem;
+        padding-left : 0.8rem ;
+        padding-right : 1rem ;
+    }
+
+    .passenger-form-input-style span {
+        display: flex;
+        align-items: center;
+        gap:5px;
+    }
+
+    .passenger-form-input-style span label,p {
+        color: #000;
+
+/* sub1 */
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.024px;
+        text-transform:capitalize;
+    }
+
+    .passenger-form-input-style span p {
+        color: var(--Priamry, #B61C1C);
+    }
+
+    .passenger-form-input-style input {
+        width: 100%;
+        height: 40px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        border: var(--sds-size-stroke-border) solid var(--grey, #A2A2A2);
+        background: var(--Background-Default-Default, #FFF);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        outline: none;
+        padding: 5px;
+        margin-top: 0.2rem;
+        font-size: 1rem;
+    }
+
+    .passenger-form-input-style input::placeholder {
+        color: var(--grey, #A2A2A2);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.024px;
+    }
+
+    .input-flex {
+        display:flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .input-flex svg {
+        position:absolute;
+        left:94%;
+    }
+
+    .passenger-form-input-style span label,p{
+        color: #000;
+
+        /* sub1 */
+                font-family: Roboto;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 0.024px;
+                text-transform:capitalize;
+    }
+
+    .passenger-form-input-style select {
+        width: 100%;
+        height: 40px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        border: var(--sds-size-stroke-border) solid var(--grey, #A2A2A2);
+        background: var(--Background-Default-Default, #FFF);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        outline: none;
+        padding: 5px;
+        margin-top: 0.2rem;
+        font-size: 1rem;
+        font-size: 1rem;
+        text-transform: capitalize;
+    }
+
+    .passenger-form-input-style select option {
+        font-size: 1rem;
+    }
+
+    .passenger-form-input-style-gender {
+        padding-top: 0.8rem;
+        padding-left : 1rem ;
+        padding-right : 1rem ;
+    }
+
+    .passenger-form-input-style-gender span {
+        display:flex;
+        align-items: center;
+        gap:5px;
+    }
+
+    .passenger-form-input-style-gender span h1,p {
+        color: #000;
+
+        /* sub1 */
+                font-family: Roboto;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 0.024px;
+                text-transform:capitalize;
+    }
+
+    .passenger-form-input-style-gender span p {
+        color: var(--Priamry, #B61C1C);
+    }
+
+    .gender-input-section {
+        margin-top: 0.5rem;
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+    }
+
+    .gender-input-section span h3 {
+        /* color: var(--DARK, #131313); */
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.024px;
+    }
+
+    .gender-input-section span  {
+        display:flex;
+        align-items:center;
+        gap:5px;
+        width: 150px;
+        height: 35px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        border: 1px solid var(--grey, #A2A2A2);
+        background: var(--white, #FFF);
+        padding:6px;
+    }
+
+    .mobile-num {
+        display:flex;
+        align-items: center;
+        gap:10px;
+    }
+
+    .input-flex-section {
+        display:flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap:10px;
+    }
+
+    .input-flex-section h2 {
+        color: var(--DARK, #131313);
+        font-family: Inter;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 0.024px;
+    }
+
+    .mobile-num input {
+        width:75%;
+    }
+
+    .passenger-form-hide-show-2, .passenger-form-hide-show-3{
+        display:none;
+    }
+
+    .promo-code {
+        padding: 0.8rem;
+        margin-top:0.8rem
+    }
+
+    .promo-code h1 {
+        width:93%;
+        height:15px;
+        border:2px solid black;
+        text-transform: uppercase;
+        padding: 12px;
+        display:flex;
+        align-items:center;
+        border-radius: 8px;
+        background-color: #000;
+        color:#fff;
+    }
+
+    .promo-code div {
+        padding-left:0.8rem;
+        padding-right:0.8rem;
+        margin-top: 0.8rem;
+
+    }
+
+    .promo-code div input {
+        width: 72%;
+        height:20px;
+        padding:8px;
+    }
+
+    .promo-code div button {
+        width: 20%;
+        height:40px;
+        padding:8px;
+        text-transform: uppercase;
+        color: #B61C1C;
+        border-color:#B61C1C;
+        border-color:#B61C1C;
+    }
+
+    .promo-code div input ::placeholder{
+        text-transform: uppercase;
+        font-size: 1rem;
+    }
+
+    .terms-and-conditions {
+        padding:0.8rem;
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    .terms-and-conditions div h4 {
+        font-size:16px;
+        text-transform: capitalize;
+    }
+
+    .terms-and-conditions div p {
+        font-size:16px;
+        text-transform: capitalize;
+        color: #B61C1C;
+    }
+
+    .checkout-button-section {
+        margin-bottom: 0.8rem;
+    }
+
+    .checkout-button-section main {
+        padding:0.8rem;
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+    }
+
+    .checkout-button-section div p {
+        font-size:16px;
+    }
+
+    .checkout-button-section div h3 {
+        font-size: 17px;
+    }
+
+    .checkout-button-section button {
+        width:100px;
+        height:40px;
+        font-size: 1rem;
+        border-radius: 8px;
+        background-color: #B61C1C;
+        border:none;
+        text-transform: capitalize;
+        color: #fff;
+    }
+
+    .email-confirm-mordel {
+        display:none;
+        width: 100%;
+        top:54%;
+        height:100vh;
+        background-color:rgba(0, 0, 0, 0.4);
+        position:absolute;
+        z-index: 99;
+        overflow: hidden;
+    }
+
+    .email-confirm-mordel main {
+        position:absolute;
+        z-index: 99;
+        left: 8%;
+        width: 80%;
+        top:20%;
+        height:150px;
+        border:2px solid #fff;
+        background-color: #FFF;
+        padding:10px;
+    }
+
+    .email-confirm-mordel main .email-model-cancle {
+        margin-left: 90%;
+    }
+
+    .email-confirm-mordel main h2 {
+        font-size: 18px;
+        text-transform: capitalize;
+        text-align: center;
+        margin-top: 0.2rem;
+        font-weight: 400;
+    }
+
+    .email-model-input {
+        margin-top: 0.4rem;
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+        padding:5px;
+        margin-left: 0.4rem;
+    }
+
+    .email-model-input input {
+        width:35px;
+        height:35px;
     }
 }
