@@ -116,7 +116,7 @@
     }
 
     /* end side bar section  */
-    
+
     .header-grid {
         position: relative;
         display: flex;
@@ -140,7 +140,7 @@
     .header-first-div  div img {
        width: 70px;
        height: 42px;
-    } 
+    }
 
     .icons {
         width: 1.5rem;
@@ -167,14 +167,14 @@
         text-align: center;
         width: 9rem;
     }
-    
+
     .header-second-div  div {
         display: flex;
         align-items: center;
         justify-content: space-between;
         color: #fff;
     }
-    
+
     .header-second-div div div {
         font-size: 0.8rem;
         padding: 2px;
@@ -322,20 +322,20 @@
     }
 
     /* swiper css */
-  
+
     .swiper {
         width: 100%;
         padding-top: 50px;
         padding-bottom: 50px;
       }
-  
+
       .swiper-slide {
         background-position: center;
         background-size: cover;
         width: 300px;
         height: 200px;
       }
-  
+
       .swiper-slide img {
         display: block;
         width: 100%;
@@ -414,7 +414,7 @@
         display: flex;
         justify-content: space-between;
     }
-    
+
     .card-price-div div {
         margin-bottom: 0.3rem;
         width: fit-content;
@@ -425,7 +425,7 @@
     .card-price-div div p {
         font-size: 11px;
     }
-    
+
     .card-price-div div h2 {
         font-size: 13px;
         font-weight: 500;
@@ -437,7 +437,7 @@
         text-transform: capitalize;
         padding: 4px;
         font-weight: 400;
-        font-size: 9px; 
+        font-size: 9px;
         text-decoration: none;
         color: white;
         border-radius: 2px;
@@ -546,7 +546,7 @@
     .stories-card-div-2 {
         padding:8px;
         text-transform: capitalize;
-        
+
     }
 
     .stories-card-div-2 h2 {
@@ -670,7 +670,7 @@
     /* footer section starts here  */
     footer {
         padding: 20px 20px;
-        width: 90.2%;
+        min-width: 100%;
         background-color: #131313;
         color: #FFF2F2;
     }
@@ -734,7 +734,7 @@
 
     footer main:last-of-type {
         margin-top: 0.5rem;
-        display: flex; 
+        display: flex;
         gap: 20px;
     }
 
@@ -790,7 +790,7 @@
         gap: 15px;
         margin-top: 1rem;
     }
-    
+
     .second-section div h3 a {
         font-size: 16px;
         font-style: normal;
@@ -799,7 +799,7 @@
         letter-spacing: 0.024px;
         color: #000;
     }
-    
+
     .active {
         border-bottom: 2px solid #B61C1C;
         padding: 2px;
@@ -833,11 +833,11 @@
         text-transform: capitalize;
         transition: all 1s;
     }
-    
+
     .country-names div:hover {
         background:  #B61C1C;
         color: #fff;
-        
+
     }
 
     .country-names div h1 {
@@ -1724,7 +1724,7 @@
         justify-content:space-between;
         margin-top:0.8rem;
         text-transform:capitalize;
-       
+
      }
 
      .avail-sort-section-flight-time  .flight-date-section div {
@@ -1837,7 +1837,7 @@
         width:35px;
         height:35px;
         border-radius:100%;
-        
+
      }
 
      .booking-flow-header .book-flow-box {
@@ -2054,7 +2054,7 @@
 
      .booking-flow-button div button{
          color: var(--white, #FFF);
-    
+
         /* sub1 */
         font-family: Roboto;
         font-size: 16px;
@@ -2098,7 +2098,7 @@
         padding:7px;
     }
 
-   
+
     .avalible-flights .round-trip-main .round-trip-div .avail-first-div {
         width: 5rem;
     }
