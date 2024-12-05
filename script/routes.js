@@ -16,7 +16,7 @@
     let flightLink = document.querySelectorAll("#flight-link");
     let hotelLink = document.querySelectorAll("#hotel-link");
     let clubLink = document.querySelectorAll("#club-link");
-    let sportLink = document.querySelectorAll("#sport-link");
+    let Shortlet = document.querySelectorAll("#Shortlet");
 
     // flight inner links 
     let oneWay = document.querySelectorAll("#one-way");
@@ -102,6 +102,14 @@
 
 flightLink.forEach(flight => {
     flight.href = "html/flight.html";
+})
+
+hotelLink.forEach(link => {
+    link.href = "html/hotel-pages/hotel-home-page.html";
+})
+
+Shortlet.forEach(link => {
+    link.href = "html/shoortlet-pages/shortlet-home-page.html";
 })
 
 
