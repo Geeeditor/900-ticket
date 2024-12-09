@@ -14,6 +14,11 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+
+            colors: {
+                'red-alt-700' : '#b61c1c',
+                'red-alt-800' : '#8b0003',
+            }
         },
     },
     plugins: [],

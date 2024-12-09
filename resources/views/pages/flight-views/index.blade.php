@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Flght')
+@section('title', 'Flight')
 @section('content')
      <main class="flight-main">
         <section class="flight-first-section">
-            <div id="flight-link1">
-                <a id="one-way" href="javascript:void(0)">
+            <div class="active-flight" id="flight-link1">
+                <a  id="one-way" href="javascript:void(0)">
                     <h1 id="one-way">one-way</h1>
                 </a>
             </div>
@@ -24,16 +24,15 @@
                  <a id="search-link" href="javascript:void(0)">
                      <label for="from">from</label>
                      <div>
-                         <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                             <g id="flight_takeoff">
-                             <path id="Vector" d="M1.89002 14.0364H16.14V15.5364H1.89002V14.0364ZM16.5675 7.01637C16.41 6.41637 15.7875 6.05637 15.1875 6.22137L11.205 7.28637L6.03002 2.46387L4.58252 2.84637L7.68752 8.22387L3.96002 9.22137L2.48252 8.06637L1.39502 8.35887L3.33752 11.7264L15.765 8.40387C16.3725 8.23137 16.725 7.61637 16.5675 7.01637Z" fill="#B61C1C"/>
-                             </g>
-                         </svg>
+                         <svg class="flight-swap-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="user-select: auto;">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" style="user-select: auto;"></path>
+                       </svg>
                          <input type="text" placeholder="flying from">
                      </div>
+
                      <svg class="flight-swap-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
-                       </svg>
+                    </svg>
                  </a>
                 </div>
 

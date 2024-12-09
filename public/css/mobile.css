@@ -1,3 +1,147 @@
+.active-flight{
+    background-color: red !important;
+    color: white !important;
+}
+
+.tray-success{
+    position: absolute;
+    top: 5px;
+    right: 0;
+
+    background: rgb(28,3,118);
+background: -moz-linear-gradient(90deg, rgba(28,3,118,1) 0%, rgba(27,5,116,1) 53%, rgba(22,0,99,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(28,3,118,1) 0%, rgba(27,5,116,1) 53%, rgba(22,0,99,1) 100%);
+background: linear-gradient(90deg, rgba(28,3,118,1) 0%, rgba(27,5,116,1) 53%, rgba(22,0,99,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1c0376",endColorstr="#160063",GradientType=1);
+z-index: 100;
+border-bottom-left-radius: 5px;
+border-top-left-radius: 5px;
+font-family: sans-serif;
+
+}
+
+.tray-fail{
+     position: absolute;
+    top: 5px;
+    right: 0;
+    background: rgb(129,3,3);
+background: -moz-linear-gradient(90deg, rgba(129,3,3,1) 0%, rgba(123,16,3,1) 53%, rgba(131,4,4,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(129,3,3,1) 0%, rgba(123,16,3,1) 53%, rgba(131,4,4,1) 100%);
+background: linear-gradient(90deg, rgba(129,3,3,1) 0%, rgba(123,16,3,1) 53%, rgba(131,4,4,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#810303",endColorstr="#830404",GradientType=1);
+z-index: 100;
+border-bottom-left-radius: 5px;
+border-top-left-radius: 5px;
+font-family: sans-serif !important;
+}
+
+.tray-fail > p, .tray-success > p {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.blur-background {
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input{
+    width: 100%;
+    border: grey solid 1px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.divider {
+    position: relative ;
+    border-bottom: gray solid 1px;
+    margin: 30px 0px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.input::placeholder{
+    text-transform: Capitalize;
+}
+
+.divider::after{
+    content: 'OR CONTINUE WITH';
+    position: absolute;
+    font-size: 14px;
+    width: fit-content;
+    background-color: white;
+    border: grey solid 1px;
+    margin-top: -20px;
+    border-radius: 15px;
+    padding: 10px 7.5px;
+
+
+}
+.input:focus {
+    border: 1px solid #8b0003 !important;
+    outline: none; /* Removes the default outline */
+    background-color: rgba(139, 0, 3, 0.1); /* Light background for focus */
+    box-shadow: 0 0 5px rgba(139, 0, 3, 0.5); /* Optional shadow */
+}
+
+
+.clear {
+  clear: both;
+}
+
+.saveLog {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+
+.saveLoginCheckBox {
+  display: block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(63, 3, 3);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.saveLoginCheckBox div {
+  width: 60px;
+  height: 60px;
+  background-color: rgb(63, 3, 3);
+  top: -52px;
+  left: -52px;
+  position: absolute;
+  transform: rotateZ(45deg);
+  z-index: 100;
+  box-shadow: 0px 0px 0px 2px rgba(56, 1, 1, 0.3);
+}
+
+.saveLoginCheckBox input[type=checkbox]:checked + div {
+  left: -10px;
+  top: -10px;
+}
+
+.saveLoginCheckBox input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  visibility: hidden;
+}
+
+.transition {
+  transition: 300ms ease;
+}
+
 @media (max-width: 768px) {
 
     * {
@@ -585,7 +729,7 @@
     }
 
     .quick-access-div {
-        width: 200px;
+        /* width: 200px; */
     }
 
     .quick-access-div .img-div {
