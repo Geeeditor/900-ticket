@@ -12,6 +12,9 @@
         background: #FFF2F2;
         width:100%;
         text-transform: capitalize;
+        /* display:flex;
+        align-items:center;
+        justify-content:center; */
     }
 
     a {
@@ -19,7 +22,46 @@
         color: black;
     }
 
+    /* sections added that dosent show on mobile device */
+    .desktop-section-view {
+        display:none;
+    }
+
+    #flight-from-nigeria-icon-up, #international-destination-icon-up, #flight-to-country-icon-up {
+        display:block;
+    }
+
+    .swiper-div, .quick-access {
+        margin:0px 0rem 0px 0rem;
+    }
+
+    .desktop-footer {
+        display:none;
+    }
+
+    .desktop-header {
+        display:none;
+    }
+
+    .desktop-only-display {
+        display:none;
+    }
+
+    .desktop-menu {
+        display:none;
+    }
+
+    /* that ends here */
+
     /* side bar section */
+
+    .index-homepage-main {
+         margin-left: 2px;
+        width:100%;
+        overflow-x:scroll;
+        /* padding:0px;
+        margin:0px; */
+    }
 
     #side-bar {
         position: fixed;
@@ -32,6 +74,7 @@
 
 
     .main-side-bar {
+        display:block;
         width: 80%;
         height:99%;
         background-color: #FFF;
@@ -41,6 +84,7 @@
     .main-side-bar .icon-cancle {
         margin-left: 80%;
         margin-top: 0.8rem;
+        color:black;
     }
 
     .side-bar-first-section {
@@ -117,6 +161,27 @@
         gap: 13px;
     }
 
+    .mobile-header {
+        display:block;
+        position:relative;
+        top: -30rem;
+        background-image:none;
+        background-color: black;
+        height:0px;
+        width:98%;
+        margin:0rem auto;
+    }
+
+    .desktop-login  {
+        display:none;
+    }
+    .desktop-login p {
+        display:none;
+    }
+
+    .desktop-user-icon {
+        display:none;
+    }
     /* end side bar section  */
     
     .header-grid {
@@ -124,10 +189,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding:8px 20px;
+        padding:8px 22px;
         background-color: black;
         color: #fff;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+        width:90%;
+        margin-left:-4px;
     }
 
 
@@ -151,6 +218,7 @@
     .bar {
         color: red;
         width:1.7rem;
+        display:block;
     }
 
     .arrow-down {
@@ -161,6 +229,7 @@
 
     .user {
         width: 1.8rem;
+        display:block;
     }
 
     .header-second-div {
@@ -168,6 +237,7 @@
         padding: 3px;
         text-align: center;
         width: 9rem;
+        margin-left: -5rem;
     }
     
     .header-second-div  div {
@@ -194,10 +264,12 @@
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0.048px;
+        text-transform:uppercase;
     }
 
     /* first section */
     .first-section {
+        display:block;
         background-image:url("../image/big img.jpg") ;
         background-repeat: no-repeat;
         background-position: center;
@@ -237,10 +309,12 @@
     }
 
     .menu-section {
+        position:none;
         display: grid;
         grid-template-columns: repeat(2,1fr);
         place-items: center;
         gap: 15px;
+        width: 100%;
         margin-top: -2.8rem;
         text-transform: capitalize;
     }
@@ -250,7 +324,7 @@
         align-items: center;
         align-self: stretch;
         justify-content: center;
-        width: 160px;
+        width: 150px;
         height: 90px;
         gap:10px;
         background-color: white;
@@ -279,6 +353,7 @@
     }
 
     .third-section {
+        display:block;
         box-shadow: 0px 4px 23px -2px rgba(0,0,0,0.20);
         -webkit-box-shadow: 0px 4px 23px -2px rgba(0,0,0,0.20);
         -moz-box-shadow: 0px 4px 23px -2px rgba(0,0,0,0.20);
@@ -354,10 +429,13 @@
     .card-grid {
         display: flex;
         justify-content: space-between;
+        gap:5px;
     }
 
     .popular-section {
         padding: 10px;
+        display:block;
+        width:96%;
     }
 
     .popular-section h1 {
@@ -372,13 +450,14 @@
         display: flex;
         flex-direction: column;
         width: 180px;
-        height: 221px;
+        height: 231px;
         padding: 5px 7px;
         align-items: center;
         gap: 15px;
         flex-shrink: 0;
         border-radius: 4px;
         background: #D9D9D9;
+
     }
 
     /* .popular-section .card-div div {
@@ -449,11 +528,13 @@
         color: white;
         border-radius: 2px;
         background: #B61C1C;
+        height:13px;
     }
     /* hotel trending destination starts hert */
 
     .trending-des {
         padding: 10px;
+        display:block;
     }
 
     .hotel-grid {
@@ -501,12 +582,17 @@
         text-transform: capitalize;
     }
 
+    .text-on-img small {
+        color:#fff;
+    }
+
     /* stories card div  */
 
     .stories {
         padding: 10px;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        display:block;
     }
 
     .stories h1 {
@@ -576,23 +662,30 @@
     /* quick access section */
 
     .quick-access {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+        position:none;
+        margin: 0rem auto;
         text-transform: capitalize;
+        width:95%;
+        margin-bottom:1rem;
     }
 
     .quick-access-grid {
         display: grid;
         grid-template-columns: repeat(2,1fr);
         gap: 10px;
+        margin:0 auto;
+        width:100%
     }
+    
 
     .img-div img {
         background: #FFF2F2;
+        width:40px;
+        /* height:100px; */
     }
 
     .quick-access-div {
-        width: 200px;
+        width:90%;
     }
 
     .quick-access-div .img-div {
@@ -602,12 +695,14 @@
 
     .quick-access-inner-div {
         align-self: stretch;
+        width:90%;
+        margin:0 auto;
     }
 
     .quick-access-inner-div h2 {
         color: #000;
         text-align: center;
-        font-size: 16px;
+        font-size: 14px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -617,7 +712,7 @@
     .quick-access-inner-div p {
         color: var(--sds-color-text-default-secondary);
         text-align: center;
-        font-size: 14px;
+        font-size: 10px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -638,7 +733,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        margin-top: 0.5rem;
+        margin:0px auto;
     }
 
     .quick-access-flex-div h2 {
@@ -674,22 +769,29 @@
         letter-spacing: 0.048px;
     }
 
+    #flight-from-nigeria, #international-destination, #flight-to-country {
+        display:flex;
+        flex-direction:column;
+        margin:0rem 0rem 0px 0rem;
+    }
+
     /* footer section starts here  */
-    footer {
+    .mobile-footer {
         padding: 20px 20px;
         width: 90.2%;
         background-color: #131313;
         color: #FFF2F2;
+        display:block;
     }
 
-    footer img {
+    .mobile-footer img {
         width: 80px;
         height: 56px;
         flex-shrink: 0;
         margin-bottom: 0.5rem;
     }
 
-    footer h2:first-of-type {
+    .mobile-footer h2:first-of-type {
         font-size: 15px;
         font-style: normal;
         font-weight: 400;
@@ -698,20 +800,20 @@
         margin-bottom: 0.5rem;
     }
 
-    footer main:first-of-type {
+    .mobile-footer main:first-of-type {
         display: flex;
         align-items: center;
         gap: 40px;
         text-transform: capitalize;
     }
 
-    footer main:first-of-type div  {
+    .mobile-footer main:first-of-type div  {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    footer main:first-of-type div h3 {
+    .mobile-footer main:first-of-type div h3 {
         color: var(--white, #FFF);
         font-size: 20px;
         font-style: normal;
@@ -720,7 +822,7 @@
         letter-spacing: 0.048px;
     }
 
-    footer main:first-of-type div p {
+    .mobile-footer main:first-of-type div p {
         color: #DB0101;
         font-size: 16px;
         font-style: normal;
@@ -729,7 +831,7 @@
         letter-spacing: 0.048px;
     }
 
-    footer h2:last-of-type {
+    .mobile-footer h2:last-of-type {
         margin-top: 1.2rem;
         color: var(--white, #FFF);
         font-size: 18px;
@@ -739,18 +841,18 @@
         letter-spacing: 0.048px;
     }
 
-    footer main:last-of-type {
+    .mobile-footer main:last-of-type {
         margin-top: 0.5rem;
         display: flex; 
         gap: 20px;
     }
 
-    footer main:last-of-type img {
+    .mobile-footer main:last-of-type img {
         width: 34px;
         height: 34px;
     }
 
-    footer h1 {
+    .mobile-footer h1 {
         margin-top: 1.2rem;
         color: #FFF;
         font-family: Roboto;
@@ -2637,7 +2739,7 @@
         border-radius: 8px;
         border: 1px solid var(--Priamry, #B61C1C);
         background: var(--Priamry, #B61C1C);
-        margin-left: 7%;
+        margin-left: 3%;
         margin-top:6%;
         margin-bottom:6%;
         font-size:1rem;
@@ -3024,6 +3126,11 @@
     }
 
     /* ============== hotel details section here ============== */
+
+    .hotels-details-main {
+        border:solid 2px yellow;
+        width:100%;
+    }
 
     .hotel-details-header img {
         position:relative;
@@ -4730,6 +4837,7 @@
     /* ==================== party ticket section ==================== */
     
     .party-ticket-header {
+        display:block;
         width: 100%;
         height: 362px;
         flex-shrink: 0;
@@ -4803,6 +4911,7 @@
 
     .party-ticket-pagnation {
         overFlow:hidden;
+        margin:0px 0rem 0px 0rem;
         
     }
 
@@ -4845,6 +4954,7 @@
 
     .Featured-Events {
         margin-top: 1rem;
+        display:block;
     }
 
     .Featured-Events h1 {
@@ -4960,6 +5070,7 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        display:block;
    }
 
    .bottom-pag div p {
@@ -4987,6 +5098,9 @@
    }
 
    /* ==================== party ticket section ==================== */
+   .mobile-only-display {
+    display:block;
+   }
 
    .party-ticket-main {
     margin:0 15px;
