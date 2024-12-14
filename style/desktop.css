@@ -1670,10 +1670,134 @@ margin-top: 2rem;
     margin:1rem 5rem 1rem 5rem;
     display:flex;
     align-items: center;
+    justify-content:space-between;
 }
 
 .c-b-image-div img {
     max-width: 112px;
     flex: 1 0 0;
     align-self: stretch;
+}
+
+.c-b-text {
+    width:75%
+}
+
+.c-b-text h2 {
+    color: #34373F;
+    font-family: Roboto;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 64px; /* 160% */
+    letter-spacing: -1.2px;
+}
+
+.c-b-text .c-b-inner-test {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top: 2rem;
+}
+
+.c-b-text .c-b-inner-test span {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+ .c-b-price h3 {
+    color: #34373F;
+    font-family: Roboto;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 64px; /* 160% */
+    letter-spacing: -1.2px;
+}
+
+.c-b-third-section {
+    margin:3rem 5rem 1rem 5rem;
+}
+
+.c-b-third-section  h2 {
+    color: #311201;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 200% */
+    letter-spacing: -1.2px;
+}
+
+.c-b-third-section  p {
+    color: #4D525F;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.3px;
+}
+
+.c-b-third-section .c-b-third-section-first-div span {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top: 2rem;
+}
+
+.c-b-third-section {
+    width:60%;
+    margin:0 auto;
+}
+
+.input-section {
+    margin:0.5rem auto;
+}
+
+.input-section div {
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:10px;
+}
+
+.input-section div input {
+    width:93%;
+    margin:0rem auto;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #64676e;
+    outline:none;
+    border-color:#4D525F;
+}
+
+.input-section input {
+    width:96%;
+    margin:0.5rem auto;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #64676e;
+    outline:none;
+    border-color:#4D525F;
+}
+
+.c-b-fourth-section {
+    width:60%;
+    margin:0rem auto;
+    background-color: #fff;
+    padding:10px;
+}
+
+.c-b-fourth-section .ticket-checkout {
+    margin:-35px 0 0.5rem 0;
+}
+
+.c-b-fourth-section .desktop-ticket-button  {
+    padding:12px;
+}
+
+.c-b-fourth-section .desktop-ticket-button button{
+    margin:1rem auto;
+    width:60%;
 }
