@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title') - 900 Ticket</title>
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/desktop.css') }}"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @yield('style')
@@ -283,6 +284,7 @@
 
 
     <!-- side bar section  end -->
+
     <header class="sticky top-0 z-50">
         <div class="header-grid">
             <div class="header-first-div">
@@ -293,34 +295,42 @@
                 </svg>
 
                 <div>
-                    <a href="{{route('index')}}">
-                    <img src="{{ asset('image/logo.png') }}" alt="900 Logo"></a>
+                    <a href="{{ route('index') }}">
+                        <img src="{{ asset('image/logo.png') }}" alt="900 Logo"></a>
 
                 </div>
             </div>
             <div class="header-second-div">
                 <div>
-                    <img src="{{ asset('image/Vector (2).png') }}" alt="Nigeria Flag">
+
 
 
 
                     <a id="region-language" href="#">
-                        <div>
-                            <h3>ng</h3>
-                            <p>|</p>
-                            <h3>en</h3>
-                            <svg class="arrow-down icons" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                            </svg>
+                        <div class="rl-subGroup">
+
+                            <div id="g-translator">
+                                LANG
+                                <div class="gtranslate_wrapper"></div>
+                            </div>
                         </div>
                     </a>
 
-                    <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
+
+                    <div class="auth-container">
+                        <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                        <svg class="arrow-down icons" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+
+
+
 
                 </div>
             </div>
@@ -338,8 +348,9 @@
         @yield('content')
     </main>
 
-    <footer>
-        <img src="image/logo.png" alt="900 logo">
+    <footer class="mobile-footer">
+
+        <img src="{{asset('image/20241028_211741 1.png')}}" alt="900 logo">
         <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for businesses
             and organizations. </h2>
         <main>
@@ -362,17 +373,79 @@
         </main>
         <h2>CONNECT WITH US</h2>
         <main>
-            <img src="image/Book (2) 1.png" alt="instagram">
-            <img src="image/Book (2) 2.png" alt="facebook">
-            <img src="image/Book (2) 3.png" alt="x">
-            <img src="image/Book (2) 4.png" alt="lindkin">
-            <img src="image/Book (2) 5.png" alt="you tube">
+             <a href="https://www.instagram.com/900ticket/profilecard/?igsh=MWd4aGs4eGpieG1nbg==">
+                <img src="{{asset('image/Book (2) 1.png')}}" alt="instagram">
+                </a>
+                <a href="https://wa.me/2349166920559">
+                <img src="{{asset('image/Book (2) 2.png')}}" alt="whatsapp">
+                </a>
+                <a href="https://x.com/900Ticketing?t=fe8f6Zm6zuDPSUposCfdJg&s=09">
+                <img src="{{asset('image/Book (2) 3.png')}}" alt="x"></a>
+                <a href="register900ticket@gmail.com">
+                <img src="{{asset('image/Book (2) 4.png')}}" alt="email"></a>
         </main>
 
         <h1>© 2024 900Ticket Ltd</h1>
     </footer>
+    <!-- desktop footer  -->
+    <footer class="desktop-footer">
+        <section class="desktop-div-flex">
+            <main>
+                <div>
+                    <h3>Company</h3>
+                    <p>about 900 ticket</p>
+                    <p>contact us</p>
+                    <p>900 tiket affiliate</p>
+                    <p>refer a customer</p>
+                    <p>blog</p>
+                </div>
+                <div>
+                    <h3>Useful Links</h3>
+                    <p>privacy and policy</p>
+                    <p>terms and condition</p>
+                    <p>fligh schedules</p>
+                    <p>advertise with us</p>
+                    <p>hotlines</p>
+                </div>
+            </main>
+            <main>
+                <img style="width: auto; height: 50px; margin-left: 100px" src="{{asset('image/20241028_211741 1.png')}}" alt="900 logo">
+                <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for
+                    businesses and organizations. </h2>
+            </main>
+        </section>
+        <div class="copyright-footer">
+            <h2>Copyright ©2024 900tickets. All Rights Reserved</h2>
+            <main>
+                <a href="https://www.instagram.com/900ticket/profilecard/?igsh=MWd4aGs4eGpieG1nbg==">
+                <img src="{{asset('image/Book (2) 1.png')}}" alt="instagram">
+                </a>
+                <a href="https://wa.me/2349166920559">
+                <img src="{{asset('image/Book (2) 2.png')}}" alt="whatsapp">
+                </a>
+                <a href="https://x.com/900Ticketing?t=fe8f6Zm6zuDPSUposCfdJg&s=09">
+                <img src="{{asset('image/Book (2) 3.png')}}" alt="x"></a>
+                <a href="register900ticket@gmail.com">
+                <img src="{{asset('image/Book (2) 4.png')}}" alt="email"></a>
+            </main>
+        </div>
+    </footer>
     <!-- swiper cdn -->
     {{-- route{{asset/}} --}}
+
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "detect_browser_language": true,
+            "languages": ["en", "fr", "it", "es", "yo", "ig", "ha", "zh-CN", "de"],
+            "globe_color": "#fff",
+            "wrapper_selector": ".gtranslate_wrapper",
+            "alt_flags": {
+                "en": "usa"
+            }
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script>
 
     <script>
         // Function to show the flash message
@@ -394,7 +467,7 @@
     </script>
 
     <script src="{{ asset('js/widget.js') }}"></script>
-    <script src="{{asset('js/passwordValidator.js')}}"></script>
+    <script src="{{ asset('js/passwordValidator.js') }}"></script>
     <script src="{{ asset('js/toogles.js') }}"></script>
     <script src="{{ asset('js/routes.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
