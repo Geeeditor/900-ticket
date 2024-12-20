@@ -1,8 +1,8 @@
-  function showSection(section) {
-        const loginSection = document.getElementById('loginSection');
-        const signupSection = document.getElementById('signupSection');
-        const loginLink = document.getElementById('loginLink');
-        const signupLink = document.getElementById('signupLink');
+  /* function showSection(section) {
+        const loginSection = document.querySelectorAll('loginSection');
+        const signupSection = document.querySelectorAll('signupSection');
+        const loginLink = document.querySelectorAll('loginLink');
+        const signupLink = document.querySelectorAll('signupLink');
 
         if (section === 'login') {
             loginSection.classList.remove('hidden');
@@ -22,8 +22,8 @@
     }
 
     function togglePasswordVisibility(type) {
-        const passwordInput = type === 'login' ? document.getElementById('loginPassword') : document.getElementById('signupPassword');
-        const toggleCheckbox = type === 'login' ? document.getElementById('toggleLoginPassword') : document.getElementById('toggleSignupPassword');
+        const passwordInput = type === 'login' ? document.querySelectorAll('loginPassword') : document.querySelectorAll('signupPassword');
+        const toggleCheckbox = type === 'login' ? document.querySelectorAll('toggleLoginPassword') : document.querySelectorAll('toggleSignupPassword');
 
         if (toggleCheckbox.checked) {
             passwordInput.type = 'text'; // Show the password
@@ -34,8 +34,61 @@
 
     // By default, show the login section
     showSection('login');
+    */
 
-     // Function to handle input from otp
+
+
+
+
+    function showSection(section) {
+    const loginSections = document.querySelectorAll('.loginSection');
+    const signupSections = document.querySelectorAll('.signupSection');
+    const loginLinks = document.querySelectorAll('.loginLink');
+    const signupLinks = document.querySelectorAll('.signupLink');
+    const confirmPassword = document.querySelectorAll('.confirmPassword')
+
+    // Helper function to toggle visibility and styles
+    function toggleVisibilityAndStyles(isLogin) {
+        const sectionsToShow = isLogin ? loginSections : signupSections;
+        const sectionsToHide = isLogin ? signupSections : loginSections;
+        const activeLinks = isLogin ? loginLinks : signupLinks;
+        const inactiveLinks = isLogin ? signupLinks : loginLinks;
+
+        sectionsToShow.forEach(section => section.classList.remove('hidden'));
+        sectionsToHide.forEach(section => section.classList.add('hidden'));
+
+        activeLinks.forEach(link => {
+            link.classList.add('font-[600]', 'text-red-900');
+            link.classList.remove('font-[400]', 'no-underline', 'hover:underline');
+        });
+
+        inactiveLinks.forEach(link => {
+            link.classList.remove('font-[600]', 'text-red-900');
+            link.classList.add('font-[400]', 'no-underline', 'hover:underline');
+        });
+    }
+
+    if (section === 'login') {
+        toggleVisibilityAndStyles(true);
+    } else if (section === 'signup') {
+        toggleVisibilityAndStyles(false);
+    }
+}
+
+function togglePasswordVisibility(type) {
+    const passwordInputs = document.querySelectorAll(`.${type}Password`);
+    const toggleCheckboxes = document.querySelectorAll(`.toggle${type.charAt(0).toUpperCase() + type.slice(1)}Password`);
+
+    toggleCheckboxes.forEach(checkbox => {
+        passwordInputs.forEach(input => {
+            input.type = checkbox.checked ? 'text' : 'password'; // Show or hide the password
+        });
+    });
+}
+
+// By default, show the login section
+showSection('login');
+    // Function to handle input from otp
     document.querySelectorAll('.otp-input').forEach((input, index) => {
         input.addEventListener('input', function() {
             // Allow only numbers

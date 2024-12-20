@@ -19,6 +19,8 @@ Route::get('/auth/otp', function() {
 
 Route::post('/auth/login', [authController::class, 'login'])->name('auth.login');
 
+Route::post('/auth/register', [authController::class, 'register'])->name('auth.register');
+
 Route::get('/flight', function () {
     return view('pages/flight-views/index');
 })->name('index.flight')->middleware('auth');
