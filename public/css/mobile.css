@@ -169,20 +169,37 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .icons {
     width: 35px;
+    /* z-index: 999; */
+
 }
 
+
+@media  (min-width: 600px) {
+header {
+
+    height: 100vh;
+    background-size: contain;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin-bottom: -25rem;
+}
+}
+
+
+
 .header-grid {
-    background-color: #0B0B0B;
+
     color: white;
     display: flex;
     padding: 20px 0;
     min-width: 70%;
     justify-content: space-around;
     margin: auto;
+
 }
 
 .header-second-div {
-    width: 15%;
+    /* width: 15%; */
 
 }
 
@@ -205,6 +222,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .auth-container {
     display: flex ;
     align-items: center;
+    z-index: 999;
 }
 
 #g-translator {
@@ -219,7 +237,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .gglobe {
     width: 30px !important;
     height: 30px !important;
-    margin-top: ;
+    /* margin-top: ; */
 }
 
 

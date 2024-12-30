@@ -40,7 +40,7 @@
 
 
 
-    function showSection(section) {
+   /*  function showSection(section) {
     const loginSections = document.querySelectorAll('.loginSection');
     const signupSections = document.querySelectorAll('.signupSection');
     const loginLinks = document.querySelectorAll('.loginLink');
@@ -73,7 +73,7 @@
     } else if (section === 'signup') {
         toggleVisibilityAndStyles(false);
     }
-}
+} */
 
 function togglePasswordVisibility(type) {
     const passwordInputs = document.querySelectorAll(`.${type}Password`);
@@ -106,3 +106,16 @@ showSection('login');
             }
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const element = document.querySelector('.margin-top');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 0) {
+            element.style.marginTop = '0'; // Remove margin when scrolled
+            element.style.height= '100vh';
+        } else {
+            element.style.marginTop = '100px'; // Restore margin when at the top
+        }
+    });
+});

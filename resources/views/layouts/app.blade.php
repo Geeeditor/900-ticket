@@ -285,7 +285,7 @@
 
     <!-- side bar section  end -->
 
-    <header class="sticky top-0 z-50">
+    <header class="  ">
         <div class="header-grid">
             <div class="header-first-div">
                 <svg class="bar icons" id="show-side-bar" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -295,7 +295,7 @@
                 </svg>
 
                 <div>
-                    <a href="{{ route('index') }}">
+                    <a href="#">
                         <img src="{{ asset('image/logo.png') }}" alt="900 Logo"></a>
 
                 </div>
@@ -344,13 +344,16 @@
 
 
 
+
+
+
     <main>
         @yield('content')
     </main>
 
     <footer class="mobile-footer">
 
-        <img src="{{asset('image/20241028_211741 1.png')}}" alt="900 logo">
+        <img src="{{ asset('image/20241028_211741 1.png') }}" alt="900 logo">
         <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for businesses
             and organizations. </h2>
         <main>
@@ -373,16 +376,16 @@
         </main>
         <h2>CONNECT WITH US</h2>
         <main>
-             <a href="https://www.instagram.com/900ticket/profilecard/?igsh=MWd4aGs4eGpieG1nbg==">
-                <img src="{{asset('image/Book (2) 1.png')}}" alt="instagram">
-                </a>
-                <a href="https://wa.me/2349166920559">
-                <img src="{{asset('image/Book (2) 2.png')}}" alt="whatsapp">
-                </a>
-                <a href="https://x.com/900Ticketing?t=fe8f6Zm6zuDPSUposCfdJg&s=09">
-                <img src="{{asset('image/Book (2) 3.png')}}" alt="x"></a>
-                <a href="register900ticket@gmail.com">
-                <img src="{{asset('image/Book (2) 4.png')}}" alt="email"></a>
+            <a href="https://www.instagram.com/900ticket/profilecard/?igsh=MWd4aGs4eGpieG1nbg==">
+                <img src="{{ asset('image/Book (2) 1.png') }}" alt="instagram">
+            </a>
+            <a href="https://wa.me/2349166920559">
+                <img src="{{ asset('image/Book (2) 2.png') }}" alt="whatsapp">
+            </a>
+            <a href="https://x.com/900Ticketing?t=fe8f6Zm6zuDPSUposCfdJg&s=09">
+                <img src="{{ asset('image/Book (2) 3.png') }}" alt="x"></a>
+            <a href="register900ticket@gmail.com">
+                <img src="{{ asset('image/Book (2) 4.png') }}" alt="email"></a>
         </main>
 
         <h1>© 2024 900Ticket Ltd</h1>
@@ -409,7 +412,8 @@
                 </div>
             </main>
             <main>
-                <img style="width: auto; height: 50px; margin-left: 100px" src="{{asset('image/20241028_211741 1.png')}}" alt="900 logo">
+                <img style="width: auto; height: 50px; margin-left: 100px"
+                    src="{{ asset('image/20241028_211741 1.png') }}" alt="900 logo">
                 <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for
                     businesses and organizations. </h2>
             </main>
@@ -418,15 +422,15 @@
             <h2>Copyright ©2024 900tickets. All Rights Reserved</h2>
             <main>
                 <a href="https://www.instagram.com/900ticket/profilecard/?igsh=MWd4aGs4eGpieG1nbg==">
-                <img src="{{asset('image/Book (2) 1.png')}}" alt="instagram">
+                    <img src="{{ asset('image/Book (2) 1.png') }}" alt="instagram">
                 </a>
                 <a href="https://wa.me/2349166920559">
-                <img src="{{asset('image/Book (2) 2.png')}}" alt="whatsapp">
+                    <img src="{{ asset('image/Book (2) 2.png') }}" alt="whatsapp">
                 </a>
                 <a href="https://x.com/900Ticketing?t=fe8f6Zm6zuDPSUposCfdJg&s=09">
-                <img src="{{asset('image/Book (2) 3.png')}}" alt="x"></a>
+                    <img src="{{ asset('image/Book (2) 3.png') }}" alt="x"></a>
                 <a href="register900ticket@gmail.com">
-                <img src="{{asset('image/Book (2) 4.png')}}" alt="email"></a>
+                    <img src="{{ asset('image/Book (2) 4.png') }}" alt="email"></a>
             </main>
         </div>
     </footer>
