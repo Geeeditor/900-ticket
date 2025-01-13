@@ -12,13 +12,13 @@
 
     const currentPath = window.location.pathname;
 
-    // flight hotel and others section 
+    // flight hotel and others section
     let flightLink = document.querySelectorAll("#flight-link");
     let hotelLink = document.querySelectorAll("#hotel-link");
     let clubLink = document.querySelectorAll("#club-link");
     let sportLink = document.querySelectorAll("#sport-link");
 
-    // flight inner links 
+    // flight inner links
     let oneWay = document.querySelectorAll("#one-way");
     let roundTrip = document.querySelectorAll("#round-trip");
     let multiCity = document.querySelectorAll("#multi-city");
@@ -26,12 +26,12 @@
     // flight link styles
     let flightLink1 = document.getElementById("flight-link1");
     let flightLink2 = document.getElementById("flight-link2");
-    
+
 
     // search link section
     let flyingFrom = document.querySelectorAll("#search-link");
 
-    // flight page side bae that pops up from under the screen 
+    // flight page side bae that pops up from under the screen
     let underSideBarLink1 = document.querySelectorAll(".under-side-bar-link1");
     let underSideBar = document.querySelectorAll(".under-sideBar");
 
@@ -44,7 +44,7 @@
     let testing3 = document.querySelectorAll(".testing3");
     let testing4 = document.querySelectorAll(".testing4");
 
-    // booking-search-page under side bar links 
+    // booking-search-page under side bar links
 
     let fullOption = document.querySelectorAll("#full-option");
     let showAvailFlight = document.querySelectorAll(".available-flight-sorting");
@@ -62,47 +62,47 @@
     let showFlightPrice = document.querySelectorAll(".flight-price");
     let flightPriceClose = document.querySelectorAll("#flight-price-close");
 
-    
+
     homes.forEach(home => {
         home.href = "../index.html";
     });
-    
+
 
 // regional language and currency links starts here
-    regionLanguages.forEach(regionLanguage => {
-        regionLanguage.href = "html/region-language.html";
-        if (currentPath.includes(regionLanguage.getAttribute("href"))) {
-            linkStyle1.classList.add("active")
-        }
-    });
-    
-    
-    currencys.forEach(currency => {
-        currency.href = "html/currency.html";
-        if (currentPath.includes(currency.getAttribute("href"))) {
-            linkStyle2.classList.add("active")
-        } 
-    })
+    // regionLanguages.forEach(regionLanguage => {
+    //     regionLanguage.href = "html/region-language.html";
+    //     if (currentPath.includes(regionLanguage.getAttribute("href"))) {
+    //         linkStyle1.classList.add("active")
+    //     }
+    // });
+
+
+    // currencys.forEach(currency => {
+    //     currency.href = "html/currency.html";
+    //     if (currentPath.includes(currency.getAttribute("href"))) {
+    //         linkStyle2.classList.add("active")
+    //     }
+    // })
 
     // regional language an dcurrency inner link
-    regionLanguagesInner.forEach(regionLanguage => {
-        regionLanguage.href = "region-language.html";
-        if (currentPath.includes(regionLanguage.getAttribute("href"))) {
-            linkStyle1.classList.add("active")
-        }
-    });
+    // regionLanguagesInner.forEach(regionLanguage => {
+    //     regionLanguage.href = "region-language.html";
+    //     if (currentPath.includes(regionLanguage.getAttribute("href"))) {
+    //         linkStyle1.classList.add("active")
+    //     }
+    // });
 
-    currencysInner.forEach(currency => {
-        currency.href = "currency.html";
-        if (currentPath.includes(currency.getAttribute("href"))) {
-            linkStyle2.classList.add("active");
-        } ;
-    });
+    // currencysInner.forEach(currency => {
+    //     currency.href = "currency.html";
+    //     if (currentPath.includes(currency.getAttribute("href"))) {
+    //         linkStyle2.classList.add("active");
+    //     } ;
+    // });
 // regional language and currency links ends here
 
-flightLink.forEach(flight => {
-    flight.href = "html/flight.html";
-})
+// flightLink.forEach(flight => {
+//     flight.href = "html/flight.html";
+// })
 
 
 /* ---------- flight inner link starts here -------*/

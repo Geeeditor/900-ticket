@@ -39,7 +39,7 @@
 }
 
 .margin-top{
-    margin-top: 100px;
+    margin-top: -150px;
         transition: margin-top 0.3s ease; /* Smooth transition */
 }
 .side-bar {
@@ -1208,7 +1208,7 @@
 }
 
 .all-event-card-grid .party-card {
-    width:260px;
+    width: 90%;
     margin: 1rem 0 1rem 0;;
 }
 
@@ -1597,7 +1597,7 @@
 }
 
 .featured-card-grid .card-text {
-    width: 94%;
+    width: 100%;
     flex-shrink: 0;
     border: 1px solid #A2A2A2;
     background: var(--white, #FFF);
@@ -1633,7 +1633,7 @@
 }
 
 .featured-card-grid .card-bottom {
-    width: 94%;
+    width: 100%;
     flex-shrink: 0;
     border: 1px solid #A2A2A2;
     background: var(--white, #FFF);
@@ -1833,3 +1833,5 @@ margin-top: 2rem;
     width:60%;
 }
 }
+
+

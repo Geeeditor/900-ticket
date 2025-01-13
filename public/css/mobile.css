@@ -222,7 +222,7 @@ header {
 .auth-container {
     display: flex ;
     align-items: center;
-    z-index: 999;
+    /* z-index: 500; */
 }
 
 #g-translator {
@@ -360,7 +360,7 @@ header {
 
     .main-side-bar {
         width: 80%;
-        height:99%;
+        height:100%;
         background-color: #FFF;
         padding: 10px 20px;
     }
@@ -500,7 +500,7 @@ header {
     .header-second-div  div {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
         color: #fff;
     }
 

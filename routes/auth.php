@@ -20,7 +20,7 @@ Route::middleware('guest')->group(function () {
     });
 
     Route::get('/welcome', function(){
-        return view('auth.welcome');
+        return view('welcome');
     })->name('index.welcome');
 
     Route::get('register', [RegisterWithOtpController::class, 'create'])->name('index.register');

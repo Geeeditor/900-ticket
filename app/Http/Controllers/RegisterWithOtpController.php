@@ -32,6 +32,7 @@ class RegisterWithOtpController extends Controller
             // 'confirm_password' => ['required']
         ]);
 
+        // V9p4bGhKHg959vH3^
 
         $otp = rand(100000, 999999);
 
@@ -115,12 +116,23 @@ class RegisterWithOtpController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('index.welcome', absolute: false));
+        return redirect(route('dashboard', absolute: false));
 
 
 
 
-        dd('Verified');
+
+    }
+
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

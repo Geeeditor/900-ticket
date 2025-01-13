@@ -22,6 +22,21 @@
          @else
            <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         @endif --}}
+    <style>
+        /* .second-div-nav {
+                                    display: none !important;
+                                    height: 200vh;
+                                } */
+
+        @media (max-width: 600px) {
+            .second-div-nav {
+                display: none !important;
+
+            }
+
+
+        }
+    </style>
 </head>
 
 <body>
@@ -61,6 +76,12 @@
             </div>
 
             <div class="side-bar-second-section">
+
+                @auth
+
+                    <p>Hello Mike</p>
+                @endauth
+
                 <!-- flight -->
                 <a id="flight-link" href="">
                     <span>
@@ -241,17 +262,74 @@
             </div>
 
             <div class="side-bar-third-section">
-                <!-- my carts -->
-                <span>
-                    <img src="image/sideBar/Vector (3).png" alt=" my carts">
-                    <p>my carts</p>
-                </span>
+
 
                 <!-- users profile icon -->
-                <span>
-                    <img src="image/sideBar/Vector (4).png" alt=" user profile">
-                    <p>Login/Sign Up</p>
-                </span>
+                @guest
+                    <span>
+                        <img src="image/sideBar/Vector (4).png" alt=" user profile">
+                        <p>
+                            <a href="{{ route('index.login') }}">
+                                Login
+                            </a>
+                        </p>
+                        <p class="border-l border-black -ml-2 pl-1">
+                            <a href="{{ route('index.register') }}">
+                                Sign Up
+                            </a>
+                        </p>
+                    </span>
+                @endguest
+
+                @auth
+                    <!-- my carts -->
+                    <span>
+                        <img src="image/sideBar/Vector (3).png" alt=" my carts">
+                        <p>my carts</p>
+                    </span>
+
+                    <span>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14.2788 2.15224C13.9085 2 13.439 2 12.5 2C11.561 2 11.0915 2 10.7212 2.15224C10.2274 2.35523 9.83509 2.74458 9.63056 3.23463C9.53719 3.45834 9.50065 3.7185 9.48635 4.09799C9.46534 4.65568 9.17716 5.17189 8.69017 5.45093C8.20318 5.72996 7.60864 5.71954 7.11149 5.45876C6.77318 5.2813 6.52789 5.18262 6.28599 5.15102C5.75609 5.08178 5.22018 5.22429 4.79616 5.5472C4.47814 5.78938 4.24339 6.1929 3.7739 6.99993C3.30441 7.80697 3.06967 8.21048 3.01735 8.60491C2.94758 9.1308 3.09118 9.66266 3.41655 10.0835C3.56506 10.2756 3.77377 10.437 4.0977 10.639C4.57391 10.936 4.88032 11.4419 4.88029 12C4.88026 12.5581 4.57386 13.0639 4.0977 13.3608C3.77372 13.5629 3.56497 13.7244 3.41645 13.9165C3.09108 14.3373 2.94749 14.8691 3.01725 15.395C3.06957 15.7894 3.30432 16.193 3.7738 17C4.24329 17.807 4.47804 18.2106 4.79606 18.4527C5.22008 18.7756 5.75599 18.9181 6.28589 18.8489C6.52778 18.8173 6.77305 18.7186 7.11133 18.5412C7.60852 18.2804 8.2031 18.27 8.69012 18.549C9.17714 18.8281 9.46533 19.3443 9.48635 19.9021C9.50065 20.2815 9.53719 20.5417 9.63056 20.7654C9.83509 21.2554 10.2274 21.6448 10.7212 21.8478C11.0915 22 11.561 22 12.5 22C13.439 22 13.9085 22 14.2788 21.8478C14.7726 21.6448 15.1649 21.2554 15.3694 20.7654C15.4628 20.5417 15.4994 20.2815 15.5137 19.902C15.5347 19.3443 15.8228 18.8281 16.3098 18.549C16.7968 18.2699 17.3914 18.2804 17.8886 18.5412C18.2269 18.7186 18.4721 18.8172 18.714 18.8488C19.2439 18.9181 19.7798 18.7756 20.2038 18.4527C20.5219 18.2105 20.7566 17.807 21.2261 16.9999C21.6956 16.1929 21.9303 15.7894 21.9827 15.395C22.0524 14.8691 21.9088 14.3372 21.5835 13.9164C21.4349 13.7243 21.2262 13.5628 20.9022 13.3608C20.4261 13.0639 20.1197 12.558 20.1197 11.9999C20.1197 11.4418 20.4261 10.9361 20.9022 10.6392C21.2263 10.4371 21.435 10.2757 21.5836 10.0835C21.9089 9.66273 22.0525 9.13087 21.9828 8.60497C21.9304 8.21055 21.6957 7.80703 21.2262 7C20.7567 6.19297 20.522 5.78945 20.2039 5.54727C19.7799 5.22436 19.244 5.08185 18.7141 5.15109C18.4722 5.18269 18.2269 5.28136 17.8887 5.4588C17.3915 5.71959 16.7969 5.73002 16.3099 5.45096C15.8229 5.17191 15.5347 4.65566 15.5136 4.09794C15.4993 3.71848 15.4628 3.45833 15.3694 3.23463C15.1649 2.74458 14.7726 2.35523 14.2788 2.15224ZM12.5 15C14.1695 15 15.5228 13.6569 15.5228 12C15.5228 10.3431 14.1695 9 12.5 9C10.8305 9 9.47716 10.3431 9.47716 12C9.47716 13.6569 10.8305 15 12.5 15Z"
+                                    fill="#0d0e11"></path>
+                            </g>
+                        </svg>
+                        <p class="">
+                            <a href="{{ route('profile.edit') }}">
+                                Profile
+                            </a>
+                        </p>
+                    </span>
+                    <span>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14.2788 2.15224C13.9085 2 13.439 2 12.5 2C11.561 2 11.0915 2 10.7212 2.15224C10.2274 2.35523 9.83509 2.74458 9.63056 3.23463C9.53719 3.45834 9.50065 3.7185 9.48635 4.09799C9.46534 4.65568 9.17716 5.17189 8.69017 5.45093C8.20318 5.72996 7.60864 5.71954 7.11149 5.45876C6.77318 5.2813 6.52789 5.18262 6.28599 5.15102C5.75609 5.08178 5.22018 5.22429 4.79616 5.5472C4.47814 5.78938 4.24339 6.1929 3.7739 6.99993C3.30441 7.80697 3.06967 8.21048 3.01735 8.60491C2.94758 9.1308 3.09118 9.66266 3.41655 10.0835C3.56506 10.2756 3.77377 10.437 4.0977 10.639C4.57391 10.936 4.88032 11.4419 4.88029 12C4.88026 12.5581 4.57386 13.0639 4.0977 13.3608C3.77372 13.5629 3.56497 13.7244 3.41645 13.9165C3.09108 14.3373 2.94749 14.8691 3.01725 15.395C3.06957 15.7894 3.30432 16.193 3.7738 17C4.24329 17.807 4.47804 18.2106 4.79606 18.4527C5.22008 18.7756 5.75599 18.9181 6.28589 18.8489C6.52778 18.8173 6.77305 18.7186 7.11133 18.5412C7.60852 18.2804 8.2031 18.27 8.69012 18.549C9.17714 18.8281 9.46533 19.3443 9.48635 19.9021C9.50065 20.2815 9.53719 20.5417 9.63056 20.7654C9.83509 21.2554 10.2274 21.6448 10.7212 21.8478C11.0915 22 11.561 22 12.5 22C13.439 22 13.9085 22 14.2788 21.8478C14.7726 21.6448 15.1649 21.2554 15.3694 20.7654C15.4628 20.5417 15.4994 20.2815 15.5137 19.902C15.5347 19.3443 15.8228 18.8281 16.3098 18.549C16.7968 18.2699 17.3914 18.2804 17.8886 18.5412C18.2269 18.7186 18.4721 18.8172 18.714 18.8488C19.2439 18.9181 19.7798 18.7756 20.2038 18.4527C20.5219 18.2105 20.7566 17.807 21.2261 16.9999C21.6956 16.1929 21.9303 15.7894 21.9827 15.395C22.0524 14.8691 21.9088 14.3372 21.5835 13.9164C21.4349 13.7243 21.2262 13.5628 20.9022 13.3608C20.4261 13.0639 20.1197 12.558 20.1197 11.9999C20.1197 11.4418 20.4261 10.9361 20.9022 10.6392C21.2263 10.4371 21.435 10.2757 21.5836 10.0835C21.9089 9.66273 22.0525 9.13087 21.9828 8.60497C21.9304 8.21055 21.6957 7.80703 21.2262 7C20.7567 6.19297 20.522 5.78945 20.2039 5.54727C19.7799 5.22436 19.244 5.08185 18.7141 5.15109C18.4722 5.18269 18.2269 5.28136 17.8887 5.4588C17.3915 5.71959 16.7969 5.73002 16.3099 5.45096C15.8229 5.17191 15.5347 4.65566 15.5136 4.09794C15.4993 3.71848 15.4628 3.45833 15.3694 3.23463C15.1649 2.74458 14.7726 2.35523 14.2788 2.15224ZM12.5 15C14.1695 15 15.5228 13.6569 15.5228 12C15.5228 10.3431 14.1695 9 12.5 9C10.8305 9 9.47716 10.3431 9.47716 12C9.47716 13.6569 10.8305 15 12.5 15Z"
+                                    fill="#0d0e11"></path>
+                            </g>
+                        </svg>
+
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button class="text-[1rem]" type="submit">
+                                Logout
+                            </button>
+                        </form>
+
+
+                    </span>
+                @endauth
+
 
             </div>
 
@@ -282,7 +360,148 @@
     </section>
 
 
+    {{--    @guest
+        <section x-data="{ authSec: true }" x-show="authSec"
+            class="fixed blur-background  z-[999] flex h-[90vh] w-full flex-col items-center justify-center margin-top">
 
+
+
+            Mini Nav
+            <div class="w-[95%] rounded-t-md bg-white px-3 py-2">
+
+
+                <div class="flex gap-3">
+                    <a id="" class="loginLink cursor-pointer font-[400] no-underline hover:underline "
+                        onclick="showSection('login')">Login</a>
+                    <a id=""
+                        class="signupLink cursor-pointer font-[600] text-red-900 underline hover:no-underline w-1/3"
+                        onclick="showSection('signup')">Sign-Up</a>
+                    <div @click="authSec = !authSec" class="flex w-2/3  justify-end">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5"
+                                    stroke-linecap="round"></path>
+                                <path
+                                    d="M7 3.33782C8.47087 2.48697 10.1786 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 10.1786 2.48697 8.47087 3.33782 7"
+                                    stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            Login Section
+            <div id=""
+                class="loginSection h-fit w-[95%] flex-col gap-2 rounded-b-md  bg-white px-3  pb-4 shadow-lg">
+                <div>
+                    <form class="flex flex-col gap-2" action="" method="post">
+                        @csrf
+                        <div class="login-field flex flex-col gap-1">
+                            <label class="font-[500]" for="email">Email</label>
+                            <input title="Eg: mark@yokomail.com" class="input" type="text" name="email"
+                                placeholder="Enter your email">
+                            <span class="text-[12px] font-[200] text-red-700">
+                                @error('email')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+
+                        <div class="flex flex-col gap-1">
+                            <label class="font-[500]" for="password">Password</label>
+                            <div class="flex items-center">
+                                <input class="loginPassword input" id="loginPassword" type="password" name="password"
+                                    placeholder="Enter your password">
+                                <input type="checkbox" id="" class="toggleLoginPassword ml-2"
+                                    onclick="togglePasswordVisibility('login')">
+                                <label for="toggleLoginPassword" class="cursor-pointer"><svg fill="#8b0003"
+                                        width="24px" height="24px" viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <g id="Password">
+                                                <path
+                                                    d="M391,233.9478H121a45.1323,45.1323,0,0,0-45,45v162a45.1323,45.1323,0,0,0,45,45H391a45.1323,45.1323,0,0,0,45-45v-162A45.1323,45.1323,0,0,0,391,233.9478ZM184.123,369.3794a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Zm108,0a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Zm108,0a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Z">
+                                                </path>
+                                                <path
+                                                    d="M157.8965,143.9487a98.1035,98.1035,0,1,1,196.207,0V214.147h19.793V143.9487a117.8965,117.8965,0,0,0-235.793,0V214.147h19.793Z">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </svg></label>
+
+                            </div>
+                            <span class="text-[12px] font-[200] text-red-700">
+                                @error('password')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+
+                        <div>
+                            <div class="saveLog">
+                                <label class="saveLoginCheckBox">
+                                    <input id="ch1" type="checkbox" name="remember">
+                                    <div class="transition"></div>
+                                </label>
+                                <p>
+                                    Remember Me
+                                </p>
+                            </div>
+                        </div>
+
+                        <button
+                            class="hover:red-alt-800 w-full rounded-md bg-red-alt-700 py-2 text-center uppercase text-white"
+                            type="submit">
+                            Login
+                        </button>
+                    </form>
+
+                    <div class="divider"></div>
+
+                    <a href="javascript:void(0)"
+                        class="mt-[32px] flex items-center justify-between rounded-md border border-gray-600 px-2 py-2">
+                        <svg width="24px" height="24px" viewBox="-0.5 0 48 48" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <title>Google-color</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs> </defs>
+                                <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="Color-" transform="translate(-401.000000, -860.000000)">
+                                        <g id="Google" transform="translate(401.000000, 860.000000)">
+                                            <path
+                                                d="M9.82727273,24 C9.82727273,22.4757333 10.0804318,21.0144 10.5322727,19.6437333 L2.62345455,13.6042667 C1.08206818,16.7338667 0.213636364,20.2602667 0.213636364,24 C0.213636364,27.7365333 1.081,31.2608 2.62025,34.3882667 L10.5247955,28.3370667 C10.0772273,26.9728 9.82727273,25.5168 9.82727273,24"
+                                                id="Fill-1" fill="#FBBC05"> </path>
+                                            <path
+                                                d="M23.7136364,10.1333333 C27.025,10.1333333 30.0159091,11.3066667 32.3659091,13.2266667 L39.2022727,6.4 C35.0363636,2.77333333 29.6954545,0.533333333 23.7136364,0.533333333 C14.4268636,0.533333333 6.44540909,5.84426667 2.62345455,13.6042667 L10.5322727,19.6437333 C12.3545909,14.112 17.5491591,10.1333333 23.7136364,10.1333333"
+                                                id="Fill-2" fill="#EB4335"> </path>
+                                            <path
+                                                d="M23.7136364,37.8666667 C17.5491591,37.8666667 12.3545909,33.888 10.5322727,28.3562667 L2.62345455,34.3946667 C6.44540909,42.1557333 14.4268636,47.4666667 23.7136364,47.4666667 C29.4455,47.4666667 34.9177955,45.4314667 39.0249545,41.6181333 L31.5177727,35.8144 C29.3995682,37.1488 26.7323182,37.8666667 23.7136364,37.8666667"
+                                                id="Fill-3" fill="#34A853"> </path>
+                                            <path
+                                                d="M46.1454545,24 C46.1454545,22.6133333 45.9318182,21.12 45.6113636,19.7333333 L23.7136364,19.7333333 L23.7136364,28.8 L36.3181818,28.8 C35.6879545,31.8912 33.9724545,34.2677333 31.5177727,35.8144 L39.0249545,41.6181333 C43.3393409,37.6138667 46.1454545,31.6490667 46.1454545,24"
+                                                id="Fill-4" fill="#4285F4"> </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <p class="w-[60%]">Google</p>
+                    </a>
+                </div>
+            </div>
+
+
+
+        </section>
+    @endguest --}}
     <!-- side bar section  end -->
 
     <header class="  ">
@@ -295,38 +514,86 @@
                 </svg>
 
                 <div>
-                    <a href="#">
-                        <img src="{{ asset('image/logo.png') }}" alt="900 Logo"></a>
+                    <a href="{{ route('index.welcome') }}">
+                        <img src="{{ asset('image/logo_alt.svg') }}" alt="900 Logo"></a>
 
                 </div>
             </div>
-            <div class="header-second-div">
+            <div class="hidden md:block header-second-div">
                 <div>
 
 
 
 
                     <a id="region-language" href="#">
-                        <div class="rl-subGroup">
+                        <div class="relative rl-subGroup">
 
                             <div id="g-translator">
                                 LANG
                                 <div class="gtranslate_wrapper"></div>
                             </div>
+
+
                         </div>
                     </a>
 
 
-                    <div class="auth-container">
-                        <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
-                        <svg class="arrow-down icons" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <div x-data="{ open: false }" class="auth-container relative">
+                        @auth
+                            <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        @endauth
+
+
+                        <svg @click="open = ! open" class="hidden md:block arrow-down icons"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
+
+
+                        <div x-show="open" @click.outside="open = false"
+                            class="second-div-nav absolute mt-[95px] right-0 bg-white text-black w-[150px] rounded-md shadow-lg p-1">
+
+                            <ul class="text-right">
+                                @guest
+                                    <li>
+                                        <a href="{{ route('index.login') }}">
+                                            Login
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('index.register') }}">Register
+                                        </a>
+                                    </li>
+                                @endguest
+
+                                @auth
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            Profile
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Reset Password
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Cart
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Report an order
+                                        </a>
+                                    </li>
+                                @endauth
+
+                            </ul>
+                        </div>
+
+
+
                     </div>
 
 
@@ -334,6 +601,107 @@
 
                 </div>
             </div>
+
+            <div class="block md:hidden header-second-div">
+                <div>
+
+
+                     <div x-data="{ open: false }" class="auth-container relative mr-[5px] ">
+                        @auth
+                            <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                        @endauth
+
+
+                        {{-- <svg @click="open = ! open" class="hidden md:block arrow-down icons"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg> --}}
+
+
+                        {{-- <div x-show="open" @click.outside="open = false"
+                            class="second-div-nav absolute mt-[95px] right-0 bg-white text-black w-[150px] rounded-md shadow-lg p-1">
+
+                            <ul class="text-right">
+                                @guest
+                                    <li>
+                                        <a href="{{ route('index.login') }}">
+                                            Login
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('index.register') }}">Register
+                                        </a>
+                                    </li>
+                                @endguest
+
+                                @auth
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            Profile
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Reset Password
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Cart
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            Report an order
+                                        </a>
+                                    </li>
+                                @endauth
+
+                            </ul>
+                        </div> --}}
+
+
+
+                    </div>
+
+                    <a id="region-language" href="#">
+                        <div class="relative rl-subGroup">
+
+                            <div id="g-translator">
+                                LANG
+                                <div class="gtranslate_wrapper"></div>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {{-- </div>
+        </div> --}}
         </div>
     </header>
 
@@ -353,7 +721,7 @@
 
     <footer class="mobile-footer">
 
-        <img src="{{ asset('image/20241028_211741 1.png') }}" alt="900 logo">
+        <img src="{{ asset('image/logo_alt.svg') }}" alt="900 logo">
         <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for businesses
             and organizations. </h2>
         <main>
@@ -412,8 +780,8 @@
                 </div>
             </main>
             <main>
-                <img style="width: auto; height: 50px; margin-left: 100px"
-                    src="{{ asset('image/20241028_211741 1.png') }}" alt="900 logo">
+                <img style="width: auto; height: 50px; margin-left: 100px" src="{{ asset('image/logo_alt.svg') }}"
+                    alt="900 logo">
                 <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for
                     businesses and organizations. </h2>
             </main>

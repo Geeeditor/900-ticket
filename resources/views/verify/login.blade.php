@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <section class="blur-background px-10 flex-col items-center justify-center">
+    <section class="blur-background px-10 md:w-3/4 mx-auto mt-3 py-8 flex-col items-center justify-center">
 
 
         {{-- Mini Nav --}}

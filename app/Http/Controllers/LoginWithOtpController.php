@@ -31,7 +31,10 @@ class LoginWithOtpController extends Controller
     if (auth()->attempt($request->only(['email', 'password']), $request->filled('remember'))) {
         // Redirect to the intended page after successful authentication
         // return redirect()->intended('dashboard');
-        dd('verification success');
+    // return redirect(route('index.welcome', absolute: false));
+
+        dd('done');
+
     }
 
     // Handle the case where authentication fails

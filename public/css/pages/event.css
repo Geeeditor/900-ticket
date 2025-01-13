@@ -4869,7 +4869,7 @@ header {
     }
 
     .Featured-Events .card-text {
-        width: 94%;
+        width: 100%;
         flex-shrink: 0;
         border: 1px solid #A2A2A2;
         background: var(--white, #FFF);
@@ -4905,7 +4905,7 @@ header {
     }
 
     .Featured-Events .card-bottom {
-        width: 94%;
+        width: 100%;
         flex-shrink: 0;
         border: 1px solid #A2A2A2;
         background: var(--white, #FFF);

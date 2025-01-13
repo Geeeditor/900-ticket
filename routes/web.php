@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\ProfileController;
 
 // Route::any('/', function () {
 //     return redirect()->route('index');
 // });
 
-// Route::get('/index', function () {
-//     return view('welcome');
-// })->name('index');
+Route::get('/index', function () {
+    return view('welcome');
+})->name('index');
 
 // Route::get('/auth', [authController::class, 'index'])->name('login');
 
@@ -34,6 +35,12 @@ Route::fallback(function() {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
+
+Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
+
+Route::get('/events/1/view', [EventsController::class, 'viewEvents'])->name('events.view');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

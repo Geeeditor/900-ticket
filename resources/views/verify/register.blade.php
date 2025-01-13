@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Register')
+@section('title', 'Register With Us')
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endsection
 
 @section('content')
-    <section class="px-10  w-full  flex-col items-center justify-center">
+    <section class="px-8 py-8  w-full  flex-col items-center justify-center">
 
 
         {{-- Mini Nav --}}
@@ -23,7 +23,7 @@
 
         {{-- Sign up section --}}
         <div id=""
-            class="signupSection  h-fit w-[95%] md:w-full flex-col gap-2 rounded-b-md bg-white px-3 pb-2 shadow-lg">
+            class="signupSection  h-fit  md:w-full flex-col gap-2 rounded-b-md bg-white px-3 pb-2 shadow-lg">
             <div>
                 <form method="POST" class="flex signupForm flex-col gap-2" action="{{ route('register.store') }}">
                     @csrf
