@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class User
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,11 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (Auth::check() && Auth::user()->usertype == 'user') {
+    return $next($request);
+}
 
-
-        if (Auth::check() && Auth::user()->usertype == 'admin') {
-            return $next($request);
-        }
-
+return abort(403, 'Unauthorized action. Go back to the login page.');
         // return $next($request);
-
-        return abort(403, 'Unauthorized action. Go Back to login Page');
     }
 }

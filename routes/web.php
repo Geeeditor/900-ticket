@@ -34,7 +34,19 @@ Route::fallback(function() {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware('user')->name('dashboard');
+
+Route::get('/admin', function() {
+    // return view('admin.pages.index');
+    return view('admin.pages.index');
+
+})->middleware('admin')->name('admin.index');
+
+/* Route::get('/admin', function () {
+    return view('dashboard');
+})->middleware(['auth', 'admin'])->name('dashboard'); */
+
+
 
 Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 

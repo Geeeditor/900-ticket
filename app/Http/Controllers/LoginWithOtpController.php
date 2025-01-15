@@ -28,14 +28,36 @@ class LoginWithOtpController extends Controller
     ]);
 
     // Attempt to authenticate the user
-    if (auth()->attempt($request->only(['email', 'password']), $request->filled('remember'))) {
-        // Redirect to the intended page after successful authentication
-        // return redirect()->intended('dashboard');
-    // return redirect(route('index.welcome', absolute: false));
+    /* if (auth()->attempt($request->only(['email', 'password']), $request->filled('remember'))) {
 
-        dd('done');
+        return redirect()->intended('dashboard');
 
     }
+    */
+
+    if (auth()->attempt($request->only(['email', 'password']), $request->filled('remember'))) {
+
+
+        $usertype=Auth()->user()->usertype;
+
+        if ($usertype == 'user') {
+            return redirect()->route('dashboard');
+        }
+
+        elseif ($usertype == 'admin') {
+            return redirect()->route('admin.index');
+        }
+
+        else {
+            return redirect()->back();
+        }
+
+        // return redirect()->intended('dashboard');
+
+    }
+
+
+
 
     // Handle the case where authentication fails
     return back()->withInput()->withErrors([
