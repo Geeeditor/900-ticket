@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController\EventController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 
@@ -36,11 +37,28 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('user')->name('dashboard');
 
+// Route::get('/admin', function() {
+//     // return view('admin.pages.index');
+//     return view('admin.pages.index');
+
+// })->middleware('admin')->name('admin.index');
+
 Route::get('/admin', function() {
     // return view('admin.pages.index');
     return view('admin.pages.index');
+})->name('admin.index');
 
-})->middleware('admin')->name('admin.index');
+Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.create.event');
+
+Route::post('/admin/events/create/store', [EventController::class, 'store'])->name('admin.create.store');
+
+Route::get('/admin/events', [EventController::class, 'view'])->name('admin.events');
+
+Route::get('/admin/events/view/{id}', [EventController::class, 'show'])->name('admin.event.view');
+
+Route::get('/admin/events/edit/{id}', [EventController::class, 'edit'])->name('admin.events.edit');
+
+Route::put('/admin/events/edit/{id}/update', [EventController::class, 'update'])->name('admin.events.edit.update');
 
 /* Route::get('/admin', function () {
     return view('dashboard');
@@ -50,7 +68,7 @@ Route::get('/admin', function() {
 
 Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
-Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
+// Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
 Route::get('/events/1/view', [EventsController::class, 'viewEvents'])->name('events.view');
 

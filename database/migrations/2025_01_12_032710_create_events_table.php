@@ -17,7 +17,8 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('hero_image');
             $table->string('map_link')->nullable();
-            $table->foreignId('admin_id')->constrained('admins');
+            $table->foreignId('user_id')->constrained('users');
+            $table->integer('ticket_price');
             $table->timestamps();
         });
     }

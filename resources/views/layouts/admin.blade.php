@@ -6,86 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - 900 Ticket</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('style')
+    <link rel="stylesheet" href="{{ asset('css/admin-style.css') }}">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 </head>
 
 <body>
     <header
-        class='flex shadow-md py-3 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
+        class='flex shadow-md py-3 px-4 sm:px-10 md:px-[90px] bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50'>
         <div class='flex flex-wrap items-center justify-between lg:gap-y-4 gap-y-6 gap-x-4 w-full'>
-            <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
-                    class='w-36' />
+
+            <a href="/admin"><img src="{{ asset('image/logo_alt.svg') }}" alt="logo"
+                    class='w-[100px] md:w-26' />
             </a>
 
-            <div id="collapseMenu"
-                class='max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
-                <button id="toggleClose"
-                    class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border'>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black"
-                        viewBox="0 0 320.591 320.591">
-                        <path
-                            d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
-                            data-original="#000000"></path>
-                        <path
-                            d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
-                            data-original="#000000"></path>
-                    </svg>
-                </button>
 
-                <ul
-                    class='lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
-                    <li class='mb-6 hidden max-lg:block'>
-                        <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
-                                class='w-36' />
-                        </a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:after:absolute lg:after:bg-black lg:after:w-full lg:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Shopping</a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Tracking</a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Support</a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Account</a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Places</a>
-                    </li>
-                    <li
-                        class='max-lg:border-b max-lg:py-3 max-lg:px-3 relative lg:hover:after:absolute lg:after:bg-black lg:after:w-0 lg:hover:after:w-full lg:hover:after:h-[2px] lg:after:block lg:after:top-7 lg:after:transition-all lg:after:duration-300'>
-                        <a href='javascript:void(0)' class='text-black block text-[15px]'>Contact</a>
-                    </li>
-                </ul>
-            </div>
 
-            <div class='flex items-center max-sm:ml-auto space-x-6'>
+            <div x-data="{ actionNav: false }" class='flex items-center max-sm:ml-auto space-x-6'>
                 <ul>
-                    <li id="profile-dropdown-toggle"
-                        class="relative px-1 after:absolute after:bg-black after:w-full after:h-[2px] after:block after:top-8 after:left-0 after:transition-all after:duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                    <li id=" profile-dropdown-toggle"
+                        class="relative  px-1 after:absolute after:bg-black after:w-full after:h-[2px] after:block after:top-8 after:left-0 after:transition-all after:duration-300">
+                        <svg @click="actionNav = ! actionNav" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
                             class="cursor-pointer hover:fill-black" viewBox="0 0 512 512">
                             <path
                                 d="M437.02 74.981C388.667 26.629 324.38 0 256 0S123.333 26.629 74.98 74.981C26.629 123.333 0 187.62 0 256s26.629 132.667 74.98 181.019C123.333 485.371 187.62 512 256 512s132.667-26.629 181.02-74.981C485.371 388.667 512 324.38 512 256s-26.629-132.667-74.98-181.019zM256 482c-66.869 0-127.037-29.202-168.452-75.511C113.223 338.422 178.948 290 256 290c-49.706 0-90-40.294-90-90s40.294-90 90-90 90 40.294 90 90-40.294 90-90 90c77.052 0 142.777 48.422 168.452 116.489C383.037 452.798 322.869 482 256 482z"
                                 data-original="#000000" />
                         </svg>
-                        <div id="profile-dropdown-menu"
+                        <div x-show="actionNav" @click.outside="actionNav = false" id="profile-dropdown-menu"
                             class="bg-white block z-20 shadow-lg py-6 px-6 rounded sm:min-w-[320px] max-sm:min-w-[250px] absolute right-0 top-10">
                             <h6 class="font-semibold text-[15px]">Welcome</h6>
-                            <p class="text-sm text-gray-500 mt-1">To access account and manage orders</p>
+                            <p class="text-sm text-gray-500 mt-1">Manage 900 Events,Flight Order, Shortlet Listing and Hotel Booking  </p>
                             <button type='button'
                                 class="bg-transparent border border-gray-300 hover:border-black rounded px-4 py-2 mt-4 text-sm text-black">LOGIN
                                 / SIGNUP</button>
-                            <hr class="border-b-0 my-4" />
-                            <ul class="space-y-1.5">
+                            {{-- <hr class="border-b-0 my-4" /> --}}
+                            <ul class="hidden space-y-1.5">
                                 <li><a href='javascript:void(0)'
                                         class="text-sm text-gray-500 hover:text-black">Order</a></li>
                                 <li><a href='javascript:void(0)'
@@ -95,8 +54,8 @@
                                 <li><a href='javascript:void(0)' class="text-sm text-gray-500 hover:text-black">Contact
                                         Us</a></li>
                             </ul>
-                            <hr class="border-b-0 my-4" />
-                            <ul class="space-y-1.5">
+                            {{-- <hr class="border-b-0 my-4" /> --}}
+                            <ul class="hidden space-y-1.5">
                                 <li><a href='javascript:void(0)'
                                         class="text-sm text-gray-500 hover:text-black">Coupons</a></li>
                                 <li><a href='javascript:void(0)' class="text-sm text-gray-500 hover:text-black">Saved
@@ -110,25 +69,368 @@
                     </li>
                 </ul>
 
-                <button id="toggleOpen" class='lg:hidden ml-7'>
-                    <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+
             </div>
         </div>
     </header>
 
-    @yield('content')
+    <section x-data='{manageNav: false}' class="md:px-10 px-3 py-3 ">
+        {{-- Grid Container --}}
+        <div class="admin-grid">
+            {{-- Grid Section One --}}
+            <div class="adminGridSectionOne md:block hidden mt-4">
+                <ul class="flex flex-col gap-y-2 md:w-[70%] ">
+
+                    <li x-data="{ actionNavOne: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavOne = ! actionNavOne" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage Admin Profile
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavOne" @click.outside="actionNavOne = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavII: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavII = ! actionNavII" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Events
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavII" @click.outside="actionNavII = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+
+                                <li class="hover:font-[600]">
+                                    <a href="{{route('admin.events')}}">
+                                        View Event Listings
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="{{route('admin.create.event')}}">
+                                        Create Event Listing
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavIII: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavIII = ! actionNavIII" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Flight Bookings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavIII" @click.outside="actionNavIII = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavIV: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavIV = ! actionNavIV" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Shortlet Listings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavIV" @click.outside="actionNavIV = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavV: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavV = ! actionNavV" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Hotel Bookings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavV" @click.outside="actionNavV = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+
+                </ul>
+            </div>
+
+            <div x-transition x-show="manageNav" @click.outside="manageNav = false" class="adminGridSectionOne md:hidden inline-block">
+                <ul class="flex flex-col gap-y-2 md:w-[70%] ">
+
+                    <li x-data="{ actionNavOne: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavOne = ! actionNavOne" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage Admin Profile
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavOne" @click.outside="actionNavOne = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavII: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavII = ! actionNavII" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Events
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavII" @click.outside="actionNavII = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        View Event Listings
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Create Event Listing
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Edit Event Listings
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Delete Event Listings
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavIII: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavIII = ! actionNavIII" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Flight Bookings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavIII" @click.outside="actionNavIII = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavIV: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavIV = ! actionNavIV" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Shortlet Listings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavIV" @click.outside="actionNavIV = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li x-data="{ actionNavV: false }" class="py-2 px-1 relative bg-slate-300 hover:bg-slate-100 rounded-sm">
+                        <a @click="actionNavV = ! actionNavV" href="javascript:void(0)" class="flex items-center gap-1">
+                            <img class="hidden" src="{{ asset('image/manage-icon.svg') }}" alt="lorem ipsum">
+                            <span class="font-[600]">
+                                Manage 900 Hotel Bookings
+                            </span>
+                            <span class="mdi mdi-chevron-down"></span>
+                        </a>
+
+                        <div x-transition x-show="actionNavV" @click.outside="actionNavV = false"
+                            class="relative bg-slate-200 px-1">
+                            <ul class="flex flex-col gap-y-1 py-2">
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Update Admin Password
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="">
+                                        Reset Password
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+
+
+                </ul>
+            </div>
+
+            {{-- Grid Section Two  --}}
+            <div class="adminGridSectionTwo">
+                <div @click="manageNav = ! manageNav" class="flex gap-2 md:hidden">
+                    <img src="{{asset('image/manage-icon.svg')}}" alt="lorem ipsum">
+                    <span  class="font-[500] hover:font-[600]">
+
+                        Manage 900 Ticket
+                    </span>
+                </div>
+
+
+                {{-- Flex Container  --}}
+                {{-- to be lifed --}}
+                <div>
+                    @yield('content')
+                </div>
+
+
+                {{-- users --}}
+                <div class="my-2">
+                    <div class="overflow-x-auto">
+                        <div class="shadow-md rounded-lg">
+                            <h1 class="font-[700] uppercase">900 USERS LIST</h1>
+                            <table class="w-full table-auto">
+                                <thead class="uppercase bg-gray-700 text-white">
+                                    <tr>
+                                        <th class="py-2 px-4 text-left">User ID</th>
+                                        <th class="py-2 px-4 text-left">Name</th>
+                                        <th class="py-2 px-4 text-left">Email</th>
+                                        <th class="py-2 px-4 text-left">Total Completed Orders</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white text-gray-500">
+                                    <tr class="py-2">
+                                        <td class="px-4">1</td>
+                                        <td class="px-4">Urus Mark Donald</td>
+                                        <td class="px-4">urusmkd@mail.com</td>
+                                        <td class="px-4">N/A</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
 
     <footer class="bg-gray-900 pt-12 pb-6 px-10 font-[sans-serif] tracking-wide">
       <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="lg:flex lg:items-center">
             <a href="javascript:void(0)">
-              <img src="https://readymadeui.com/readymadeui-light.svg" alt="logo" class="w-48" />
+              <img src="{{asset('image/logo.png')}}" alt="logo" class="w-20" />
             </a>
           </div>
 
@@ -164,7 +466,7 @@
             </ul>
           </div>
 
-          <div>
+          <div class="hidden">
             <h4 class="text-lg mb-6 text-white">Useful links</h4>
             <ul class="space-y-4 pl-2">
               <li>
@@ -179,7 +481,7 @@
             </ul>
           </div>
 
-          <div>
+          <div >
             <h4 class="text-lg mb-6 text-white">Information</h4>
             <ul class="space-y-4 pl-2">
               <li>
@@ -201,7 +503,7 @@
           </div>
         </div>
 
-        <p class='text-gray-300 text-sm mt-10'>© ReadymadeUI. All rights reserved.
+        <p class='text-gray-300 text-sm mt-10'>©  900 Tickets. All rights reserved.
         </p>
       </div>
     </footer>
