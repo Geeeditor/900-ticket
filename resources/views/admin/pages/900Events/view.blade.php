@@ -3,6 +3,11 @@
     <section>
         <div class="font-[600] event-hero md:mb-10">VIEW EVENT LIST</div>
 
+        @if(session()->has('message')){
+            <span class="font-[600] text-[20px]">{{ session('message') }}</span>
+        }
+        @endif
+
 
         <div class="flex flex-wrap max-w-full">
             @forelse ($events as $event)
@@ -36,7 +41,7 @@
 
                                 <button
                                     class="px-4 py-2 font-medium text-gray-600 transition-colors duration-200 sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">
-                                     <a href="">
+                                     <a href="{{route('admin.events.edit', ['id'=>$event])}}">
                                         <span class="mdi mdi-file-edit"></span>
 
                                     </a>

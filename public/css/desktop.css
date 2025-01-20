@@ -1834,4 +1834,9 @@ margin-top: 2rem;
 }
 }
 
+@media (max-width: 600px) {
+.desktop-section-view{
+    display: none !important;
+}
+}
 

@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController\EventController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController\HomeController;
+use App\Http\Controllers\AdminController\EventController;
 
 // Route::any('/', function () {
 //     return redirect()->route('index');
@@ -37,28 +38,31 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('user')->name('dashboard');
 
-// Route::get('/admin', function() {
-//     // return view('admin.pages.index');
-//     return view('admin.pages.index');
+// Route::get('/')
 
-// })->middleware('admin')->name('admin.index');
+Route::middleware('admin')->group(function() {
 
-Route::get('/admin', function() {
-    // return view('admin.pages.index');
-    return view('admin.pages.index');
-})->name('admin.index');
+    Route::get('/admin', [HomeController::class, 'dashboard'])->name('admin.index');
 
-Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.create.event');
+    Route::get('/admin/events/create', [EventController::class, 'create'])->name('admin.create.event');
 
-Route::post('/admin/events/create/store', [EventController::class, 'store'])->name('admin.create.store');
+    Route::post('/admin/events/create/store', [EventController::class, 'store'])->name('admin.create.store');
 
-Route::get('/admin/events', [EventController::class, 'view'])->name('admin.events');
+    Route::get('/admin/events', [EventController::class, 'view'])->name('admin.events');
 
-Route::get('/admin/events/view/{id}', [EventController::class, 'show'])->name('admin.event.view');
+    Route::get('/admin/events/edit', [EventController::class, 'editEventList'])->name('admin.events.list.edit');
 
-Route::get('/admin/events/edit/{id}', [EventController::class, 'edit'])->name('admin.events.edit');
+    Route::get('/admin/events/view/{id}', [EventController::class, 'show'])->name('admin.event.view');
 
-Route::put('/admin/events/edit/{id}/update', [EventController::class, 'update'])->name('admin.events.edit.update');
+    Route::get('/admin/events/edit/{id}', [EventController::class, 'edit'])->name('admin.events.edit');
+
+    Route::put('/admin/events/edit/{id}/update', [EventController::class, 'update'])->name('admin.events.edit.update');
+
+    Route::get('/admin/manage-users', [HomeController::class, 'userList'])->name('admin.users');
+
+});
+
+
 
 /* Route::get('/admin', function () {
     return view('dashboard');

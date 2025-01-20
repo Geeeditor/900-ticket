@@ -40,9 +40,16 @@
                             class="bg-white block z-20 shadow-lg py-6 px-6 rounded sm:min-w-[320px] max-sm:min-w-[250px] absolute right-0 top-10">
                             <h6 class="font-semibold text-[15px]">Welcome</h6>
                             <p class="text-sm text-gray-500 mt-1">Manage 900 Events,Flight Order, Shortlet Listing and Hotel Booking  </p>
-                            <button type='button'
-                                class="bg-transparent border border-gray-300 hover:border-black rounded px-4 py-2 mt-4 text-sm text-black">LOGIN
-                                / SIGNUP</button>
+
+                            <form class="bg-transparent border border-gray-300 hover:border-black rounded px-4 py-2 mt-4 text-sm text-black" method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button class="text-[1rem]" type="submit">
+                                Logout
+                            </button>
+                        </form>
+
+
                             {{-- <hr class="border-b-0 my-4" /> --}}
                             <ul class="hidden space-y-1.5">
                                 <li><a href='javascript:void(0)'
@@ -128,6 +135,11 @@
                                 <li class="hover:font-[600]">
                                     <a href="{{route('admin.create.event')}}">
                                         Create Event Listing
+                                    </a>
+                                </li>
+                                <li class="hover:font-[600]">
+                                    <a href="{{route('admin.events.list.edit')}}">
+                                        Edit Event Listing
                                     </a>
                                 </li>
 
@@ -265,17 +277,17 @@
                             <ul class="flex flex-col gap-y-1 py-2">
 
                                 <li class="hover:font-[600]">
-                                    <a href="">
+                                    <a href="{{route('admin.events')}}">
                                         View Event Listings
                                     </a>
                                 </li>
                                 <li class="hover:font-[600]">
-                                    <a href="">
+                                    <a href="{{route('admin.create.event')}}">
                                         Create Event Listing
                                     </a>
                                 </li>
                                 <li class="hover:font-[600]">
-                                    <a href="">
+                                    <a href="{{route('admin.events.list.edit')}}">
                                         Edit Event Listings
                                     </a>
                                 </li>
@@ -392,33 +404,7 @@
                 </div>
 
 
-                {{-- users --}}
-                <div class="my-2">
-                    <div class="overflow-x-auto">
-                        <div class="shadow-md rounded-lg">
-                            <h1 class="font-[700] uppercase">900 USERS LIST</h1>
-                            <table class="w-full table-auto">
-                                <thead class="uppercase bg-gray-700 text-white">
-                                    <tr>
-                                        <th class="py-2 px-4 text-left">User ID</th>
-                                        <th class="py-2 px-4 text-left">Name</th>
-                                        <th class="py-2 px-4 text-left">Email</th>
-                                        <th class="py-2 px-4 text-left">Total Completed Orders</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white text-gray-500">
-                                    <tr class="py-2">
-                                        <td class="px-4">1</td>
-                                        <td class="px-4">Urus Mark Donald</td>
-                                        <td class="px-4">urusmkd@mail.com</td>
-                                        <td class="px-4">N/A</td>
-                                    </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

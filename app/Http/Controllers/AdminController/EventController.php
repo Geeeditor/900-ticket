@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\AdminController;
 
+use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 class EventController extends Controller
 {
     //
+
+
     public function create() {
         return view('admin.pages.900Events.create');
     }
@@ -63,6 +66,10 @@ class EventController extends Controller
 
     }
 
+    public function editEventList(){
+        return redirect()->route('admin.events')->with('message', 'Click the edit icon to edit an Event');
+    }
+
     public function view(Event $event) {
         $event = Event::latest()->get();
         return view('admin.pages.900Events.view', ['events' => $event]);
@@ -73,5 +80,37 @@ class EventController extends Controller
 
         return view('admin.pages.900Events.show', ['event' => $event]);
     }
+
+    public function edit(Event $event, $id) {
+
+        $event = Event::find($id);
+
+        return view('admin.pages.900Events.edit', ['event' => $event]);
+    }
+
+    public function update(Request $request, Event $event) {
+    // Checking if the authenticated user is of type 'admin'
+    if (Auth::user()->usertype == 'admin') {
+        $request->validate([
+            'title' => ['required', 'max:225'],
+            'date' => ['required', 'date'],
+            'time' => 'required|date_format:H:i',
+            'location' => ['required', 'max:225'],
+            'description' => ['required'],
+            'hero_image' => ['image', 'max:2048'],
+            'map_link' => ['required', 'url'],
+            'ticket_price' => ['required', 'numeric']
+        ]);
+
+        dd('Saved');
+
+        // dd('Updated Successfully');
+
+
+    } else {
+        // If the user is not an admin, show an error message
+        return redirect()->back()->with('error', 'Oops! You do not have permission to update events');
+    }
+}
 
 }

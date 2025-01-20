@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title') - 900 Ticket</title>
+
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/desktop.css') }}"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -722,8 +723,7 @@
     <footer class="mobile-footer">
 
         <img src="{{ asset('image/logo_alt.svg') }}" alt="900 logo">
-        <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for businesses
-            and organizations. </h2>
+        <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the perfect experience </h2>
         <main>
             <div>
                 <h3>Company</h3>
@@ -782,8 +782,7 @@
             <main>
                 <img style="width: auto; height: 50px; margin-left: 100px" src="{{ asset('image/logo_alt.svg') }}"
                     alt="900 logo">
-                <h2>We are 900Ticket, a B2B booking company specializing in travel and entertainment reservations for
-                    businesses and organizations. </h2>
+                <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the perfect experience </h2>
             </main>
         </section>
         <div class="copyright-footer">

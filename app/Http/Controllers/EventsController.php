@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EventsController extends Controller
 {
     //
-    public function showEvents () {
-        return view ('pages.events.index');
+    public function showEvents (Event $events) {
+        $events =  Event::latest()->get();
+
+        return view('pages.events.index', [ 'events' => $events ]);
     }
 
-    public function viewEvents () {
-        return view ('pages.events.event');
+    public function viewEvents (Event $event) {
+        return view('pages.events.event');
     }
 }

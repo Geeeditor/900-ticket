@@ -17,10 +17,12 @@ class User
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->usertype == 'user') {
-    return $next($request);
-}
+            return $next($request);
+        }
 
-return abort(403, 'Unauthorized action. Go back to the login page.');
+
+
+        return redirect()->route('index.login');
         // return $next($request);
     }
 }
