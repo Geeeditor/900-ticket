@@ -7,6 +7,7 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style/desktop.css">
     <link rel="stylesheet" href="style/mobile.css">
     <title>home page</title>
@@ -311,41 +312,59 @@
         </section>
 
         <section class="desktop-section-view">
-            <div class="desktop-view-first-div">
-                <h3>One Way</h3>
-                <h3>Round Trip</h3>
-                <h3>Multi-city</h3>
+            <div class="flex gap-4 ml-2">
+                <h3 class="border border-gray-400 p-2 rounded-full text-sm bg-red-500 text-white" id="desktop-oneWay">One Way</h3>
+                <h3 class="border border-gray-400 p-2 rounded-full text-sm" id="desktop-roundedTrip">Round Trip</h3>
+                <h3 class="border border-gray-400 p-2 rounded-full text-sm" id="desktop-multiCity">Multi-city</h3>
             </div>
-            <div class="desktop-view-second-div">
-                 <span>
-                    <small>from</small>
-                    <h2>Kaduna, Nigeria (KAD)</h2>
+            <div class="mt-4 flex gap-2">
+                 <span class="flex flex-col border w-[80%] p-2 rounded-md">
+                    <label class="text-sm capitalize text-gray-500" for="from">from</label>
+                    <input class="outline outline-0 p-1 w-[100%]" type="text" id="from" name="from" placeholder="from">
                  </span>
-                 <span>
-                    <small>to</small>
-                    <h2></h2>
+                 <span class="flex flex-col border w-[80%] p-2 rounded-md">
+                    <label class="text-sm capitalize text-gray-500" for="to">to</label>
+                    <input class="outline outline-0 p-1 w-[100%]" type="text" id="to" name="to" placeholder="to">
                  </span>
-                 <span class="desktop-second-div-last-span">
-                    <small>date</small>
-                    <h2>Thu, 05 Dec 2024</h2>
+                 <span class="flex flex-col border w-[80%] p-2 rounded-md">
+                    <label class="text-sm capitalize text-gray-500" for="date">select trip date</label>
+                    <input class="outline outline-0 p-1 w-[100%]" type="date" id="date" name="date" placeholder="date">
+                 </span>
+                 <span class="flex flex-col border w-[80%] p-2 rounded-md hidden" id="rounded-trip-date">
+                    <label class="text-sm capitalize text-gray-500" for="date">return date</label>
+                    <input class="outline outline-0 p-1 w-[100%]" type="date" id="date" name="date" placeholder="date">
                  </span>
             </div>
-            <div class="desktop-view-third-div">
-                <div>
-                    <span>
-                        <p>1 Adult</p>
-                        <svg xmlns="http://www.w3.org/2000/svg"width="15" height="15" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                          </svg>
-                    </span>
-                    <span>
-                        <p>Economy</p>
-                        <svg xmlns="http://www.w3.org/2000/svg"width="15" height="15" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                          </svg>
-                    </span>
+            <div class="mt-4">
+                <div class="flex gap-3">
+                    <div class="relative">
+                        <span id="adult-dropdown" class="flex gap-1">
+                            <p class="text-sm">1 Adult</p>
+                            <svg xmlns="http://www.w3.org/2000/svg"width="15" height="15" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                              </svg>
+                        </span>
+                        <article class="bg-white px-2 py-1 rounnded-xl text-xs capitalize absolute shadow-xl hidden" id="passengers-dropdown">
+                            <p>2 adult</p>
+                            <p>3 adult</p>
+                            <p>4 adult</p>
+                            <p>5 adult</p>
+                        </article>
+                    </div>
+                    <div  class="relative">
+                        <span id="flight-type-dropdown" class="flex gap-1">
+                            <p class="text-sm">Economy</p>
+                            <svg xmlns="http://www.w3.org/2000/svg"width="15" height="15" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                              </svg>
+                        </span>
+                        <article class="bg-white p-1 text-xs capitalize absolute hidden" id="flight-class-dropdown">
+                            <p>busness</p>
+                            <p>first class</p>
+                        </article>
+                    </div>
                 </div>
-                <button>Search</button>
+                <button class="ml-[80%] border p-2 rounded-full text-white bg-red-700 w-[20%]">Search</button>
             </div>
         </section>
         

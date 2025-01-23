@@ -19,23 +19,17 @@ const flightToCountryIconDown = document.getElementById("flight-to-country-icon-
 const flightToCountry = document.getElementById("flight-to-country");
 // quick section ends here
 
-// // mationality and currency section stert
-// const linkStyle1 = document.getElementById("link-style-1");
-// const linkStyle2 = document.getElementById("link-style-2");
-// // mationality and currency section end
-
-
-//     if (window.location.pathname == "currency.html") {
-//         console.log("wrong fam");
-//     }
-
-
-//     // if (window.location.pathname === "currency.html") {
-//     //     linkStyle2.style.color = "red";
-//     // }
-
-//     console.log(window.location.pathname);
-    
+// desktop-search section
+const desktopOneWay = document.getElementById("desktop-oneWay");
+const desktopRoundedTrip = document.getElementById("desktop-roundedTrip");
+const desktopMultiCity = document.getElementById("desktop-multiCity");
+// dropdown section
+const adultDropdown = document.getElementById("adult-dropdown");
+const passengersDropdown = document.getElementById("passengers-dropdown");
+const flightTypeDropdown = document.getElementById("flight-type-dropdown");
+const flightClassDropdown = document.getElementById("flight-class-dropdown");
+// rounded-trip-date
+const roundedTripDate = document.getElementById("rounded-trip-date");
 
 
 // side bar functions start
@@ -122,3 +116,33 @@ flightToCountryBtn.addEventListener("click", () => {
 });
 
 
+// desktop section
+
+desktopOneWay.addEventListener("click", () => {
+    desktopOneWay.classList.add("bg-red-500","text-white");
+    desktopRoundedTrip.classList.remove("bg-red-500","text-white");
+    desktopMultiCity.classList.remove("bg-red-500","text-white");
+    roundedTripDate.classList.add("hidden");
+});
+
+desktopRoundedTrip.addEventListener("click", () => {
+    desktopRoundedTrip.classList.add("bg-red-500","text-white");
+    desktopOneWay.classList.remove("bg-red-500","text-white");
+    desktopMultiCity.classList.remove("bg-red-500","text-white");
+    roundedTripDate.classList.remove("hidden");
+});
+
+desktopMultiCity.addEventListener("click", () => {
+    desktopMultiCity.classList.add("bg-red-500","text-white");
+    desktopOneWay.classList.remove("bg-red-500","text-white");
+    desktopRoundedTrip.classList.remove("bg-red-500","text-white");
+});
+
+//drop down section
+adultDropdown.addEventListener("click", () => {
+    passengersDropdown.classList.toggle("hidden");
+});
+
+flightTypeDropdown.addEventListener("click", () => {
+    flightClassDropdown.classList.toggle("hidden");
+});
