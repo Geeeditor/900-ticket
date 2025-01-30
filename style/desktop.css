@@ -765,25 +765,6 @@ body {
         top:42%;
         left:83%;
    }
-/* 
-   .hotel-images {
-    margin:1rem 5rem 1rem 5rem;
-   }
-
-   .hotel-images .img-grid {
-    flex: 1 0 0;
-    align-self: stretch;
-    display:flex;
-    align-items:center;
-    justify-content: space-around;
-
-   }
-
-   .hotel-images .img-grid img {
-    border-radius: 20px;
-    width: 350px;
-    height:300px;
-   } */
 
    .desktop-stories {
     margin:1rem 5rem 1rem 5rem;
