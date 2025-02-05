@@ -47,74 +47,83 @@ flightFromNigeriaIconDown.style.display = "none";
 internationalDestinationIconDown.style.display = "none";
 flightToCountryIconDown.style.display = "none";
 
-flightFromNigeriaBtn.addEventListener("click", () => {
-    if (flightFromNigeria.style.height === "0px") {
-        flightFromNigeria.style.height = "fit-content";
-        internationalDestination.style.height = "0px";
-        flightToCountry.style.height = "0px";
-        flightFromNigeriaIconDown.style.display = "flex";
-        flightFromNigeriaIconUp.style.display = "none";
-        // international destination 
-        internationalDestinationIconDown.style.display = "none";
-        internationalDestinationIconUp.style.display = "flex";
-        // flight to country
-        flightToCountryIconDown.style.display = "none";
-        flightToCountryIconUp.style.display = "flex";
-        // inter 
-        flightFromNigeria.style.transition = "width 0.5s ease, height 0.5s ease";
-    } else {
-        flightFromNigeria.style.height = "0px";
-        flightFromNigeriaIconDown.style.display = "none";
-        flightFromNigeriaIconUp.style.display = "flex";
-    }
-});
+if (window.innerWidth === "750px") {
+    flightFromNigeriaBtn.addEventListener("click", () => {
+         if (flightFromNigeria.style.height === "0px") {
+            flightFromNigeria.style.height = "fit-content";
+            internationalDestination.style.height = "0px";
+            flightToCountry.style.height = "0px";
+            flightFromNigeriaIconDown.style.display = "flex";
+            flightFromNigeriaIconUp.style.display = "none";
+            // international destination 
+            internationalDestinationIconDown.style.display = "none";
+            internationalDestinationIconUp.style.display = "flex";
+            // flight to country
+            flightToCountryIconDown.style.display = "none";
+            flightToCountryIconUp.style.display = "flex";
+            // inter 
+            flightFromNigeria.style.transition = "width 0.5s ease, height 0.5s ease";
+        } else {
+            flightFromNigeria.style.height = "0px";
+            flightFromNigeriaIconDown.style.display = "none";
+            flightFromNigeriaIconUp.style.display = "flex";
+        }
+    });
+} else {
+    console.log("width not up to requested height")
+}
 
-// internationalDestinationIconUp.style.display = "none";
-internationalDestinationBtn.addEventListener("click", () => {
-    if (internationalDestination.style.height === "0px") {
-        internationalDestination.style.height = "fit-content";
-        flightFromNigeria.style.height = "0px";
-        flightToCountry.style.height = "0px";
-        internationalDestinationIconDown.style.display = "flex";
-        internationalDestinationIconUp.style.display = "none";
-        // covering up ends meet
-        flightFromNigeriaIconDown.style.display = "none";
-        flightFromNigeriaIconUp.style.display = "flex";
-         // flight to country
-         flightToCountryIconDown.style.display = "none";
-         flightToCountryIconUp.style.display = "flex";
-        // coverin gup ends meet
-        internationalDestination.style.transition = "width 0.5s ease, height 0.5s ease";
-    } else {
-        internationalDestination.style.height = "0px";
-        internationalDestinationIconDown.style.display = "none";
-        internationalDestinationIconUp.style.display = "flex";
-    }
-});
+if (window.innerWidth === "750px") {
+    flightToCountryBtn.addEventListener("click", () => {
+        if (flightToCountry.style.height === "0px") {
+            flightToCountry.style.height = "fit-content";
+            internationalDestination.style.height = "0px";
+            flightFromNigeria.style.height = "0px";
+            flightToCountryIconDown.style.display = "flex";
+            flightToCountryIconUp.style.display = "none";
+            // international destination 
+            internationalDestinationIconDown.style.display = "none";
+            internationalDestinationIconUp.style.display = "flex";
+            // covering up ends meet
+            flightFromNigeriaIconDown.style.display = "none";
+            flightFromNigeriaIconUp.style.display = "flex";
+            // coverd ends meet
+            flightToCountry.style.transition = "width 0.5s ease, height 0.5s ease";
+        } else {
+            flightToCountry.style.height = "0px";
+            flightToCountryIconDown.style.display = "none";
+            flightToCountryIconUp.style.display = "flex";
+        }
+    });
+} else {
+    console.log("width not up to requested height")
+}
 
-// flightToCountryIconUp.style.display = "none";
-flightToCountryBtn.addEventListener("click", () => {
-    if (flightToCountry.style.height === "0px") {
-        flightToCountry.style.height = "fit-content";
-        internationalDestination.style.height = "0px";
-        flightFromNigeria.style.height = "0px";
-        flightToCountryIconDown.style.display = "flex";
-        flightToCountryIconUp.style.display = "none";
-        // international destination 
-        internationalDestinationIconDown.style.display = "none";
-        internationalDestinationIconUp.style.display = "flex";
-        // covering up ends meet
-        flightFromNigeriaIconDown.style.display = "none";
-        flightFromNigeriaIconUp.style.display = "flex";
-        // coverd ends meet
-        flightToCountry.style.transition = "width 0.5s ease, height 0.5s ease";
-    } else {
-        flightToCountry.style.height = "0px";
-        flightToCountryIconDown.style.display = "none";
-        flightToCountryIconUp.style.display = "flex";
-    }
-});
-
+if (window.innerWidth === "750px") {
+    internationalDestinationBtn.addEventListener("click", () => {
+        if (internationalDestination.style.height === "0px") {
+            internationalDestination.style.height = "fit-content";
+            flightFromNigeria.style.height = "0px";
+            flightToCountry.style.height = "0px";
+            internationalDestinationIconDown.style.display = "flex";
+            internationalDestinationIconUp.style.display = "none";
+            // covering up ends meet
+            flightFromNigeriaIconDown.style.display = "none";
+            flightFromNigeriaIconUp.style.display = "flex";
+             // flight to country
+             flightToCountryIconDown.style.display = "none";
+             flightToCountryIconUp.style.display = "flex";
+            // coverin gup ends meet
+            internationalDestination.style.transition = "width 0.5s ease, height 0.5s ease";
+        } else {
+            internationalDestination.style.height = "0px";
+            internationalDestinationIconDown.style.display = "none";
+            internationalDestinationIconUp.style.display = "flex";
+        }
+    });
+} else {
+    console.log("width not up to requested height")
+}
 
 // desktop section
 
@@ -146,3 +155,8 @@ adultDropdown.addEventListener("click", () => {
 flightTypeDropdown.addEventListener("click", () => {
     flightClassDropdown.classList.toggle("hidden");
 });
+if (window.innerWidth === "750px") {
+    console.log(window.innerWidth);
+} else {
+    console.log("width isnt that high")
+}
