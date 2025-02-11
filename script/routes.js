@@ -63,9 +63,11 @@
     let flightPriceClose = document.querySelectorAll("#flight-price-close");
 
     
-    homes.forEach(home => {
-        home.href = "../index.html";
-    });
+    if (window.Location = "html/shoortlet-pages/shortlet-home-page.html" ) {
+        homes.forEach(home => {
+            home.href = "../../index.html";
+        });
+    }
     
 
 // regional language and currency links starts here
