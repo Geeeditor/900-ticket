@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', '')
 @section('content')
     <section>
         <div class="flex md:gap-3">

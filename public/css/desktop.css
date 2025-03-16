@@ -111,13 +111,13 @@
     /* width: 20rem; */
 }
 
-.header-second-div  div {
+/* .header-second-div  div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap:10px;
     color: #fff;
-}
+} */
 
 .header-second-div  .second-header-div {
     background: rgba(0, 0, 0, 0.50);
@@ -129,7 +129,7 @@
     font-size: 0.8rem;
     padding: 2px;
     margin-top: 2px;
-    width: 5.5rem;
+    /* width: 5.5rem; */
 }
 
 .header-second-div div div p {
@@ -185,7 +185,7 @@
     gap: -12px;
     width: 50%;
     margin: 0 auto;
-    margin-top: -10rem;
+    margin-top: 0;
     text-transform: capitalize;
     z-index: 99;
 }
@@ -232,18 +232,18 @@
 
 .desktop-section-view {
     position: relative;
-    top:1rem;
-    padding:10px;
-    z-index: 99;
-    width: 80%;
-    height: 230px;
-    flex-shrink: 0;
-    border-radius: 20px;
-    background: #FFF;
-    margin:1rem auto;
-    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+        top: 1rem;
+        padding: 10px;
+        z-index: 99;
+        width: 80%;
+        height: 230px;
+        flex-shrink: 0;
+        border-radius: 15px;
+        background: #FFF;
+        margin: 5rem auto;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
 }
 
 .desktop-view-first-div {
@@ -1186,6 +1186,7 @@
     display:flex;
     align-items: center;
     justify-content: space-evenly;
+    gap: 10px;
 }
 
 .featured-card-grid .party-card {
@@ -1835,8 +1836,8 @@ margin-top: 2rem;
 }
 
 @media (max-width: 600px) {
-.desktop-section-view{
-    display: none !important;
-}
+    .desktop-section-view{
+        display: none !important;
+    }
 }
 

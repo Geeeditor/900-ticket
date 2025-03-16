@@ -190,7 +190,7 @@
                                 d="M13.1533 13.1255L17 17M15.2222 8.11111C15.2222 12.0385 12.0385 15.2222 8.11111 15.2222C4.18375 15.2222 1 12.0385 1 8.11111C1 4.18375 4.18375 1 8.11111 1C12.0385 1 15.2222 4.18375 15.2222 8.11111Z"
                                 stroke="#757575" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <input type="text" placeholder="Choose Event Date">
+                        <input type="date" placeholder="">
                     </span>
                 </div>
                 <p class="desktop-party-ticket-arrow">Search</p>
@@ -210,7 +210,7 @@
             <p>Fashion and beauty</p>
             <p>Health and wellness</p>
         </div> --}}
-
+{{--
         <div>
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
@@ -227,7 +227,7 @@
                         stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
-        </div>
+        </div> --}}
     </section>
 
     <!-- desktop phaze section -->
@@ -236,7 +236,7 @@
         <section class="desktop-hotel-trending-destination">
             <main>
                 <div class="desktop-hotel-trending-destination-header">
-                    <h1>Latest</h1>
+                    <h1>Latest Events</h1>
                     <span>
                         <a href="#">See all Events</a>
                     </span>
@@ -250,13 +250,13 @@
                             <div class="card-text">
                                 <h1>{{ $event->title }}</h1>
                                 <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13"
+                                    <svg  xmlns="http://www.w3.org/2000/svg" width="14" height="13"
                                         viewBox="0 0 14 13" fill="none">
                                         <path
                                             d="M7 2.5V6.5L9.82667 9.32667M7 12.5C10.3137 12.5 13 9.81373 13 6.5C13 3.18629 10.3137 0.5 7 0.5C3.68629 0.5 1 3.18629 1 6.5C1 9.81373 3.68629 12.5 7 12.5Z"
                                             stroke="black" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <p> {{ $event->date }} </p>
+                                    <p> {{ \Carbon\Carbon::parse($event->date)->format('l, F j, Y') }}</p>
                                 </span>
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13"
@@ -306,13 +306,13 @@
                                 </span>
                             </div>
                             <!-- card icon -->
-                            <svg class="party-ticket-card-icon" xmlns="http://www.w3.org/2000/svg" width="44"
+                            {{-- <svg id="copy-link" class="party-ticket-card-icon"  xmlns="http://www.w3.org/2000/svg" width="44"
                                 height="44" viewBox="0 0 44 44" fill="none">
                                 <rect width="44" height="44" rx="22" fill="#FF5454" />
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M26.3077 10C24.0986 10 22.3077 11.7909 22.3077 14C22.3077 14.2411 22.329 14.4772 22.37 14.7066L16.5476 18.7823C16.518 18.803 16.49 18.8251 16.4636 18.8485C15.7845 18.3169 14.9293 18 14 18C11.7909 18 10 19.7909 10 22C10 24.2091 11.7909 26 14 26C14.9293 26 15.7845 25.6831 16.4636 25.1515C16.49 25.1749 16.518 25.197 16.5476 25.2177L22.37 29.2934C22.329 29.5227 22.3077 29.7589 22.3077 30C22.3077 32.2091 24.0986 34 26.3077 34C28.5168 34 30.3077 32.2091 30.3077 30C30.3077 27.7909 28.5168 26 26.3077 26C25.0119 26 23.8601 26.6161 23.1291 27.5713L17.6161 23.7121C17.8623 23.1931 18 22.6127 18 22C18 21.3873 17.8623 20.8069 17.6161 20.2879L23.1291 16.4287C23.8601 17.3839 25.0119 18 26.3077 18C28.5168 18 30.3077 16.2091 30.3077 14C30.3077 11.7909 28.5168 10 26.3077 10ZM24.1538 14C24.1538 12.8105 25.1182 11.8462 26.3077 11.8462C27.4972 11.8462 28.4615 12.8105 28.4615 14C28.4615 15.1895 27.4972 16.1538 26.3077 16.1538C25.1182 16.1538 24.1538 15.1895 24.1538 14ZM14 19.8462C12.8105 19.8462 11.8462 20.8105 11.8462 22C11.8462 23.1895 12.8105 24.1538 14 24.1538C15.1895 24.1538 16.1538 23.1895 16.1538 22C16.1538 20.8105 15.1895 19.8462 14 19.8462ZM26.3077 27.8462C25.1182 27.8462 24.1538 28.8105 24.1538 30C24.1538 31.1895 25.1182 32.1538 26.3077 32.1538C27.4972 32.1538 28.4615 31.1895 28.4615 30C28.4615 28.8105 27.4972 27.8462 26.3077 27.8462Z"
                                     fill="white" />
-                            </svg>
+                            </svg> --}}
                             <!-- card icon -->
                         </div>
                     @empty
@@ -563,7 +563,7 @@
              <div class="party-card">
             <img src="../../image/Rectangle 92 (1).png" alt="random">
             <div class="card-text">
-                <h1> {{$event->title}} </h1>
+                <h1> {{ $event->title }} </h1>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
                         fill="none">
@@ -571,7 +571,7 @@
                             d="M7 2.5V6.5L9.82667 9.32667M7 12.5C10.3137 12.5 13 9.81373 13 6.5C13 3.18629 10.3137 0.5 7 0.5C3.68629 0.5 1 3.18629 1 6.5C1 9.81373 3.68629 12.5 7 12.5Z"
                             stroke="black" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <p> {{$event->date}} </p>
+                    <p> {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }} </p>
                 </span>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"
@@ -606,7 +606,7 @@
                     <p>₦ {{$event->ticket_price}} </p>
                 </span>
                 <span>
-                    <a class="flex items-center gap-1" href="{{ route('events.view') }}">
+                    <a class="flex items-center gap-1" href="#'">
                         <p>Get Ticket</p>
                         <svg class="get-ticket-icon -mt-[3px]" xmlns="http://www.w3.org/2000/svg" fill="none"
                             width="10" height="10" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -626,13 +626,14 @@
             </svg>
             <!-- card icon -->
         </div>
+
         @empty
             <div class="mt-[15px]">
                     <div class="flex items-center flex-col justify-center gap-0">
                         <img src="{{ asset('image/error.svg') }}" alt="lorem ipsum">
-                        Sorry no registers users
+                        Sorry no registers Event
                         <div class="text-[13px] font-[300]">
-                            <a href="{{ route('admin.create.event') }}">Create an account </a>
+                            <a href="{{ route('admin.create.event') }}"> Create an event </a>
                         </div>
                     </div>
                 </div>
@@ -844,6 +845,33 @@
         </div>
 
     </section>
+    <script>
+                document.getElementById('copy-link').addEventListener('click', function() {
+
+                    // Access the current URL
+
+                    var currentUrl = window.location.href;
+
+
+
+                    // Select and copy to clipboard
+
+                    navigator.clipboard.writeText(currentUrl)
+
+                        .then(() => {
+
+                            alert("Link copied to clipboard!");
+
+                        })
+
+                        .catch(err => {
+
+                            console.error("Failed to copy: ", err);
+
+                        });
+
+        });
+    </script>
 
 
 @endsection

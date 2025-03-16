@@ -18,6 +18,7 @@ export default {
             colors: {
                 'red-alt-700' : '#b61c1c',
                 'red-alt-800' : '#8b0003',
+                'gray-600' : '#707070',
             }
         },
     },

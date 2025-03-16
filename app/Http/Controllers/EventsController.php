@@ -9,13 +9,13 @@ use App\Http\Controllers\Controller;
 class EventsController extends Controller
 {
     //
-    public function showEvents (Event $events) {
-        $events =  Event::latest()->get();
+    public function showEvents() {
+    $events = Event::latest()->get();
+    return view('pages.events.index', ['events' => $events]);
+}
 
-        return view('pages.events.index', [ 'events' => $events ]);
-    }
-
-    public function viewEvents (Event $event) {
-        return view('pages.events.event');
+    public function viewEvents($id) {
+        $events = Event::findOrFail($id);
+        return view('pages.events.event', ['id' => $events]);
     }
 }

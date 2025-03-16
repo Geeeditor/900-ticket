@@ -74,7 +74,7 @@ Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('eve
 
 // Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
-Route::get('/events/1/view', [EventsController::class, 'viewEvents'])->name('events.view');
+Route::get('/events/view/1', [EventsController::class, 'viewEvents'])->name('events.view');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

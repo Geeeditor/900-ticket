@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>@yield('title') - 900 Ticket</title>
-
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-alt.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/desktop.css') }}"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -16,6 +18,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Styles / Scripts -->
     {{-- @vite('resources/css/app.css') --}}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap');
+
+body {
+    font-family: 'Figtree', sans-serif;
+}
+
+/* Custom Colors */
+:root {
+    --red-alt-700: #b61c1c;
+    --red-alt-800: #8b0003;
+    --gray-600: #707070;
+}
+
+/* Example of how to use custom colors in a class */
+.red-alt-700 {
+    background-color: var(--red-alt-700);
+}
+
+.red-alt-800 {
+    background-color: var(--red-alt-800);
+}
+
+.gray-600 {
+    color: var(--gray-600);
+}
+    </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -38,6 +67,7 @@
 
         }
     </style>
+
 </head>
 
 <body>
@@ -361,7 +391,7 @@
     </section>
 
 
-    {{--    @guest
+     {{--  @guest
         <section x-data="{ authSec: true }" x-show="authSec"
             class="fixed blur-background  z-[999] flex h-[90vh] w-full flex-col items-center justify-center margin-top">
 
@@ -503,9 +533,13 @@
 
         </section>
     @endguest --}}
+
     <!-- side bar section  end -->
 
     <header class="  ">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
         <div class="header-grid">
             <div class="header-first-div">
                 <svg class="bar icons" id="show-side-bar" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -521,12 +555,12 @@
                 </div>
             </div>
             <div class="hidden md:block header-second-div">
-                <div>
+                <div class="relative">
 
 
 
 
-                    <a id="region-language" href="#">
+                    {{--   <a id="region-language" href="#">
                         <div class="relative rl-subGroup">
 
                             <div id="g-translator">
@@ -536,7 +570,42 @@
 
 
                         </div>
-                    </a>
+                    </a> --}}
+
+                    <div x-data="{ langCur: false }" id="lang-curr-container" class="relative">
+                        <div @click="langCur = ! langCur" id="lang-curr-selector" class="cursor-pointer ">
+                            <img class="h-[25px] w-[25px] rounded-full -mr-1" src="{{ asset('image/nigeria.jpg') }}"
+                                alt="lorem ipsum">
+                            <span class="block">
+                                EN
+                            </span>
+                            |
+                            <span class="block">
+                                NGN
+                            </span>
+                        </div>
+
+                        <div x-show="langCur" @click.outside="langCur = false" id="lang-cur"
+                            class="absolute top-[10vh] bg-slate-50 z-[999] rounded-md ">
+                            <div>
+
+                                <div style="display: block; color:black" class=" text-black">
+                                    <h2 class="text-black mb-[5px] font-[700]">
+                                        Select Language
+                                    </h2>
+                                    {{-- <input type="radio" id="en" name="lang" value="30">
+                                    <label for="en">English</label>
+                                    <br>
+                                    <input type="radio" id="fr" name="lang" value="30">
+                                    <label for="fr">French</label> --}}
+                                    <div class="gtranslate_wrapper"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
 
 
                     <div x-data="{ open: false }" class="auth-container relative">
@@ -549,45 +618,115 @@
                         @endauth
 
 
-                        <svg @click="open = ! open" class="hidden md:block arrow-down icons"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
+                        <svg @click="open = ! open" :class="{ 'rotate-180': open, 'rotate-0': !open }"
+                            class="hidden md:block arrow-down icons cursor-pointer" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
 
 
-                        <div x-show="open" @click.outside="open = false"
-                            class="second-div-nav absolute mt-[95px] right-0 bg-white text-black w-[150px] rounded-md shadow-lg p-1">
+                        <div style="position: absolute !important; top: 50px !important; width: 10.5rem; z-index: 1000 !important;"
+                            x-show="open" @click.outside="open = false"
+                            class="second-div-nav absolute  right-0 bg-white text-black  rounded-md shadow-lg p-1 ">
 
-                            <ul class="text-right">
+                            <ul class="text-black flex flex-col justify-center items-center w-full " style="">
                                 @guest
-                                    <li>
-                                        <a href="{{ route('index.login') }}">
-                                            Login
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] "
+                                            href="{{ route('index.login') }}">
+
+                                            <img class="h-[20px] w-[20px]" src="{{ asset('image/login.svg') }}"
+                                                alt="Login">
+
+
+                                            <span class="block">
+                                                Login
+                                            </span>
                                         </a>
+
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('index.register') }}">Register
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] "
+                                            href="{{ route('index.register') }}">
+
+                                            {{-- <img class="h-[20px] w-[20px] rotate-180" src="{{asset('image/login.svg')}}" alt="Login"> --}}
+                                            <img class="h-[20px] w-[20px]" src="{{ asset('image/register.svg') }}"
+                                                alt="Login">
+
+
+                                            <span class="block">
+                                                Register
+                                            </span>
                                         </a>
+
                                     </li>
+
+
                                 @endguest
 
                                 @auth
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            Profile
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] " href="">
+
+                                            <img class="h-[20px] w-[20px] rotate-180"
+                                                src="{{ asset('image/login.svg') }}" alt="Login">
+
+
+
+                                            <span class="block">
+                                                Logout
+                                            </span>
                                         </a>
-                                        <a href="javascript:void(0)">
-                                            Reset Password
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            Cart
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            Report an order
-                                        </a>
+
                                     </li>
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] " href="">
+
+                                            <img class="h-[20px] w-[20px] " src="{{ asset('image/reset.svg') }}"
+                                                alt="Login">
+
+
+                                            <span class="block">
+                                                Reset Password
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] " href="">
+
+                                            <img class="h-[20px] w-[20px] " src="{{ asset('image/cart.svg') }}"
+                                                alt="Login">
+
+
+
+                                            <span class="block">
+                                                Cart
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+                                    <li class="py-2 pr-[10px] hover:bg-gray-200 rounded-lg w-full">
+                                        <a class="flex items-center justify-center gap-[10px] " href="">
+
+                                            <img class="h-[20px] w-[20px] " src="{{ asset('image/help.svg') }}"
+                                                alt="Login">
+
+
+
+                                            <span class="block">
+                                                Support
+                                            </span>
+                                        </a>
+
+                                    </li>
+
+
+
                                 @endauth
 
                             </ul>
@@ -607,7 +746,7 @@
                 <div>
 
 
-                     <div x-data="{ open: false }" class="auth-container relative mr-[5px] ">
+                    <div x-data="{ open: false }" class="auth-container relative mr-[5px] ">
                         @auth
                             <svg class="icons user" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -668,11 +807,41 @@
                     <a id="region-language" href="#">
                         <div class="relative rl-subGroup">
 
-                            <div id="g-translator">
-                                LANG
-                                <div class="gtranslate_wrapper"></div>
-                            </div>
+                            <div x-data="{ langCur: false }" id="lang-curr-container" class="relative">
+                                <div @click="langCur = ! langCur" id="lang-curr-selector" class="cursor-pointer ">
+                                    <img class="h-[25px] w-[25px] rounded-full -mr-1"
+                                        src="{{ asset('image/nigeria.jpg') }}" alt="lorem ipsum">
+                                    <span class="block">
+                                        EN
+                                    </span>
+                                    |
+                                    <span class="block">
+                                        NGN
+                                    </span>
+                                </div>
 
+                                <div x-show="langCur" @click.outside="langCur = false" id="lang-cur"
+                                    class="absolute top-[6vh] bg-slate-50 z-[999] rounded-md ">
+                                    <div>
+
+                                        <div style="display: block; color:black" class=" text-black">
+                                            <h2 class="text-black mb-[5px] font-[700]">
+                                                Select Language
+                                            </h2>
+                                            {{-- <input type="radio" id="en" name="lang" value="30">
+                                    <label for="en">English</label>
+                                    <br>
+                                    <input type="radio" id="fr" name="lang" value="30">
+                                    <label for="fr">French</label> --}}
+                                            <div style="user-select: text;display: flex;color: black;flex-direction: column;"
+                                                class="gtranslate_wrapper"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
 
                         </div>
                     </a>
@@ -701,7 +870,7 @@
 
 
 
-        {{-- </div>
+            {{-- </div>
         </div> --}}
         </div>
     </header>
@@ -723,7 +892,8 @@
     <footer class="mobile-footer">
 
         <img src="{{ asset('image/logo_alt.svg') }}" alt="900 logo">
-        <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the perfect experience </h2>
+        <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the
+            perfect experience </h2>
         <main>
             <div>
                 <h3>Company</h3>
@@ -782,7 +952,8 @@
             <main>
                 <img style="width: auto; height: 50px; margin-left: 100px" src="{{ asset('image/logo_alt.svg') }}"
                     alt="900 logo">
-                <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the perfect experience </h2>
+                <h2>Enjoy simple, hassle-free Bookings with 900Ticket. Let us help you easily book and reserve the
+                    perfect experience </h2>
             </main>
         </section>
         <div class="copyright-footer">
@@ -803,7 +974,7 @@
     </footer>
     <!-- swiper cdn -->
     {{-- route{{asset/}} --}}
-
+    {{-- 
     <script>
         window.gtranslateSettings = {
             "default_language": "en",
@@ -815,8 +986,20 @@
                 "en": "usa"
             }
         }
+    </script> --}}
+
+    {{-- <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script> --}}
+
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "native_language_names": true,
+            "detect_browser_language": true,
+            "languages": ["en", "fr"],
+            "wrapper_selector": ".gtranslate_wrapper"
+        }
     </script>
-    <script src="https://cdn.gtranslate.net/widgets/latest/globe.js" defer></script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>
 
     <script>
         // Function to show the flash message

@@ -90,21 +90,22 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .divider::after{
     content: 'OR CONTINUE WITH';
     position: absolute;
-    font-size: 14px;
+    font-size: 7px;
     width: fit-content;
     background-color: white;
     border: grey solid 1px;
-    margin-top: -20px;
+    margin-top: -15px;
     border-radius: 15px;
     padding: 10px 7.5px;
 
 
 }
 .input:focus {
-    border: 1px solid #8b0003 !important;
-    outline: none; /* Removes the default outline */
-    background-color: rgba(139, 0, 3, 0.1); /* Light background for focus */
-    box-shadow: 0 0 5px rgba(139, 0, 3, 0.5); /* Optional shadow */
+   border: 1px solid #a2a2a2 !important;
+    outline: none;
+    /* background-color: rgb(139 0 3 / 0%); */
+    box-shadow: 0px 1px 5px 0px rgb(19 19 19 / 12%);
+
 }
 
 
@@ -123,10 +124,10 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .saveLoginCheckBox {
   display: block;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   border: 1px solid rgb(63, 3, 3);
-  border-radius: 10px;
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
 
@@ -135,7 +136,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .saveLoginCheckBox div {
   width: 60px;
   height: 60px;
-  background-color: rgb(63, 3, 3);
+  background-color: rgb(199 11 11);
   top: -52px;
   left: -52px;
   position: absolute;
@@ -181,7 +182,7 @@ header {
     background-size: contain;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    margin-bottom: -25rem;
+    margin-bottom: -23rem;
 }
 }
 
@@ -189,12 +190,15 @@ header {
 
 .header-grid {
 
-    color: white;
     display: flex;
     padding: 20px 0;
-    min-width: 70%;
+    min-width: 100%;
     justify-content: space-around;
     margin: auto;
+    background: rgb(0 1 9 / 10%);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 2px 30px rgb(5 9 18 / 73%);
+    backdrop-filter: blur(2.5px);
 
 }
 
@@ -508,8 +512,8 @@ header {
         font-size: 0.8rem;
         padding: 2px;
         margin-top: 2px;
-        max-width: 75px;
-        margin-left: 5px;
+        /* max-width: 75px; */
+        /* margin-left: 5px; */
     }
 
     .header-second-div div div p {

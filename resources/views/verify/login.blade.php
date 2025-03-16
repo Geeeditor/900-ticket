@@ -6,8 +6,12 @@
 @endsection
 
 @section('content')
-
-    <section class="blur-background px-10 md:w-3/4 mx-auto mt-3 py-8 flex-col items-center justify-center">
+    <section class="w-full mx-auto">
+        <section class="md:px-8 md:py-8 py-4  w-[80%] mx-auto  flex items-center justify-center bg-white">
+                <div class="hidden md:block w-1/2 ">
+                    <img class="object-cover w-full h-full" src="{{asset('image/profilePop1-v3.jpg')}}" alt="lorem ipsum">
+                </div>
+                <div class="w-[100%] md:w-1/2   ">
 
 
         {{-- Mini Nav --}}
@@ -17,14 +21,14 @@
             <div class="flex gap-3">
 
                 <a id="" href="{{ route('index.login') }}"
-                    class="signupLink cursor-pointer font-[600] text-red-900 underline hover:no-underline">Login</a>
+                    class="signupLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Login</a>
 
                 <a id="" href="{{ route('index.register') }}"
-                    class="loginLink cursor-pointer font-[400] no-underline hover:underline">Register</a>
+                    class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
             </div>
         </div>
         {{-- Login Section --}}
-        <div id="" class="loginSection h-fit  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
+        <div id="" class="loginSection h-[100%]  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
             <div>
                 <form action="{{route('index.login.store')}}" method="post" class="flex flex-col gap-2">
                     @csrf
@@ -89,6 +93,8 @@
 
             </div>
         </div>
+
+                </div>
 
 
 
