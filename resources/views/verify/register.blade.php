@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Register With Us')
-@section('style')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('hero')
+    <div style="background: url('./image/eventhero.png')"
+        class="w-full relative top-[0] bg-black md:h-[20vh] h-[17.5vh]   flex justify-center">
+        {{-- hero content --}}
+    </div>
 @endsection
 
 @section('content')
@@ -149,7 +152,7 @@
                             </div>
 
                             <button
-                                class="hover:red-alt-800 w-full rounded-md bg-red-alt-700 py-2 text-center uppercase text-white submit"
+                                class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2 text-center uppercase text-white submit"
                                 type="submit">
                                 Sign Up
                             </button>

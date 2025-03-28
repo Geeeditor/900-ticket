@@ -1,8 +1,15 @@
 @extends('layouts.app')
 @section('title', 'Login')
-
+{{-- 
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endsection --}}
+
+@section('hero')
+    <div style="background: url('./image/eventhero.png')"
+        class="w-full relative top-[0] bg-black md:h-[20vh] h-[17.5vh]   flex justify-center">
+        {{-- hero content --}}
+    </div>
 @endsection
 
 @section('content')
@@ -21,7 +28,7 @@
             <div class="flex gap-3">
 
                 <a id="" href="{{ route('index.login') }}"
-                    class="signupLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Login</a>
+                    class="signupLink cursor-pointer font-[600]    text-white px-2 py- md:px-4 md:py-2 rounded-md bg-red-700 hover:bg-red-900">Login</a>
 
                 <a id="" href="{{ route('index.register') }}"
                     class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
@@ -86,7 +93,7 @@
                             </div>
                         </div>
 
-                    <button class="hover:red-alt-800 w-full rounded-md bg-red-alt-700 py-2 text-center uppercase text-white"
+                    <button class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2 text-center uppercase text-white"
                         type="submit">Login</button>
                 </form>
 

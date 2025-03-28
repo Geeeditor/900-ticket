@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('title', 'OTP Verification')
-@section('style')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('hero')
+    <div style="background: url('./image/eventhero.png')"
+        class="w-full relative top-[0] bg-black md:h-[20vh] h-[17.5vh]   flex justify-center">
+        {{-- hero content --}}
+    </div>
 @endsection
 
 
@@ -45,7 +48,7 @@
             </div>
             <div class="max-w-[260px] mx-auto mt-4">
                 <button type="submit"
-                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-alt-800 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-red-alt-700  focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150">Verify
+                    class="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-red-700 hover:bg-red-900 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10   focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors duration-150">Verify
                     Account</button>
             </div>
         </form>

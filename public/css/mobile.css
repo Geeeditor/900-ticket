@@ -362,11 +362,13 @@ header {
     }
 
 
-    .main-side-bar {
+        .main-side-bar {
         width: 80%;
-        height:100%;
+        height: 100vh;
         background-color: #FFF;
         padding: 10px 20px;
+        overflow-y: scroll;
+        overflow-x: hidden !important;
     }
 
     .main-side-bar .icon-cancle {

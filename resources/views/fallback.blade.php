@@ -2,12 +2,12 @@
 
 @section('title', '404')
 @section('style')
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
 @endsection
 
 @section('content')
 
-    <section class="flex h-full items-center bg-gray-50 text-gray-800 sm:p-16" style="user-select: text;">
+    <section class="flex h-full items-center bg-gray-50 text-gray-800 sm:p-16 mt-[235px]" style="user-select: text;">
     <div class="container mx-auto my-8 flex flex-col items-center justify-center space-y-8 px-5 text-center sm:max-w-md" style="user-select: text;">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-40 w-40 text-gray-400" style="user-select: text;">
             <path fill="currentColor" d="M256,16C123.452,16,16,123.452,16,256S123.452,496,256,496,496,388.548,496,256,388.548,16,256,16ZM403.078,403.078a207.253,207.253,0,1,1,44.589-66.125A207.332,207.332,0,0,1,403.078,403.078Z" style="user-select: text;"></path>

@@ -14,6 +14,10 @@ Route::get('/index', function () {
     return view('welcome');
 })->name('index');
 
+Route::get('/home' , function () {
+    return view('home');
+})->name('home');
+
 // Route::get('/auth', [authController::class, 'index'])->name('login');
 
 // Route::get('/auth/otp', function() {
@@ -70,11 +74,25 @@ Route::middleware('admin')->group(function() {
 
 
 
-Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
+// Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
 // Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
-Route::get('/events/view/1', [EventsController::class, 'viewEvents'])->name('events.view');
+Route::get('/event', function () {
+    return view('pages\events\index');
+})->name('event.index');
+
+Route::get('/event/item', function () {
+    return view('pages\events\metadata');
+})->name('event.metadata');
+
+// Route::get('/event', function () {
+//     return view('pages\events\');
+// })->name('event.index');
+
+
+
+// Route::get('/events/view/{id}', [EventsController::class, 'viewEvents'])->name('events.view');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
