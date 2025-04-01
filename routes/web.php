@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController\HomeController;
@@ -17,6 +18,8 @@ Route::get('/index', function () {
 Route::get('/home' , function () {
     return view('home');
 })->name('home');
+
+Route::post('/event/item', [CartController::class, 'storePartyTicket'])->name('event.addtocart');
 
 // Route::get('/auth', [authController::class, 'index'])->name('login');
 
@@ -79,11 +82,11 @@ Route::middleware('admin')->group(function() {
 // Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
 Route::get('/event', function () {
-    return view('pages\events\index');
+    return view('pages.events.index');
 })->name('event.index');
 
 Route::get('/event/item', function () {
-    return view('pages\events\metadata');
+    return view('pages.events.metadata');
 })->name('event.metadata');
 
 // Route::get('/event', function () {

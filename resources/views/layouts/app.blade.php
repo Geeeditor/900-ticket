@@ -196,14 +196,74 @@
 <body x-data="{ sideNav: false }" class="relative bg-[#FFF5F5]">
 
     {{-- Notification Tray --}}
-    @if (session()->has('success'))
-        <div class="flash-message tray-success animate__animated w-[50%] px-2 py-1">
-            <p class="text-white">
-                Your action was Successful, Welcome
-                <span> John Doe</span>
-            </p>
-        </div>
-    @endif
+    {{-- @if (session()->has('success')) --}}
+    {{-- <div class="flash-message tray-success animate__animated w-[50%] px-2 py-1"> --}}
+    <div class="flash-message tray-success animate__animated fixed right-0 top-[10vh] z-[999] hidden px-2 py-1">
+        @if (session()->has('success')) 
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-green-600"
+                    viewBox="0 0 512 512">
+                    <ellipse cx="246" cy="246" data-original="#000" rx="246" ry="246" />
+                    <path class="fill-white"
+                        d="m235.472 392.08-121.04-94.296 34.416-44.168 74.328 57.904 122.672-177.016 46.032 31.888z"
+                        data-original="#000" />
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">
+                    {{ session('success') }}
+                </span>
+            </div>
+            
+        @elseif (session()->has('warning'))
+            
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-yellow-600"
+                    viewBox="0 0 128 128">
+                    <path
+                        d="M56.463 14.337 6.9 106.644C4.1 111.861 8.173 118 14.437 118h99.126c6.264 0 10.338-6.139 7.537-11.356L71.537 14.337c-3.106-5.783-11.968-5.783-15.074 0z" />
+                    <g class="fill-white">
+                        <path
+                            d="M64 31.726a5.418 5.418 0 0 0-5.5 5.45l1.017 44.289A4.422 4.422 0 0 0 64 85.726a4.422 4.422 0 0 0 4.482-4.261L69.5 37.176a5.418 5.418 0 0 0-5.5-5.45z"
+                            data-original="#fff" />
+                        <circle cx="64" cy="100.222" r="6" data-original="#fff" />
+                    </g>
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">{{ session('warning') }}</span>
+            </div>
+            
+        @elseif (session()->has('info'))
+            
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-blue-600"
+                    viewBox="0 0 23.625 23.625">
+                    <path
+                        d="M11.812 0C5.289 0 0 5.289 0 11.812s5.289 11.813 11.812 11.813 11.813-5.29 11.813-11.813S18.335 0 11.812 0zm2.459 18.307c-.608.24-1.092.422-1.455.548a3.838 3.838 0 0 1-1.262.189c-.736 0-1.309-.18-1.717-.539s-.611-.814-.611-1.367c0-.215.015-.435.045-.659a8.23 8.23 0 0 1 .147-.759l.761-2.688c.067-.258.125-.503.171-.731.046-.23.068-.441.068-.633 0-.342-.071-.582-.212-.717-.143-.135-.412-.201-.813-.201-.196 0-.398.029-.605.09-.205.063-.383.12-.529.176l.201-.828c.498-.203.975-.377 1.43-.521a4.225 4.225 0 0 1 1.29-.218c.731 0 1.295.178 1.692.53.395.353.594.812.594 1.376 0 .117-.014.323-.041.617a4.129 4.129 0 0 1-.152.811l-.757 2.68a7.582 7.582 0 0 0-.167.736 3.892 3.892 0 0 0-.073.626c0 .356.079.599.239.728.158.129.435.194.827.194.185 0 .392-.033.626-.097.232-.064.4-.121.506-.17l-.203.827zm-.134-10.878a1.807 1.807 0 0 1-1.275.492c-.496 0-.924-.164-1.28-.492a1.57 1.57 0 0 1-.533-1.193c0-.465.18-.865.533-1.196a1.812 1.812 0 0 1 1.28-.497c.497 0 .923.165 1.275.497.353.331.53.731.53 1.196 0 .467-.177.865-.53 1.193z"
+                        data-original="#030104" />
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">{{ session('info') }}</span>
+            </div>
+            
+        @elseif (session()->has('error'))
+            
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-red-600"
+                    viewBox="0 0 32 32">
+                    <path
+                        d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z"
+                        data-original="#ea2d3f" />
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">
+                    <span class="text-[15px] font-semibold tracking-wide">{{ session('error') }}
+                    </span>
+            </div>
+            
+        @endif
+
+    </div>
+    {{-- @endif --}}
 
 
     {{-- <div class="flash-message tray-fail hidden w-[50%] px-2 py-1">
@@ -304,8 +364,8 @@
                             <div x-data="{ authMenu: false }" class="hidden cursor-pointer md:block">
                                 <div>
                                     <div @click="authMenu = !authMenu" class="relative flex gap-1 text-white">
-                                        <img class="h-auto w-[25px] rounded-md" src="{{ asset('image/dropdown.svg') }}"
-                                            alt="lorem ipsum">
+                                        <img class="h-auto w-[25px] rounded-md"
+                                            src="{{ asset('image/dropdown.svg') }}" alt="lorem ipsum">
 
                                     </div>
 
@@ -321,8 +381,8 @@
                                                     <a class="flex items-center justify-start gap-[5px]"
                                                         href="{{ route('index.login') }}">
 
-                                                        <img class="h-[20px] w-[20px]" src="{{ asset('image/login.svg') }}"
-                                                            alt="Login">
+                                                        <img class="h-[20px] w-[20px]"
+                                                            src="{{ asset('image/login.svg') }}" alt="Login">
 
 
                                                         <span class="block">
@@ -475,7 +535,7 @@
                 </div>
                 <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                     <img class="w-[25px]" src="{{ asset('image/ticket.svg') }}" alt="Flights Icon">
-                    <a href="{{route('event.index')}}" class="">Party Tickets</a>
+                    <a href="{{ route('event.index') }}" class="">Party Tickets</a>
                 </div>
                 <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                     <img class="w-[25px]" src="{{ asset('image/shortlet.svg') }}" alt="Flights Icon">
@@ -487,11 +547,11 @@
                 @guest
                     <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                         <img class="w-[25px]" src="{{ asset('image/sideBar/Vector (4).png') }}" alt="Flights Icon">
-                        <a href="{{route("index.login")}}" class="">Login</a>
+                        <a href="{{ route('index.login') }}" class="">Login</a>
                     </div>
                     <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                         <img class="w-[25px]" src="{{ asset('image/sideBar/Vector (4).png') }}" alt="Flights Icon">
-                        <a href="{{route("index.register")}}" class="">Create an Account</a>
+                        <a href="{{ route('index.register') }}" class="">Create an Account</a>
                     </div>
                 @endguest
 
@@ -700,7 +760,8 @@
                                 </div>
                                 <div
                                     class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-6 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
-                                    <a class="flex flex-col items-center justify-center" href="{{route('event.index')}}">
+                                    <a class="flex flex-col items-center justify-center"
+                                        href="{{ route('event.index') }}">
                                         <img class="w-[35px]" src="{{ asset('image/icons/ticket-alt.svg') }}"
                                             alt="lorem ipsum">
                                         <span class="inline-block text-center text-sm font-[700]">
@@ -843,7 +904,7 @@
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0 md:w-[40%]">
-                    <a href="{{route('index')}}" class="flex items-center">
+                    <a href="{{ route('index') }}" class="flex items-center">
                         <img src="{{ asset('image/logo_alt.svg') }}" class="me-3 h-10" alt="900 Ticket" />
                         <span class="self-center whitespace-nowrap text-2xl font-[800] text-white">900Ticket</span>
 

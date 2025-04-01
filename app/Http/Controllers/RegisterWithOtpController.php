@@ -54,6 +54,42 @@ class RegisterWithOtpController extends Controller
         return redirect()->route('register.verify.otp');
     }
 
+    public function resendOtp (Request $request) {
+
+
+        // Get previous session values
+        $email = $request->session()->get('register_email');
+        $firstname = $request->session()->get('register_firstname');
+        $lastname = $request->session()->get('register_lastname');
+        $address = $request->session()->get('register_address');
+        $phone = $request->session()->get('register_phone');
+        $password = $request->session()->get('register_password');
+
+        // Create a new otp
+        $otp = rand(100000, 999999);
+
+        // Update Records
+
+        EmailOtp::updateOrCreate(['email' => $email], [
+            'email' => $email,
+            'otp' => $otp,
+            'expired_at' => Carbon::now()->addMinute(10)
+        ]);
+
+        // Send user otp code
+        Mail::to($email)->send(new EmailOtpMail($otp, $firstname));
+
+
+
+
+
+        // Redirect back to route with info
+          return redirect()->back()->with('info', 'Your otp has been resent to your mail box');
+
+
+
+    }
+
     public function registerVerifyOtp() {
         return view('verify.register_otp');
     }
