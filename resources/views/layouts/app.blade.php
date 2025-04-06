@@ -60,6 +60,23 @@
         .gray-600 {
             color: var(--gray-600);
         }
+
+        @media  (max-width: 600px) {
+
+            .input-label{
+                display: block;
+                width: 100%;
+            }
+        .input-label, .input {
+            text-align: center !important;
+        }
+        .input::placeholder {
+            text-align: center;
+        }
+
+
+
+        }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -187,6 +204,14 @@
                 clip-path: ellipse(79% 87% at 51% 0%) !important;
             }
 
+            .saveLog {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center
+        }
+
 
         }
     </style>
@@ -199,7 +224,7 @@
     {{-- @if (session()->has('success')) --}}
     {{-- <div class="flash-message tray-success animate__animated w-[50%] px-2 py-1"> --}}
     <div class="flash-message tray-success animate__animated fixed right-0 top-[10vh] z-[999] hidden px-2 py-1">
-        @if (session()->has('success')) 
+        @if (session()->has('success'))
             <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
                 role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-green-600"
@@ -213,9 +238,37 @@
                     {{ session('success') }}
                 </span>
             </div>
-            
+        @elseif (session()->has('loginsuccess') && session()->has('firstname') && session()->has('lastname'))
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-green-600"
+                    viewBox="0 0 512 512">
+                    <ellipse cx="246" cy="246" data-original="#000" rx="246" ry="246" />
+                    <path class="fill-white"
+                        d="m235.472 392.08-121.04-94.296 34.416-44.168 74.328 57.904 122.672-177.016 46.032 31.888z"
+                        data-original="#000" />
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">
+                      {{ session('loginsuccess') }} {{ session('firstname') }} {{ session('lastname') }} !
+                </span>
+            </div>
+        @elseif (session()->has('regsuccess') && session()->has('firstname') && session()->has('lastname'))
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-green-600"
+                    viewBox="0 0 512 512">
+                    <ellipse cx="246" cy="246" data-original="#000" rx="246" ry="246" />
+                    <path class="fill-white"
+                        d="m235.472 392.08-121.04-94.296 34.416-44.168 74.328 57.904 122.672-177.016 46.032 31.888z"
+                        data-original="#000" />
+                </svg>
+                <span class="text-[15px] font-semibold tracking-wide">
+                    {{ session('regsuccess') }}
+                    {{  session('firstname')}}
+                    {{  session('lastname')}}
+                </span>
+            </div>
         @elseif (session()->has('warning'))
-            
             <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
                 role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-yellow-600"
@@ -231,9 +284,7 @@
                 </svg>
                 <span class="text-[15px] font-semibold tracking-wide">{{ session('warning') }}</span>
             </div>
-            
         @elseif (session()->has('info'))
-            
             <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
                 role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-blue-600"
@@ -244,9 +295,7 @@
                 </svg>
                 <span class="text-[15px] font-semibold tracking-wide">{{ session('info') }}</span>
             </div>
-            
         @elseif (session()->has('error'))
-            
             <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
                 role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-red-600"
@@ -259,8 +308,23 @@
                     <span class="text-[15px] font-semibold tracking-wide">{{ session('error') }}
                     </span>
             </div>
-            
         @endif
+
+       @if ($errors->any())
+    <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-red-600" viewBox="0 0 32 32">
+            <path
+                d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z"
+                data-original="#ea2d3f" />
+        </svg>
+        <span class="text-[12px] font-[200] text-red-700 text-start flex flex-col gap-1">
+            @foreach ($errors->all() as $error)
+                <span class="block">{{ $error }}</span>
+            @endforeach
+        </span>
+    </div>
+@endif
+
 
     </div>
     {{-- @endif --}}
@@ -293,8 +357,8 @@
                             </svg>
 
                             <div>
-                                <a href="{{ route('index') }}">
-                                    <img class="w-[80px] md:w-[150px]" src="{{ asset('image/logo_alt.svg') }}"
+                                <a href="{{ route('dashboard') }}">
+                                    <img class="w-[70px] md:w-[150px]" src="{{ asset('image/logo_alt.svg') }}"
                                         alt="900 Logo"></a>
 
                             </div>
@@ -316,8 +380,8 @@
                                         class="absolute top-[40px] z-[999] rounded-md bg-white shadow-sm">
                                         <div>
 
-                                            <div style="display: block; color:black" class="text-black">
-                                                <h2 class="mb-[5px] font-[700] text-black" style="text-align:center;">
+                                            <div style="display: block; color:black" class="text-black px-2">
+                                                <h2 class="mb-[5px] font-[700] text-black text-sm" style="text-align:center;">
                                                     Select Language
                                                 </h2>
                                                 {{-- <input type="radio" id="en" name="lang" value="30">
@@ -325,7 +389,7 @@
                                                 <br>
                                                 <input type="radio" id="fr" name="lang" value="30">
                                                 <label for="fr">French</label> --}}
-                                                <div class="gtranslate_wrapper" style="text-align: center">
+                                                <div class="gtranslate_wrapper text-sm" style="text-align: center">
 
                                                 </div>
 
@@ -349,25 +413,58 @@
                                         </span>
                                     </div>
 
-                                    <div x-transition x-show="cart" @click.outside="cart = false"
-                                        class="absolute top-[80px] z-[999] rounded-md bg-slate-50 p-2">
-                                        <div>
+                                    @guest
+                                        <div x-transition x-show="cart" @click.outside="cart = false"
+                                            class="absolute top-[80px] z-[999] rounded-md bg-slate-50 p-2">
+                                            <div>
 
-                                            No Item In Cart
+                                                Login/Create an Account
+
+                                            </div>
 
                                         </div>
+                                    @endguest
 
-                                    </div>
+
+                                    @auth
+                                        <div x-transition x-show="cart" @click.outside="cart = false"
+                                            class="absolute top-[80px] z-[999] rounded-md bg-slate-50 p-2">
+
+                                            @if ($totalItemsCount == 0)
+                                                Total Items in Cart: {{ $totalItemsCount }}
+                                            @else
+                                                <div>
+
+                                                    Total Items in Cart: {{ $totalItemsCount }}
+
+                                                </div>
+                                                <a class="text-sm font-[200] underline hover:no-underline"
+                                                    href="">View Items</a>
+                                            @endif
+
+                                        </div>
+                                    @endauth
                                 </div>
                             </div>
 
                             <div x-data="{ authMenu: false }" class="hidden cursor-pointer md:block">
                                 <div>
-                                    <div @click="authMenu = !authMenu" class="relative flex gap-1 text-white">
-                                        <img class="h-auto w-[25px] rounded-md"
-                                            src="{{ asset('image/dropdown.svg') }}" alt="lorem ipsum">
+                                    @guest
+                                        <div @click="authMenu = !authMenu" class="relative flex gap-1 text-white">
+                                            <img class="h-auto w-[25px] rounded-md"
+                                                src="{{ asset('image/dropdown.svg') }}" alt="lorem ipsum">
 
-                                    </div>
+                                        </div>
+                                    @endguest
+                                    @auth
+                                        <div @click="authMenu = !authMenu"
+                                            class="relative flex gap-1 text-white bg-white rounded-full">
+                                            <img class="h-auto w-[25px] rounded-md"
+                                                src="{{ asset('image/profile-alt.svg') }}" alt="lorem ipsum">
+
+                                        </div>
+                                    @endauth
+
 
                                     <div x-transition
                                         style="position: absolute !important; top: 70px !important; width: 10.5rem; z-index: 1000 !important;"
@@ -413,18 +510,21 @@
 
                                             @auth
                                                 <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
-                                                    <a class="flex items-center justify-start gap-[5px]" href="">
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                    <button type='submit' class="flex items-center justify-start gap-[5px]" >
 
                                                         <img class="h-[20px] w-[20px] rotate-180"
                                                             src="{{ asset('image/login.svg') }}" alt="Login">
 
 
 
-                                                        <span class="block">
-                                                            Logout
-                                                        </span>
-                                                    </a>
+                                                            <span  class="block">
+                                                                Logout
+                                                            </span >
 
+                                                    </button>
+                                                    </form>
                                                 </li>
                                                 <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
                                                     <a class="flex items-center justify-start gap-[5px]" href="">
@@ -440,20 +540,7 @@
 
                                                 </li>
 
-                                                <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
-                                                    <a class="flex items-center justify-start gap-[5px]" href="">
 
-                                                        <img class="h-[20px] w-[20px]"
-                                                            src="{{ asset('image/cart.svg') }}" alt="Login">
-
-
-
-                                                        <span class="block">
-                                                            Cart
-                                                        </span>
-                                                    </a>
-
-                                                </li>
 
                                                 <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
                                                     <a class="flex items-center justify-start gap-[5px]" href="">
@@ -506,7 +593,7 @@
                             Sign in to get a personalized experience
                         @endguest
                         @auth
-                            Hello Mike!
+                            Hello, {{$firstname}}!
                         @endauth
                     </p>
                 </div>
@@ -606,99 +693,237 @@
 
 
         {{-- Sign in modal --}}
-        <div x-transition:enter="transition origin-top ease-out duration-300"
+        <section x-transition:enter="transition origin-top ease-out duration-300"
             x-transition:enter-start="transform translate-y- opacity-0"
             x-transition:enter-end="transform translate-y-full opacity-100"
             x-transition:leave="transition origin-top ease-out duration-300" x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0" x-data="{ authModal: true }" x-show="authModal"
-            class="fle fixed top-[130px] z-50 ml-[8%] hidden w-[85%] items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white md:border-2 lg:ml-[25%] lg:w-[50%]">
-            <div class="hidden lg:block">
-                <img class="h-[400px] w-[600px] object-contain p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
-                    alt="random img" />
-            </div>
-            <div class="p-2">
+            style="background-color: rgba(16, 1, 1, .2)"
+            class="flex fixed items-center justify-center z-[997]  w-full h-[106%] ">
 
-                <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-[90%] size-6 text-black">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
 
-                <div class="mx-auto flex w-full justify-center gap-1 text-lg capitalize">
-
-                    <p>sign up</p>
-                    <p>/</p>
-                    <p>register</p>
+            <div
+                class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
+                <div class="hidden lg:block">
+                    <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
+                        alt="random img" />
                 </div>
 
-                <p class="my-2 text-center text-sm capitalize text-gray-400">manage your bookings with ease and <br />
-                    enjoy members-only benefits</p>
+                <div class="p-2">
+                    <div id="loginform">
+                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="ml-[90%] size-6 text-black">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
 
-                <form>
-                    <div class="flex flex-col">
-                        <label class="capitalize" for="email">email address</label>
-                        <span class="hidden text-[10px] text-red-600">Email not correct!</span>
-                        <input class="my-2 border border-gray-200 px-2 py-2 md:border-2" type="email"
-                            placeholder="Enter your email address" />
-                        <button class="my-2 rounded-sm bg-red-600 py-2 capitalize text-white">continue</button>
-                    </div>
-                    <div class="hidden">
-                        <div class="flex flex-col">
-                            <span>
-                                <label class="capitalize" for="password">Password</label></span>
-                            <span class="hidden text-[10px] text-red-600">Wrong password provided</span>
-                            <div class="relative">
-                                <input class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="email"
-                                    placeholder="Enter your password" />
-                                <div class="password-visibiliity absolute right-[5px] top-[17px] cursor-pointer">
-                                    <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="lorem ipsum">
-                                    <div class="eye-close"></div>
+                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
+                            <p>Sign Up</p>
+                            <p>/</p>
+                            <p>Register</p>
+                        </div>
 
+                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">
+                            Manage your bookings with ease and <br /> enjoy members-only benefits
+                        </p>
+
+                        <form action="{{ route('index.login.store') }}" method="post">
+                            @csrf
+                            <div id="provideAuthEmail" class="flex flex-col">
+                                {{--     <span
+                                    class="text-[12px] font-[200] text-red-700 text-center md:text-start  flex flex-col gap-1 ">
+
+                                    <span class="block">
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                    <span class="block">
+                                        @error('password')
+                                            {{ $message }}
+                                        @enderror
+                                    </span>
+                                </span> --}}
+
+
+                                </span>
+
+                                <label class="block capitalize font-bold text-center md:text-left text-black text-base"
+                                    for="password">Provide Email Address </label>
+
+
+                                <span id="email-error"
+                                    class="hidden text-[12px] font-[200] text-red-700 text-center md:text-start">
+                                    Email Provided incorrect!!
+                                </span>
+                                <input id="email" name="email"
+                                    class="input my-2 border border-gray-200 px-2 py-2 md:border-2 w-full" type="email"
+                                    placeholder="Enter your email address" />
+                                <button type="button" id="continueToPwd"
+                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                            </div>
+                            <div id="provideAuthPwd" class="hidden">
+                                <div class="flex flex-col">
+                                    <span class="block w-full">
+                                        <label  class="capitalize font-bold text-center md:text-left input-label block w-full"
+                                            for="password">Password</label>
+                                    </span>
+                                    <div class="relative ">
+                                        <input id="password" name="password"
+                                            class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2"
+                                            type="password" placeholder="Enter your password" />
+                                        <div id=""
+                                            class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                            <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                                alt="Toggle visibility">
+                                            <div id="" class="stroke"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="saveLog">
+                                        <label class="saveLoginCheckBox">
+                                            <input id="ch1" type="checkbox" name="remember">
+                                            <div class="transition"></div>
+                                        </label>
+                                        <p>Remember Me</p>
+                                    </div>
+                                    <button type="submit"
+                                        class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Login</button>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="saveLog">
-                                <label class="saveLoginCheckBox">
-                                    <input id="ch1" type="checkbox" name="remember">
-                                    <div class="transition"></div>
-                                </label>
-                                <p>
-                                    Remember Me
-                                </p>
-                            </div>
-                            <button type="submit"
-                                class="my-2 w-full rounded-sm bg-red-600 py-2 capitalize text-white">Login</button>
+                        </form>
+
+                        <p class="my-2 text-center md:text-left uppercase">or</p>
+                        <button
+                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
+                            Continue with Google
+                        </button>
+
+                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
+                            have read and agreed to
+                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
+                                class="text-red-500" href="#">privacy policy</a>
+                        </p>
+                        <div
+                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline login cursor-pointer">
+                            Don't have an account? Create one now!!!
                         </div>
                     </div>
-                </form>
 
-                <p class="my-2 text-center uppercase">or</p>
+                    <div id="registerform">
+                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            class="ml-[90%] size-6 text-black">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
 
-                <button
-                    class="duration-600 mx-auto flex max-w-xs items-center justify-center gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
-                    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262"
-                        class="h-6">
-                        <path fill="#4285F4"
-                            d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027">
-                        </path>
-                        <path fill="#34A853"
-                            d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1">
-                        </path>
-                        <path fill="#FBBC05"
-                            d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782">
-                        </path>
-                        <path fill="#EB4335"
-                            d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251">
-                        </path>
-                    </svg>
-                    Continue with Google
-                </button>
-                <p class="my-2 text-center text-sm"> By signing in or registering i confirm that i have read and agreed to
-                    900Tickets <a class="text-red-500" href="#"> terms and conditions </a> and <a
-                        class="text-red-500" href=""> privacy policy </a>
+                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
+                            <p>Create an account</p>
+                        </div>
+
+                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings with
+                            ease and <br />
+                            enjoy members-only benefits</p>
+
+                        <form action="{{ route('register.store') }}" method="post">
+                            @csrf
+
+                            <div id="sectionOne" class="flex flex-col">
+                                <label class="capitalize font-bold text-center md:text-left">First Name</label>
+                                <input value="{{ old('firstname') }}" name="firstname"
+                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
+                                    placeholder="Enter your First Name" />
+                                <label class="capitalize font-bold text-center md:text-left">Last Name</label>
+                                <input value="{{ old('lastname') }}" name="lastname"
+                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
+                                    placeholder="Enter your Last Name" />
+                                <button type="button"
+                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                            </div>
+
+                            <div id="sectionTwo" class="hidden  flex-col">
+                                <div class="flex flex-col">
+                                    <label class="capitalize font-bold text-center md:text-left ">Email Address</label>
+                                    <input value="{{ old('email') }}" name="email"
+                                        class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="email"
+                                        placeholder="Enter your Email" />
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="capitalize font-bold text-center md:text-left">Contact</label>
+                                    <input name="phone" class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                        type="text" value="{{ old('phone') }}"
+                                        placeholder="Enter your Phone Number" />
+                                </div>
+                                <button type="button"
+                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full ">Continue</button>
+                                <div class="arrowback cursor-pointer text-back input-label">← Back</div>
+                            </div>
+
+                            <div id="sectionThree" class="hidden  flex-col">
+                                <label class="capitalize font-bold text-center md:text-left input-label">House Address</label>
+                                <input name="address" class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                    value="{{ old('address') }}" type="text"
+                                    placeholder="Provide your Residential Address" /><label
+                                    class="capitalize font-bold text-center input-label md:text-left ">Password</label>
+                                <div class="relative">
+
+                                    <input id="password" name="password"
+                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
+                                        placeholder="Enter your password" />
+                                    <div id=""
+                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                            alt="Toggle visibility">
+                                        <div id="" class="stroke"></div>
+                                    </div>
+                                </div>
+                                <button type="button"
+                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
+                            </div>
+
+                            <div id="sectionFour" class="hidden  flex-col">
+                                <label class="capitalize font-bold text-center md:text-left input-label">Confirm Password</label>
+                                <div class="relative">
+
+                                    <input id="password" name="password"
+                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
+                                        placeholder="Confirm your password" />
+                                    <div id=""
+                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                            alt="Toggle visibility">
+                                        <div id="" class="stroke"></div>
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Create
+                                    Account</button>
+                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
+                            </div>
+                        </form>
+
+                        <p class="my-2 text-center md:text-left uppercase">or</p>
+                        <button
+                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
+                            Continue with Google
+                        </button>
+
+                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
+                            have read and agreed to
+                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
+                                class="text-red-500" href="#">privacy policy</a>
+                        </p>
+                        <div
+                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline register cursor-pointer">
+                            Already have an account? Sign in
+                        </div>
+                    </div>
+                </div>
             </div>
 
-        </div>
+        </section>
         <!-- sign up model section end -->
     @endguest
 
@@ -894,6 +1119,8 @@
 
             </div>
         @endif
+
+        
     </section>
 
     <main class="flex flex-col gap-2">
@@ -1094,7 +1321,6 @@
 
     <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>
 
-
     <script>
         // Function to show the flash message
         function showFlashMessage() {
@@ -1112,12 +1338,107 @@
 
         // Call the function to show the message (you can replace this with your own trigger)
         window.onload = showFlashMessage; // Trigger on page load for demonstration
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const emailInput = document.getElementById("email");
+            const emailError = document.getElementById("email-error");
+            const continueButton = document.getElementById("continueToPwd");
+            const provideAuthEmail = document.getElementById("provideAuthEmail");
+            const provideAuthPwd = document.getElementById("provideAuthPwd");
+            const passwordInput = document.getElementById("password");
+
+            const loginForm = document.getElementById("loginform");
+            const registerForm = document.getElementById("registerform");
+            const loginLink = document.querySelector(".login");
+            const registerLink = document.querySelector(".register");
+            const continueButtons = document.querySelectorAll(".continueButton");
+            const sections = [document.getElementById("sectionOne"), document.getElementById("sectionTwo"), document
+                .getElementById("sectionThree"), document.getElementById("sectionFour")
+            ];
+
+            // Initially show login form
+            registerForm.classList.add("hidden");
+
+            // Toggle between login and register forms
+            loginLink.addEventListener("click", function() {
+                loginForm.classList.toggle("hidden");
+                registerForm.classList.toggle("hidden");
+            });
+
+            registerLink.addEventListener("click", function() {
+                loginForm.classList.toggle("hidden");
+                registerForm.classList.toggle("hidden");
+            });
+
+            // Email validation and navigation to password section
+            continueButton.addEventListener("click", function() {
+                const emailValue = emailInput.value;
+
+                // Email validation
+                if (!validateEmail(emailValue)) {
+                    emailError.classList.remove("hidden");
+                } else {
+                    emailError.classList.add("hidden");
+                    provideAuthEmail.classList.add("hidden");
+                    provideAuthPwd.classList.remove("hidden");
+                }
+            });
+
+            // Navigate through registration sections
+            let currentSection = 0;
+            continueButtons.forEach((button) => {
+                button.addEventListener("click", function() {
+                    if (currentSection < sections.length - 1) {
+                        sections[currentSection].classList.add("hidden");
+                        currentSection++;
+                        sections[currentSection].classList.remove("hidden");
+                    }
+                });
+            });
+
+            // Back navigation
+            document.querySelectorAll(".arrowback").forEach((backButton) => {
+                backButton.addEventListener("click", function() {
+                    if (currentSection > 0) {
+                        sections[currentSection].classList.add("hidden");
+                        currentSection--;
+                        sections[currentSection].classList.remove("hidden");
+                    }
+                });
+            });
+
+            // Toggle password visibility
+            const togglePasswords = document.querySelectorAll(".togglePassword");
+
+            togglePasswords.forEach((togglePassword) => {
+                togglePassword.addEventListener("click", function() {
+                    const passwordInput = this
+                        .previousElementSibling; // Assuming input is before the toggle
+                    const type = passwordInput.getAttribute("type") === "password" ? "text" :
+                        "password";
+                    passwordInput.setAttribute("type", type);
+
+                    const strokes = document.querySelectorAll(
+                        '.stroke'); // Use class selector for strokes
+                    strokes.forEach((stroke) => {
+                        stroke.classList.toggle(
+                            "eye-close"); // Toggle the class for each stroke
+                    });
+                });
+            });
+
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+        });
     </script>
 
-    <script src="{{ asset('js/widget.js') }}"></script>
+    {{-- <script src="{{ asset('js/widget.js') }}"></script>
     <script src="{{ asset('js/passwordValidator.js') }}"></script>
     <script src="{{ asset('js/toogles.js') }}"></script>
-    <script src="{{ asset('js/routes.js') }}"></script>
+    <script src="{{ asset('js/routes.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/swiper.js') }}"></script>
 </body>

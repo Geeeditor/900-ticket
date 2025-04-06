@@ -42,7 +42,9 @@ Route::fallback(function() {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+   return view('dashboard');
+
 })->middleware('user')->name('dashboard');
 
 // Route::get('/')
@@ -63,9 +65,11 @@ Route::middleware('admin')->group(function() {
 
     Route::get('/admin/events/edit/{id}', [EventController::class, 'edit'])->name('admin.events.edit');
 
-    Route::put('/admin/events/edit/{id}/update', [EventController::class, 'update'])->name('admin.events.edit.update');
+    Route::put('/admin/events/update/{id}', [EventController::class, 'update'])->name('admin.events.edit.update');
 
     Route::get('/admin/manage-users', [HomeController::class, 'userList'])->name('admin.users');
+
+    Route::delete('/admin/events/delete/{id}', [EventController::class, 'destroy'])->name('admin.events.delete');
 
 });
 

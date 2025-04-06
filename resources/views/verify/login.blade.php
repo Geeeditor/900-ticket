@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Login')
-{{-- 
+{{--
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endsection --}}
@@ -14,7 +14,7 @@
 
 @section('content')
     <section class="w-full mx-auto">
-        <section class="md:px-8 md:py-8 py-4  w-[80%] mx-auto  flex items-center justify-center bg-white">
+        <section class="md:px-8 md:py-8 py-4 md:w-[80%] mx-auto  flex items-center justify-center bg-white rounded-b-md  shadow-lg p-1 m-1">
                 <div class="hidden md:block w-1/2 ">
                     <img class="object-cover w-full h-full" src="{{asset('image/profilePop1-v3.jpg')}}" alt="lorem ipsum">
                 </div>
@@ -25,7 +25,7 @@
         <div class="bg-white px-3 py-2">
 
 
-            <div class="flex gap-3">
+            <div class="flex gap-3 justify-start">
 
                 <a id="" href="{{ route('index.login') }}"
                     class="signupLink cursor-pointer font-[600]    text-white px-2 py- md:px-4 md:py-2 rounded-md bg-red-700 hover:bg-red-900">Login</a>
@@ -34,14 +34,24 @@
                     class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
             </div>
         </div>
+
         {{-- Login Section --}}
         <div id="" class="loginSection h-[100%]  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
             <div>
+                <div>
+                            <div class="mx-auto flex w-full justify-start gap-1 text-lg uppercase font-bold">
+                                <p>Sign in</p>
+                            </div>
+
+                            <p class="my-2 text-left text-sm capitalize text-gray-400">Manage your bookings with
+                                ease and <br />
+                                enjoy members-only benefits</p>
+                        </div>
                 <form action="{{route('index.login.store')}}" method="post" class="flex flex-col gap-2">
                     @csrf
                     <div class="login-field flex flex-col gap-1">
                         <label class="font-[500]" for="email">Email</label>
-                        <input title="Eg: mark@yokomail.com" class="input" type="text" name="email"
+                        <input title="Eg: mark@yokomail.com" class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="text" name="email"
                             placeholder="Enter your email">
                         <span class="text-[12px] font-[200] text-red-700">
                             @error('email')
@@ -52,28 +62,17 @@
 
                     <div class="flex flex-col gap-1">
                         <label class="font-[500]" for="password">Password</label>
-                        <div class="flex items-center">
-                            <input class="loginPassword input" id="" type="password" name="password"
-                                placeholder="Enter your password">
-                            <input type="checkbox" id="" class="toggleLoginPassword ml-2"
-                                onclick="togglePasswordVisibility('login')">
-                            <label for="toggleLoginPassword" class="cursor-pointer"><svg fill="#8b0003" width="24px"
-                                    height="24px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <g id="Password">
-                                            <path
-                                                d="M391,233.9478H121a45.1323,45.1323,0,0,0-45,45v162a45.1323,45.1323,0,0,0,45,45H391a45.1323,45.1323,0,0,0,45-45v-162A45.1323,45.1323,0,0,0,391,233.9478ZM184.123,369.3794a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Zm108,0a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Zm108,0a9.8954,9.8954,0,1,1-9.8964,17.1387l-16.33-9.4287v18.8593a9.8965,9.8965,0,0,1-19.793,0V377.0894l-16.33,9.4287a9.8954,9.8954,0,0,1-9.8964-17.1387l16.3344-9.4307-16.3344-9.4306a9.8954,9.8954,0,0,1,9.8964-17.1387l16.33,9.4282V323.9487a9.8965,9.8965,0,0,1,19.793,0v18.8589l16.33-9.4282a9.8954,9.8954,0,0,1,9.8964,17.1387l-16.3344,9.4306Z">
-                                            </path>
-                                            <path
-                                                d="M157.8965,143.9487a98.1035,98.1035,0,1,1,196.207,0V214.147h19.793V143.9487a117.8965,117.8965,0,0,0-235.793,0V214.147h19.793Z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </svg></label>
+                        <div class="relative">
 
-                        </div>
+                                    <input id="password" name="password"
+                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="password"
+                                        placeholder="Enter your password" />
+                                    <div id=""
+                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="Toggle visibility">
+                                        <div id="" class="stroke"></div>
+                                    </div>
+                                </div>
                         <span class="text-[12px] font-[200] text-red-700">
                             @error('password')
                                 {{ $message }}
@@ -93,7 +92,7 @@
                             </div>
                         </div>
 
-                    <button class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2 text-center uppercase text-white"
+                    <button class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2  text-start uppercase text-white submit px-2"
                         type="submit">Login</button>
                 </form>
 

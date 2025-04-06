@@ -4,15 +4,15 @@
 
 
 @section('hero')
-    <div class="relative top-[0] flex h-[17.5vh] w-full justify-center bg-black md:h-[20vh]">
-        <img class="h-full w-full object-cover" src="{{ asset('image/eventhero.png') }}" alt="lorem ipsum">
+    <div class="relative top-[0] flex h-[14vh] w-full justify-center bg-black md:h-[20vh] ">
+        <img class="h-full w-full object-cover " src="{{ asset('image/eventhero.png') }}" alt="lorem ipsum">
         {{-- hero content --}}
     </div>
 
     {{-- @if (session('success')){
 
      } @elseif('error') {
-        
+
      }  --}}
 
 
@@ -27,8 +27,8 @@
                 </i>
             </a>
         </div>
-       
-        
+
+
 
         <section class="mx-auto my-3 w-[85%] md:w-[80%]">
             @php

@@ -39,9 +39,15 @@ class LoginWithOtpController extends Controller
 
 
         $usertype=Auth()->user()->usertype;
+        $firstname=Auth()->user()->firstname;
+        $lastname=Auth()->user()->lastname;
 
         if ($usertype == 'user') {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with([
+            'loginsuccess' => 'Welcome back,',
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+        ]);
         }
 
         elseif ($usertype == 'admin') {

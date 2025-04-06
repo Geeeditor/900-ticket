@@ -19,7 +19,10 @@ class CreateEventsTable extends Migration
             $table->string('hero_image');
             $table->string('map_link')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->integer('ticket_price');
+            $table->decimal('regular_ticket_price', 10, 2)->nullable();
+            $table->decimal('vip_ticket_price', 10, 2)->nullable();
+            $table->decimal('vvip_ticket_price', 10, 2)->nullable();
+            $table->string('category')->default('event');
             $table->timestamps();
         });
     }

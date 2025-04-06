@@ -22,7 +22,11 @@ class Event extends Model
         'description',
         'hero_image',
         'map_link',
-        'ticket_price',
+        'regular_ticket_price',
+        'vip_ticket_price',
+        'vvip_ticket_price',
+        'event_reference',
+        'category'
         // Add any other fields as needed
     ];
 
@@ -32,5 +36,5 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+
 }

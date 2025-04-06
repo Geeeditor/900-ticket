@@ -150,9 +150,16 @@ class RegisterWithOtpController extends Controller
         // $user = User::create
 
 
-        Auth::login($user);
 
-        return redirect()->route('dashboard');
+
+
+
+
+        Auth::login($user);
+        $firstname=Auth()->user()->firstname;
+        $lastname=Auth()->user()->lastname;
+
+        return redirect()->route('dashboard')->with(['regsuccess'=> 'Welcome to 900ticket', 'firstname' => $firstname, 'lastname' => $lastname]);
 
 
 
