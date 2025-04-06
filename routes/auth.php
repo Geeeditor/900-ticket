@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginWithOtpController;
 use App\Http\Controllers\Auth\PasswordController;
@@ -16,12 +17,15 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 Route::middleware('guest')->group(function () {
 
     Route::get('/', function (){
-        return redirect()->route('index.welcome');
+        return redirect()->route('index');
     });
 
-    Route::get('/welcome', function(){
-        return view('welcome');
-    })->name('index.welcome');
+    // Route::get('/welcome', function(){
+    //     return view('welcome');
+    // })->name('index.welcome');
+
+
+
 
     Route::get('register', [RegisterWithOtpController::class, 'create'])->name('index.register');
 

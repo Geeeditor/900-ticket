@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\EventsController;
@@ -11,9 +12,6 @@ use App\Http\Controllers\AdminController\EventController;
 //     return redirect()->route('index');
 // });
 
-Route::get('/index', function () {
-    return view('welcome');
-})->name('index');
 
 Route::get('/home' , function () {
     return view('home');
@@ -46,6 +44,11 @@ Route::get('/dashboard', function () {
    return view('dashboard');
 
 })->middleware('user')->name('dashboard');
+
+Route::get('/welcome', function () {
+    $events = Event::latest()->paginate(3);
+    return view('welcome', ['events' => $events]);
+    })->name('index');
 
 // Route::get('/')
 
@@ -89,8 +92,10 @@ Route::get('/event', function () {
     return view('pages.events.index');
 })->name('event.index');
 
-Route::get('/event/item', function () {
-    return view('pages.events.metadata');
+Route::get('/event/item/{event}', function (Event $event) {
+    $event = Event::find(1);
+    return view('pages.events.item', ['event' => $event]);
+    // return view('pages.events.metadata');
 })->name('event.metadata');
 
 // Route::get('/event', function () {
