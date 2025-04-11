@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @yield('style')
+       <link  rel="stylesheet" type="text/css"  href="{{ asset('css/buttonloader.css') }}">
+           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Styles / Scripts -->
     {{-- @vite('resources/css/app.css') --}}
@@ -688,247 +691,10 @@
         </main>
     </section>
 
-    @guest
+   
 
 
-
-        {{-- Sign in modal --}}
-        <section x-transition:enter="transition origin-top ease-out duration-300"
-            x-transition:enter-start="transform translate-y- opacity-0"
-            x-transition:enter-end="transform translate-y-full opacity-100"
-            x-transition:leave="transition origin-top ease-out duration-300" x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0" x-data="{ authModal: true }" x-show="authModal"
-            style="background-color: rgba(16, 1, 1, .2)"
-            class="flex fixed items-center justify-center z-[997]  w-full h-[106%] ">
-
-
-            <div
-                class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
-                <div class="hidden lg:block">
-                    <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
-                        alt="random img" />
-                </div>
-
-                <div class="p-2">
-                    <div id="loginform">
-                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            class="ml-[90%] size-6 text-black">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-
-                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
-                            <p>Sign Up</p>
-                            <p>/</p>
-                            <p>Register</p>
-                        </div>
-
-                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">
-                            Manage your bookings with ease and <br /> enjoy members-only benefits
-                        </p>
-
-                        <form action="{{ route('index.login.store') }}" method="post">
-                            @csrf
-                            <div id="provideAuthEmail" class="flex flex-col">
-                                {{--     <span
-                                    class="text-[12px] font-[200] text-red-700 text-center md:text-start  flex flex-col gap-1 ">
-
-                                    <span class="block">
-                                        @error('email')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                    <span class="block">
-                                        @error('password')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
-                                </span> --}}
-
-
-                                </span>
-
-                                <label class="block capitalize font-bold text-center md:text-left text-black text-base"
-                                    for="password">Provide Email Address </label>
-
-
-                                <span id="email-error"
-                                    class="hidden text-[12px] font-[200] text-red-700 text-center md:text-start">
-                                    Email Provided incorrect!!
-                                </span>
-                                <input id="email" name="email"
-                                    class="input my-2 border border-gray-200 px-2 py-2 md:border-2 w-full" type="email"
-                                    placeholder="Enter your email address" />
-                                <button type="button" id="continueToPwd"
-                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                            </div>
-                            <div id="provideAuthPwd" class="hidden">
-                                <div class="flex flex-col">
-                                    <span class="block w-full">
-                                        <label  class="capitalize font-bold text-center md:text-left input-label block w-full"
-                                            for="password">Password</label>
-                                    </span>
-                                    <div class="relative ">
-                                        <input id="password" name="password"
-                                            class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2"
-                                            type="password" placeholder="Enter your password" />
-                                        <div id=""
-                                            class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                            <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
-                                                alt="Toggle visibility">
-                                            <div id="" class="stroke"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="saveLog">
-                                        <label class="saveLoginCheckBox">
-                                            <input id="ch1" type="checkbox" name="remember">
-                                            <div class="transition"></div>
-                                        </label>
-                                        <p>Remember Me</p>
-                                    </div>
-                                    <button type="submit"
-                                        class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Login</button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <p class="my-2 text-center md:text-left uppercase">or</p>
-                        <button
-                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
-                            Continue with Google
-                        </button>
-
-                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
-                            have read and agreed to
-                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
-                                class="text-red-500" href="#">privacy policy</a>
-                        </p>
-                        <div
-                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline login cursor-pointer">
-                            Don't have an account? Create one now!!!
-                        </div>
-                    </div>
-
-                    <div id="registerform">
-                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            class="ml-[90%] size-6 text-black">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-
-                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
-                            <p>Create an account</p>
-                        </div>
-
-                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings with
-                            ease and <br />
-                            enjoy members-only benefits</p>
-
-                        <form action="{{ route('register.store') }}" method="post">
-                            @csrf
-
-                            <div id="sectionOne" class="flex flex-col">
-                                <label class="capitalize font-bold text-center md:text-left">First Name</label>
-                                <input value="{{ old('firstname') }}" name="firstname"
-                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                    placeholder="Enter your First Name" />
-                                <label class="capitalize font-bold text-center md:text-left">Last Name</label>
-                                <input value="{{ old('lastname') }}" name="lastname"
-                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                    placeholder="Enter your Last Name" />
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                            </div>
-
-                            <div id="sectionTwo" class="hidden  flex-col">
-                                <div class="flex flex-col">
-                                    <label class="capitalize font-bold text-center md:text-left ">Email Address</label>
-                                    <input value="{{ old('email') }}" name="email"
-                                        class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="email"
-                                        placeholder="Enter your Email" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="capitalize font-bold text-center md:text-left">Contact</label>
-                                    <input name="phone" class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
-                                        type="text" value="{{ old('phone') }}"
-                                        placeholder="Enter your Phone Number" />
-                                </div>
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full ">Continue</button>
-                                <div class="arrowback cursor-pointer text-back input-label">← Back</div>
-                            </div>
-
-                            <div id="sectionThree" class="hidden  flex-col">
-                                <label class="capitalize font-bold text-center md:text-left input-label">House Address</label>
-                                <input name="address" class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
-                                    value="{{ old('address') }}" type="text"
-                                    placeholder="Provide your Residential Address" /><label
-                                    class="capitalize font-bold text-center input-label md:text-left ">Password</label>
-                                <div class="relative">
-
-                                    <input id="password" name="password"
-                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
-                                        placeholder="Enter your password" />
-                                    <div id=""
-                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
-                                            alt="Toggle visibility">
-                                        <div id="" class="stroke"></div>
-                                    </div>
-                                </div>
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
-                            </div>
-
-                            <div id="sectionFour" class="hidden  flex-col">
-                                <label class="capitalize font-bold text-center md:text-left input-label">Confirm Password</label>
-                                <div class="relative">
-
-                                    <input id="password" name="password"
-                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
-                                        placeholder="Confirm your password" />
-                                    <div id=""
-                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
-                                            alt="Toggle visibility">
-                                        <div id="" class="stroke"></div>
-                                    </div>
-                                </div>
-                                <button type="submit"
-                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Create
-                                    Account</button>
-                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
-                            </div>
-                        </form>
-
-                        <p class="my-2 text-center md:text-left uppercase">or</p>
-                        <button
-                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
-                            Continue with Google
-                        </button>
-
-                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
-                            have read and agreed to
-                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
-                                class="text-red-500" href="#">privacy policy</a>
-                        </p>
-                        <div
-                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline register cursor-pointer">
-                            Already have an account? Sign in
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- sign up model section end -->
-    @endguest
-
-
-    <section>
+    <section id="hero">
         @hasSection('hero')
             @yield('hero')
         @else
@@ -1120,7 +886,7 @@
             </div>
         @endif
 
-        
+
     </section>
 
     <main class="flex flex-col gap-2">
@@ -1138,27 +904,22 @@
 
                     </a>
                     <p class="mt-4 text-white md:text-[17px]">Enjoy simple, hassle-free Bookings with 900Ticket, Let us
-                        help you easily book and reserve4 the perfect experience</p>
+                        help you easily book and reserve for the perfect experience</p>
 
                     <div class="w-full">
                         <h2 class="my-4 text-sm font-semibold uppercase text-white">Connect with us </h2>
                         <ul class="flex list-none items-center justify-start gap-2">
                             <li class="icon-content relative">
-                                <a href="https://linkedin.com/" aria-label="LinkedIn" data-social="linkedin"
+                                <a href="https://www.facebook.com/share/1AQitxKZkM/" aria-label="LinkedIn" data-social="linkedin"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-blue-600 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-linkedin relative z-10" viewBox="0 0 16 16">
-                                        <path
-                                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
-                                            fill="currentColor"></path>
-                                    </svg>
+                                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#b9b1b1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 12.05C19.9813 10.5255 19.5273 9.03809 18.6915 7.76295C17.8557 6.48781 16.673 5.47804 15.2826 4.85257C13.8921 4.2271 12.3519 4.01198 10.8433 4.23253C9.33473 4.45309 7.92057 5.10013 6.7674 6.09748C5.61422 7.09482 4.77005 8.40092 4.3343 9.86195C3.89856 11.323 3.88938 12.8781 4.30786 14.3442C4.72634 15.8103 5.55504 17.1262 6.69637 18.1371C7.83769 19.148 9.24412 19.8117 10.75 20.05V14.38H8.75001V12.05H10.75V10.28C10.7037 9.86846 10.7483 9.45175 10.8807 9.05931C11.0131 8.66687 11.23 8.30827 11.5161 8.00882C11.8022 7.70936 12.1505 7.47635 12.5365 7.32624C12.9225 7.17612 13.3368 7.11255 13.75 7.14003C14.3498 7.14824 14.9482 7.20173 15.54 7.30003V9.30003H14.54C14.3676 9.27828 14.1924 9.29556 14.0276 9.35059C13.8627 9.40562 13.7123 9.49699 13.5875 9.61795C13.4627 9.73891 13.3667 9.88637 13.3066 10.0494C13.2464 10.2125 13.2237 10.387 13.24 10.56V12.07H15.46L15.1 14.4H13.25V20C15.1399 19.7011 16.8601 18.7347 18.0985 17.2761C19.3369 15.8175 20.0115 13.9634 20 12.05Z" fill="#b9b1b1"></path> </g></svg>
                                 </a>
 
                             </li>
-                            <li class="icon-content relative">
+                            {{-- <li class="icon-content relative">
                                 <a href="https://www.github.com/" aria-label="GitHub" data-social="github"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
@@ -1172,35 +933,24 @@
                                     </svg>
                                 </a>
 
-                            </li>
+                            </li> --}}
                             <li class="icon-content relative">
-                                <a href="https://www.instagram.com/" aria-label="Instagram" data-social="instagram"
+                                <a href="https://www.instagram.com/register900ticket?igsh=MW1lN2lzdXdyczQwcA==" aria-label="Instagram" data-social="instagram"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-gradient-to-r from-blue-500 to-pink-500 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-instagram relative z-10"
-                                        viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
-                                            fill="currentColor"></path>
-                                    </svg>
+                                    <svg width="16px" height="16px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 5H9.5C7.29086 5 5.5 6.79086 5.5 9V15C5.5 17.2091 7.29086 19 9.5 19H15.5C17.7091 19 19.5 17.2091 19.5 15V9C19.5 6.79086 17.7091 5 15.5 5Z" stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 15C10.8431 15 9.5 13.6569 9.5 12C9.5 10.3431 10.8431 9 12.5 9C14.1569 9 15.5 10.3431 15.5 12C15.5 12.7956 15.1839 13.5587 14.6213 14.1213C14.0587 14.6839 13.2956 15 12.5 15Z" stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="15.5" y="9" width="2" height="2" rx="1" transform="rotate(-90 15.5 9)" fill="#b9b1b1"></rect> <rect x="16" y="8.5" width="1" height="1" rx="0.5" transform="rotate(-90 16 8.5)" stroke="#b9b1b1" stroke-linecap="round"></rect> </g></svg>
                                 </a>
 
                             </li>
                             <li class="icon-content relative">
-                                <a href="https://youtube.com/" aria-label="Youtube" data-social="youtube"
+                                <a href="https://x.com/900Ticketing?t=3_HJOYdMVieLd_w9YJg65A&s=09" aria-label="Youtube" data-social="youtube"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-red-600 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-youtube relative z-10" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
-                                            fill="currentColor"></path>
-                                    </svg>
+                                    <svg width="16px" height="16px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>twitter [#b9b1b1]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-60.000000, -7521.000000)" fill="#b9b1b1"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M10.29,7377 C17.837,7377 21.965,7370.84365 21.965,7365.50546 C21.965,7365.33021 21.965,7365.15595 21.953,7364.98267 C22.756,7364.41163 23.449,7363.70276 24,7362.8915 C23.252,7363.21837 22.457,7363.433 21.644,7363.52751 C22.5,7363.02244 23.141,7362.2289 23.448,7361.2926 C22.642,7361.76321 21.761,7362.095 20.842,7362.27321 C19.288,7360.64674 16.689,7360.56798 15.036,7362.09796 C13.971,7363.08447 13.518,7364.55538 13.849,7365.95835 C10.55,7365.79492 7.476,7364.261 5.392,7361.73762 C4.303,7363.58363 4.86,7365.94457 6.663,7367.12996 C6.01,7367.11125 5.371,7366.93797 4.8,7366.62489 L4.8,7366.67608 C4.801,7368.5989 6.178,7370.2549 8.092,7370.63591 C7.488,7370.79836 6.854,7370.82199 6.24,7370.70483 C6.777,7372.35099 8.318,7373.47829 10.073,7373.51078 C8.62,7374.63513 6.825,7375.24554 4.977,7375.24358 C4.651,7375.24259 4.325,7375.22388 4,7375.18549 C5.877,7376.37088 8.06,7377 10.29,7376.99705" id="twitter-[#b9b1b1]"> </path> </g> </g> </g> </g></svg>
                                 </a>
 
                             </li>

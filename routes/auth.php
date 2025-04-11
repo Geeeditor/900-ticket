@@ -14,6 +14,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
+
+
 Route::middleware('guest')->group(function () {
 
     Route::get('/', function (){

@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Event;
+use App\Http\Controllers\Checkout;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DynamicLogin;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
@@ -44,6 +46,15 @@ Route::get('/dashboard', function () {
    return view('dashboard');
 
 })->middleware('user')->name('dashboard');
+
+Route::get('/product/checkout/{event}', [Checkout::class, 'checkoutPartyTicket'])->name('checkout.index');
+
+Route::post('/product/checkout', [Checkout::class, 'getPartyTicketOrder'])->name('checkout.getOrder');
+
+
+
+Route::post('/login/product/checkout', [Checkout::class, 'loginCheckout'])->name('checkout.getOrder.login');
+
 
 Route::get('/welcome', function () {
     $events = Event::latest()->paginate(3);
@@ -89,13 +100,22 @@ Route::middleware('admin')->group(function() {
 // Route::get('/events/latest', [EventsController::class, 'showEvents'])->name('events.index');
 
 Route::get('/event', function () {
-    return view('pages.events.index');
+    $latestEvents = Event::latest()->take(18)->paginate(3); // Get the latest 18 posts as a collection
+    $featuredEvents = Event::where('category', 'featured')->latest()->paginate(3); // Get featured events with pagination
+    $allEvents = Event::paginate(3); // Paginate all events
+
+    return view('pages.events.index', compact('latestEvents', 'featuredEvents', 'allEvents'));
+
+    // dd($latestEvents, $featuredEvents, $allEvents);
 })->name('event.index');
 
 Route::get('/event/item/{event}', function (Event $event) {
-    $event = Event::find(1);
-    return view('pages.events.item', ['event' => $event]);
-    // return view('pages.events.metadata');
+   
+    if (!$event) {
+        return redirect()->back()->with('error', 'Party ticket not found.');
+    }
+    // dd($event);
+    return view('pages.events.metadata', ['event' => $event]);
 })->name('event.metadata');
 
 // Route::get('/event', function () {
