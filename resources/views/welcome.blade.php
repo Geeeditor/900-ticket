@@ -7,43 +7,47 @@
 
 
 
-        {{-- Sign in modal --}}
-        <section x-transition:enter="transition origin-top ease-out duration-300"
-            x-transition:enter-start="transform translate-y- opacity-0"
-            x-transition:enter-end="transform translate-y-full opacity-100"
-            x-transition:leave="transition origin-top ease-out duration-300" x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0" x-data="{ authModal: true }" x-show="authModal"
-            style="background-color: rgba(16, 1, 1, .2)" class="flex fixed items-center justify-center z-[997]  w-full h-[106%] ">
+            {{-- Sign in modal --}}
+            <section id="authModal" style="background-color: rgba(16, 1, 1, .2)"
+                class=" z-[997] fixed flex justify-center items-center w-full h-[106%]">
 
 
-            <div
-                class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
-                <div class="hidden lg:block">
-                    <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
-                        alt="random img" />
-                </div>
+                <div
+                    class="{{ session()->has('otp-form') ? 'hidden' : '' }}  bg-white items-center justify-center gap-2  flex lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
+                    <div class="hidden lg:block">
+                        <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
+                            alt="random img" />
+                    </div>
 
-                <div class="p-2">
-                    <div id="loginform">
-                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-[90%] size-6 text-black">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
+                    <div class="p-2">
+                        <div id="loginform" class="{{ session()->has('register-form') ? 'hidden' : '' }}">
 
-                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
-                            <p>Sign Up</p>
-                            <p>/</p>
-                            <p>Register</p>
-                        </div>
 
-                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">
-                            Manage your bookings with ease and <br /> enjoy members-only benefits
-                        </p>
 
-                        <form action="{{ route('index.login.store') }}" method="post">
-                            @csrf
-                            <div id="provideAuthEmail" class="flex flex-col">
-                                {{--     <span
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+
+                            <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
+                                <p>Sign Up</p>
+                                <p>/</p>
+                                <p>Register</p>
+                            </div>
+
+                            <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">
+                                Manage your bookings with ease and <br /> enjoy members-only benefits
+                            </p>
+
+                            <form action="{{ route('modal.checkout.login') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="redirect_to" value="back">
+                                {{-- <input type="text" name="event_reference" value="{{ trim($event_reference) }}" hidden>
+                                <input type="number" name="regular_unit" class="regular_unit" id="regular_unit" value="{{ trim( $regular_unit == 0 ? '0' : $regular_unit) }}" hidden>
+                                <input type="number" name="vip_unit" class="vip_unit" id="vip_unit" value="{{ trim( $vip_unit == 0 ? '0' : $vip_unit) }}" hidden>
+                                <input type="number" name="vvip_unit" class="vvip_unit" id="vvip_unit" value="{{ trim( $vvip_unit == 0 ? '0' : $vvip_unit) }}" hidden> --}}
+                                <div id="provideAuthEmail" class="flex flex-col">
+                                    {{--     <span
                                     class="text-[12px] font-[200] text-red-700 text-center md:text-start  flex flex-col gap-1 ">
 
                                     <span class="block">
@@ -59,369 +63,465 @@
                                 </span> --}}
 
 
-                                </span>
-
-                                <label class="block capitalize font-bold text-center md:text-left text-black text-base"
-                                    for="password">Provide Email Address </label>
-
-
-                                <span id="email-error"
-                                    class="hidden text-[12px] font-[200] text-red-700 text-center md:text-start">
-                                    Email Provided incorrect!!
-                                </span>
-                                <input id="email" name="email"
-                                    class="input my-2 border border-gray-200 px-2 py-2 md:border-2 w-full" type="email"
-                                    placeholder="Enter your email address" />
-                                <button type="button" id="continueToPwd"
-                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                            </div>
-                            <div id="provideAuthPwd" class="hidden">
-                                <div class="flex flex-col">
-                                    <span class="block w-full">
-                                        <label class="capitalize font-bold text-center md:text-left input-label block w-full"
-                                            for="password">Password</label>
                                     </span>
-                                    <div class="relative ">
-                                        <input id="password" name="password"
-                                            class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2"
-                                            type="password" placeholder="Enter your password" />
-                                        <div id=""
-                                            class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                            <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="Toggle visibility">
-                                            <div id="" class="stroke"></div>
+
+                                    <label class="block capitalize font-bold text-center md:text-left text-black text-base"
+                                        for="password">Provide Email Address </label>
+
+
+                                    <span id="email-error"
+                                        class="hidden text-[12px] font-[200] text-red-700 text-center md:text-start">
+                                        Email Provided incorrect!!
+                                    </span>
+                                    <input id="email" name="email"
+                                        class="input my-2 border border-gray-200 px-2 py-2 md:border-2 w-full" type="email"
+                                        placeholder="Enter your email address" />
+                                    <button type="button" id="continueToPwd"
+                                        class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                                </div>
+                                <div id="provideAuthPwd" class="hidden">
+                                    <div class="flex flex-col">
+                                        <span class="block w-full">
+                                            <label
+                                                class="capitalize font-bold text-center md:text-left input-label block w-full"
+                                                for="password">Password</label>
+                                        </span>
+                                        <div class="relative ">
+                                            <input id="password" name="password"
+                                                class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2"
+                                                type="password" placeholder="Enter your password" />
+                                            <div id=""
+                                                class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                                <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                                    alt="Toggle visibility">
+                                                <div id="" class="stroke"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div>
-                                    <div class="saveLog">
-                                        <label class="saveLoginCheckBox">
-                                            <input id="ch1" type="checkbox" name="remember">
-                                            <div class="transition"></div>
-                                        </label>
-                                        <p>Remember Me</p>
+                                    <div>
+                                        <div class="saveLog">
+                                            <label class="saveLoginCheckBox">
+                                                <input id="ch1" type="checkbox" name="remember">
+                                                <div class="transition"></div>
+                                            </label>
+                                            <p>Remember Me</p>
+                                        </div>
+                                        <button type="submit"
+                                            class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Login</button>
                                     </div>
-                                    <button type="submit"
-                                        class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Login</button>
                                 </div>
+                            </form>
+
+                            <p class="my-2 text-center md:text-left uppercase">or</p>
+                            <button
+                                class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
+                                Continue with Google
+                            </button>
+
+                            <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
+                                have read and agreed to
+                                900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
+                                    class="text-red-500" href="#">privacy policy</a>
+                            </p>
+                            <div
+                                class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline login cursor-pointer">
+                                Don't have an account? Create one now!!!
                             </div>
-                        </form>
-
-                        <p class="my-2 text-center md:text-left uppercase">or</p>
-                        <button
-                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
-                            Continue with Google
-                        </button>
-
-                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
-                            have read and agreed to
-                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
-                                class="text-red-500" href="#">privacy policy</a>
+                        </div>
+                        <p class="hidden">
+                            {{ $form = true }}
                         </p>
-                        <div
-                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline login cursor-pointer">
-                            Don't have an account? Create one now!!!
-                        </div>
-                    </div>
-
-                    <div id="registerform">
-                        <svg @click="authModal = !authModal" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-[90%] size-6 text-black">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-
-                        <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
-                            <p>Create an account</p>
-                        </div>
-
-                        <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings with
-                            ease and <br />
-                            enjoy members-only benefits</p>
-
-                        <form action="{{ route('register.store') }}" method="post">
-                            @csrf
-
-                            <div id="sectionOne" class="flex flex-col">
-                                <label class="capitalize font-bold text-center md:text-left">First Name</label>
-                                <input value="{{ old('firstname') }}" name="firstname"
-                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                    placeholder="Enter your First Name" />
-                                <label class="capitalize font-bold text-center md:text-left">Last Name</label>
-                                <input value="{{ old('lastname') }}" name="lastname"
-                                    class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                    placeholder="Enter your Last Name" />
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                            </div>
-
-                            <div id="sectionTwo" class="hidden  flex-col">
-                                <div class="flex flex-col">
-                                    <label class="capitalize font-bold text-center md:text-left ">Email Address</label>
-                                    <input value="{{ old('email') }}" name="email"
-                                        class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="email"
-                                        placeholder="Enter your Email" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <label class="capitalize font-bold text-center md:text-left">Contact</label>
-                                    <input name="phone"
-                                        class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                        value="{{ old('phone') }}" placeholder="Enter your Phone Number" />
-                                </div>
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full ">Continue</button>
-                                <div class="arrowback cursor-pointer text-back input-label">← Back</div>
-                            </div>
-
-                            <div id="sectionThree" class="hidden  flex-col">
-                                <label class="capitalize font-bold text-center md:text-left input-label">House Address</label>
-                                <input name="address" class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
-                                    value="{{ old('address') }}" type="text"
-                                    placeholder="Provide your Residential Address" /><label
-                                    class="capitalize font-bold text-center input-label md:text-left ">Password</label>
-                                <div class="relative">
-
-                                    <input id="password" name="password"
-                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
-                                        placeholder="Enter your password" />
-                                    <div id=""
-                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="Toggle visibility">
-                                        <div id="" class="stroke"></div>
-                                    </div>
-                                </div>
-                                <button type="button"
-                                    class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
-                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
-                            </div>
-
-                            <div id="sectionFour" class="hidden  flex-col">
-                                <label class="capitalize font-bold text-center md:text-left input-label">Confirm
-                                    Password</label>
-                                <div class="relative">
-
-                                    <input id="password" name="password"
-                                        class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input" type="password"
-                                        placeholder="Confirm your password" />
-                                    <div id=""
-                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
-                                        <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="Toggle visibility">
-                                        <div id="" class="stroke"></div>
-                                    </div>
-                                </div>
-                                <button type="submit"
-                                    class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Create
-                                    Account</button>
-                                <div class="arrowback cursor-pointer text-black input-label">← Back</div>
-                            </div>
-                        </form>
-
-                        <p class="my-2 text-center md:text-left uppercase">or</p>
-                        <button
-                            class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
-                            Continue with Google
-                        </button>
-
-                        <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
-                            have read and agreed to
-                            900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
-                                class="text-red-500" href="#">privacy policy</a>
-                        </p>
-                        <div
-                            class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline register cursor-pointer">
-                            Already have an account? Sign in
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- sign up model section end -->
-    @endguest
-                {{-- hero content --}}
-
-                <div>
-
-
-                    <div class="relative">
-                        {{-- hero bg --}}
-                        <video autoplay muted loop
-                            class="hero-bg absolute left-0 top-0 h-[62.5vh] w-full object-cover md:h-[100vh]">
-                            <source src="{{ asset('image/video.webm') }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-
-                        {{-- hero content --}}
-                        <div
-                            class="relative top-[22.5vh] z-10 flex w-full flex-col items-center justify-start gap-10 md:top-[35vh]">
-                            <div class="group relative flex w-[70%] items-center md:hidden">
-                                <svg class="absolute left-4 h-4 w-4 fill-black" aria-hidden="true"
-                                    viewBox="0 0 24 24">
-                                    <g>
-                                        <path
-                                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                                        </path>
-                                    </g>
+                        @if (session()->has('register-form') || $form)
+                            <style>
+                                .forcedisplay {
+                                    display: block !important;
+                                }
+                            </style>
+                            <div class="{{ session()->has('register-form') ? 'forcedisplay' : 'hidden' }}" id="registerform">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
-                                <input placeholder="Search" type="search"
-                                    class="line-height[28px] h-10 w-full rounded-lg border-2 border-transparent bg-[#ffffff] pl-10 text-[#04030f] shadow shadow-gray-400 transition duration-300 ease-in-out focus:border-red-200 focus:outline-none" />
-                            </div>
 
-                            <div class="mx-auto flex w-[70%] flex-wrap justify-center gap-[1.5rem] md:gap-[2rem]">
                                 <div
-                                    class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-7 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
-                                    <a class="flex flex-col items-center justify-center" href="/flight">
-                                        <img class="w-[35px]" src="{{ asset('image/icons/flight-alt.svg') }}"
-                                            alt="lorem ipsum">
-                                        <span class="inline-block text-center text-sm font-[700]">
-                                            Flight
-                                        </span>
-                                    </a>
-                                </div>
-                                <div
-                                    class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-7 py-5 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
-                                    <a class="flex flex-col items-center justify-center" href="/hotel">
-                                        <img class="w-[35px]" src="{{ asset('image/icons/hotel-alt.svg') }}"
-                                            alt="lorem ipsum">
-                                        <span class="inline-block text-center text-sm font-[700]">
-                                            Hotel
-                                        </span>
-                                    </a>
-                                </div>
-                                <div
-                                    class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-6 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
-                                    <a class="flex flex-col items-center justify-center"
-                                        href="{{ route('event.index') }}">
-                                        <img class="w-[35px]" src="{{ asset('image/icons/ticket-alt.svg') }}"
-                                            alt="lorem ipsum">
-                                        <span class="inline-block text-center text-sm font-[700]">
-                                            Party
-                                        </span>
-                                        <span class="inline-block text-center text-sm font-[700]">
-                                            Ticket
-                                        </span>
-                                    </a>
-                                </div>
-                                <div
-                                    class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-5 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
-                                    <a class="flex flex-col items-center justify-center" href="javascript:void(0)">
-                                        <img class="w-[35px]" src="{{ asset('image/icons/shortlet-alt.svg') }}"
-                                            alt="lorem ipsum">
-                                        <span class="inline-block text-center text-sm font-[700]">
-                                            Shortlet
-                                        </span>
-                                    </a>
+                                    class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
+                                    <p>Create an account</p>
                                 </div>
 
-                            </div>
+                                <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings
+                                    with
+                                    ease and <br />
+                                    enjoy members-only benefits</p>
 
-                            <div class="mx-auto hidden w-[80%] p-4 md:block">
+                                <form action="{{ route('modal.checkout.register.store') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="redirect_to" value="back">
+                                    <div id="sectionOne" class="flex flex-col">
+                                        <label class="capitalize font-bold text-center md:text-left">First Name</label>
+                                        <input value="{{ old('firstname') }}" name="firstname"
+                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                            type="text" placeholder="Enter your First Name" />
+                                        <label class="capitalize font-bold text-center md:text-left">Last Name</label>
+                                        <input value="{{ old('lastname') }}" name="lastname"
+                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                            type="text" placeholder="Enter your Last Name" />
+                                        <button type="button"
+                                            class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                                    </div>
+
+                                    <div id="sectionTwo" class="hidden  flex-col">
+                                        <div class="flex flex-col">
+                                            <label class="capitalize font-bold text-center md:text-left ">Email Address</label>
+                                            <input value="{{ old('email') }}" name="email"
+                                                class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                                type="email" placeholder="Enter your Email" />
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <label class="capitalize font-bold text-center md:text-left">Contact</label>
+                                            <input name="phone"
+                                                class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                                type="text" value="{{ old('phone') }}"
+                                                placeholder="Enter your Phone Number" />
+                                        </div>
+                                        <button type="button"
+                                            class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full ">Continue</button>
+                                        <div class="arrowback cursor-pointer text-back input-label">← Back</div>
+                                    </div>
+
+                                    <div id="sectionThree" class="hidden  flex-col">
+                                        <label class="capitalize font-bold text-center md:text-left input-label">House
+                                            Address</label>
+                                        <input name="address"
+                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                            value="{{ old('address') }}" type="text"
+                                            placeholder="Provide your Residential Address" /><label
+                                            class="capitalize font-bold text-center input-label md:text-left ">Password</label>
+                                        <div class="relative">
+
+                                            <input id="password" name="password"
+                                                class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input"
+                                                type="password" placeholder="Enter your password" />
+                                            <div id=""
+                                                class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                                <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                                    alt="Toggle visibility">
+                                                <div id="" class="stroke"></div>
+                                            </div>
+                                        </div>
+                                        <button type="button"
+                                            class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
+                                        <div class="arrowback cursor-pointer text-black input-label">← Back</div>
+                                    </div>
+
+                                    <div id="sectionFour" class="hidden  flex-col">
+                                        <label class="capitalize font-bold text-center md:text-left input-label">Confirm
+                                            Password</label>
+                                        <div class="relative">
+
+                                            <input id="password" name="password"
+                                                class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2 input"
+                                                type="password" placeholder="Confirm your password" />
+                                            <div id=""
+                                                class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                                <img class="h-[25px]" src="{{ asset('image/eye.svg') }}"
+                                                    alt="Toggle visibility">
+                                                <div id="" class="stroke"></div>
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                            class="my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Create
+                                            Account</button>
+                                        <div class="arrowback cursor-pointer text-black input-label">← Back</div>
+                                    </div>
+                                </form>
+
+                                <p class="my-2 text-center md:text-left uppercase">or</p>
+                                <button
+                                    class="duration-600 mx-auto md:mx-0 flex max-w-xs items-center justify-center md:justify-start gap-1 rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-bold uppercase text-gray-800 transition-transform hover:scale-105">
+                                    Continue with Google
+                                </button>
+
+                                <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
+                                    have read and agreed to
+                                    900Tickets <a class="text-red-500" href="#">terms and conditions</a> and <a
+                                        class="text-red-500" href="#">privacy policy</a>
+                                </p>
                                 <div
-                                    class="flex w-full flex-col rounded-md border border-gray-200 bg-gray-100 p-6 shadow shadow-gray-300">
-
-                                    <form id="flight-form" onsubmit="return validateForm()">
-                                        <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
-                                            <div class="flex flex-col">
-                                                <label for="origin" class="mb-1">From</label>
-                                                <input type="text" placeholder="City or Airport"
-                                                    class="rounded border border-gray-300 p-2" id="origin"
-                                                    name="origin" required>
-                                            </div>
-                                            <div class="flex flex-col">
-                                                <label for="depart" class="mb-1">To</label>
-                                                <input type="text" placeholder="City or Airport"
-                                                    class="rounded border border-gray-300 p-2" id="depart"
-                                                    name="depart" required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
-                                            <div class="flex flex-col">
-                                                <label for="departure-date" class="mb-1">Depart</label>
-                                                <input type="date" class="rounded border border-gray-300 p-2"
-                                                    id="departure-date" name="departure-date"
-                                                    onkeydown="return false" required>
-                                            </div>
-                                            <div class="flex flex-col">
-                                                <label for="return-date" class="mb-1">Return</label>
-                                                <input type="date" value=""
-                                                    onchange="this.setAttribute('value', this.value)"
-                                                    class="rounded border border-gray-300 p-2" name="return-date">
-                                            </div>
-                                        </div>
-                                        <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-3">
-                                            <div class="flex flex-col">
-                                                <label for="adults" class="mb-1">Adults <span
-                                                        class="text-xs text-gray-500">12+</span></label>
-                                                <select class="rounded border border-gray-300 p-2" id="adults"
-                                                    onchange="dynamicDropDown(this.value);">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                </select>
-                                            </div>
-                                            <div class="flex flex-col">
-                                                <label for="children" class="mb-1">Children <span
-                                                        class="text-xs text-gray-500">2-11</span></label>
-                                                <select class="rounded border border-gray-300 p-2" id="children">
-                                                    <option value="0">0</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                </select>
-                                            </div>
-                                            <div class="flex flex-col">
-                                                <label for="infants" class="mb-1">Infants <span
-                                                        class="text-xs text-gray-500">less than 2</span></label>
-                                                <select class="rounded border border-gray-300 p-2" id="infants">
-                                                    <option value="0">0</option>
-                                                    <option value="1">1</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
-                                            <div class="flex flex-col">
-                                                <label for="cabin" class="mb-1">Cabin</label>
-                                                <select class="rounded border border-gray-300 p-2" id="cabin">
-                                                    <option value="ECONOMY">Economy</option>
-                                                    <option value="PREMIUM_ECONOMY">Premium Economy</option>
-                                                    <option value="BUSINESS">Business</option>
-                                                    <option value="FIRST">First</option>
-                                                </select>
-                                            </div>
-                                            <div class="flex flex-col pt-4">
-                                                <div class="flex items-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="directFlights">
-                                                    <label class="ml-2" for="directFlights">Direct flights</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-left">
-                                            <button type="submit" class="rounded bg-blue-600 p-2 text-white">Search
-                                                flights</button>
-                                        </div>
-                                    </form>
+                                    class="text-center md:text-left text-sm my-2 block text-red-500 capitalize underline hover:no-underline register cursor-pointer">
+                                    Already have an account? Sign in
                                 </div>
                             </div>
+                        @endif
 
-
-
-                        </div>
                     </div>
                 </div>
+                @if (session()->has('otp-form'))
+                    <div
+                        class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
+                        <div class="hidden lg:block">
+                            <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
+                                alt="random img" />
+                        </div>
 
 
+                        <div class="">
+                            {{-- <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg> --}}
+                            <div class="mx-auto   rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8">
+                                <section class="mb-8">
+                                    <h1 class="mb-1 text-2xl font-bold">Email Verification</h1>
+                                    <p class="text-[15px] text-slate-500">Enter the 6-digit verification code that was sent to
+                                        your
+                                        email.</p>
+                                    <div>
+                                        @if (session('message'))
+                                            <div>
+                                                <strong style="color: #7a0909">{{ session('message') }}</strong>
+
+                                            </div>
+                                        @endif
+                                    </div>
+                                </section>
+                                <form method="post" action="{{ route('modal.checkout.register.otp.store') }}"
+                                    class="otp-form">
+                                    @csrf
+                                    <div class="flex items-center justify-center gap-3">
+                                        <input type="hidden" name="redirect_to" value="back">
+                                        <input type="text" name="otp1"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14 appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp2"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp3"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp4"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp5"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp6"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+
+
+                                    </div>
+                                    <div class="mx-auto mt-4 max-w-[260px]">
+                                        <button type="submit"
+                                            class="inline-flex w-full justify-center whitespace-nowrap rounded-lg bg-red-700 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 transition-colors duration-150 hover:bg-red-900 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 button-submit">
+                                            Verify Account
+                                        </button>
+                                    </div>
+                                </form>
+                                <form class="my-2" action="{{ route('modal.checkout.register.otp.resend') }}"
+                                    method="post">
+                                    @csrf
+                                    <div class="text-sm text-gray-600">You can get a new OTP in
+                                        <span id="otp-timer">00:00</span>
+                                        <button type="submit" id="request-otp-button"
+                                            class="text-red-400 underline hover:text-red-500" disabled>Request
+                                            OTP</button>
+                                    </div>
+                                </form>
+                                <a href="{{ url()->previous() }}" class="text-sm text-gray-500"><i
+                                        class="fa-solid fa-arrow-left-long ">
+
+                                    </i> Back</a>
+                                {{-- <div class="mt-4 text-sm text-slate-500">Didn't receive code? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Resend</a></div> --}}
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                @endif
+
+            </section>
+            <!-- sign up model section end -->
+        @endguest
+        {{-- hero content --}}
+
+        <div>
+
+
+            <div class="relative">
+                {{-- hero bg --}}
+                <video autoplay muted loop
+                    class="hero-bg absolute left-0 top-0 h-[62.5vh] w-full object-cover md:h-[100vh]">
+                    <source src="{{ asset('image/video.webm') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                {{-- hero content --}}
+                <div
+                    class="relative top-[22.5vh] z-10 flex w-full flex-col items-center justify-start gap-10 md:top-[35vh]">
+                    <div class="group relative flex w-[70%] items-center md:hidden">
+                        <svg class="absolute left-4 h-4 w-4 fill-black" aria-hidden="true" viewBox="0 0 24 24">
+                            <g>
+                                <path
+                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
+                            </g>
+                        </svg>
+                        <input placeholder="Search" type="search"
+                            class="line-height[28px] h-10 w-full rounded-lg border-2 border-transparent bg-[#ffffff] pl-10 text-[#04030f] shadow shadow-gray-400 transition duration-300 ease-in-out focus:border-red-200 focus:outline-none" />
+                    </div>
+
+                    <div class="mx-auto flex w-[70%] flex-wrap justify-center gap-[1.5rem] md:gap-[2rem]">
+                        <div
+                            class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-7 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
+                            <a class="flex flex-col items-center justify-center" href="/flight">
+                                <img class="w-[35px]" src="{{ asset('image/icons/flight-alt.svg') }}" alt="lorem ipsum">
+                                <span class="inline-block text-center text-sm font-[700]">
+                                    Flight
+                                </span>
+                            </a>
+                        </div>
+                        <div
+                            class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-7 py-5 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
+                            <a class="flex flex-col items-center justify-center" href="/hotel">
+                                <img class="w-[35px]" src="{{ asset('image/icons/hotel-alt.svg') }}" alt="lorem ipsum">
+                                <span class="inline-block text-center text-sm font-[700]">
+                                    Hotel
+                                </span>
+                            </a>
+                        </div>
+                        <div
+                            class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-6 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
+                            <a class="flex flex-col items-center justify-center" href="{{ route('event.index') }}">
+                                <img class="w-[35px]" src="{{ asset('image/icons/ticket-alt.svg') }}" alt="lorem ipsum">
+                                <span class="inline-block text-center text-sm font-[700]">
+                                    Party
+                                </span>
+                                <span class="inline-block text-center text-sm font-[700]">
+                                    Ticket
+                                </span>
+                            </a>
+                        </div>
+                        <div
+                            class="flex items-center justify-center rounded-md border border-gray-200 bg-white px-5 py-4 shadow shadow-gray-300 ease-in-out hover:scale-[1.1] hover:bg-slate-100 hover:shadow-md md:px-[2rem]">
+                            <a class="flex flex-col items-center justify-center" href="javascript:void(0)">
+                                <img class="w-[35px]" src="{{ asset('image/icons/shortlet-alt.svg') }}"
+                                    alt="lorem ipsum">
+                                <span class="inline-block text-center text-sm font-[700]">
+                                    Shortlet
+                                </span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="mx-auto hidden w-[80%] p-4 md:block">
+                        <div
+                            class="flex w-full flex-col rounded-md border border-gray-200 bg-gray-100 p-6 shadow shadow-gray-300">
+
+                            <form id="flight-form" onsubmit="return validateForm()">
+                                <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                    <div class="flex flex-col">
+                                        <label for="origin" class="mb-1">From</label>
+                                        <input type="text" placeholder="City or Airport"
+                                            class="rounded border border-gray-300 p-2" id="origin" name="origin"
+                                            required>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label for="depart" class="mb-1">To</label>
+                                        <input type="text" placeholder="City or Airport"
+                                            class="rounded border border-gray-300 p-2" id="depart" name="depart"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                    <div class="flex flex-col">
+                                        <label for="departure-date" class="mb-1">Depart</label>
+                                        <input type="date" class="rounded border border-gray-300 p-2"
+                                            id="departure-date" name="departure-date" onkeydown="return false" required>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label for="return-date" class="mb-1">Return</label>
+                                        <input type="date" value=""
+                                            onchange="this.setAttribute('value', this.value)"
+                                            class="rounded border border-gray-300 p-2" name="return-date">
+                                    </div>
+                                </div>
+                                <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-3">
+                                    <div class="flex flex-col">
+                                        <label for="adults" class="mb-1">Adults <span
+                                                class="text-xs text-gray-500">12+</span></label>
+                                        <select class="rounded border border-gray-300 p-2" id="adults"
+                                            onchange="dynamicDropDown(this.value);">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label for="children" class="mb-1">Children <span
+                                                class="text-xs text-gray-500">2-11</span></label>
+                                        <select class="rounded border border-gray-300 p-2" id="children">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <label for="infants" class="mb-1">Infants <span
+                                                class="text-xs text-gray-500">less than 2</span></label>
+                                        <select class="rounded border border-gray-300 p-2" id="infants">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                    <div class="flex flex-col">
+                                        <label for="cabin" class="mb-1">Cabin</label>
+                                        <select class="rounded border border-gray-300 p-2" id="cabin">
+                                            <option value="ECONOMY">Economy</option>
+                                            <option value="PREMIUM_ECONOMY">Premium Economy</option>
+                                            <option value="BUSINESS">Business</option>
+                                            <option value="FIRST">First</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col pt-4">
+                                        <div class="flex items-center">
+                                            <input class="form-check-input" type="checkbox" id="directFlights">
+                                            <label class="ml-2" for="directFlights">Direct flights</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-left">
+                                    <button type="submit" class="rounded bg-blue-600 p-2 text-white">Search
+                                        flights</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
-    
+        </div>
+
+
+    </div>
+
 @endsection
 
 @section('content')
@@ -1698,6 +1798,47 @@
             </div>
         </section>
     </main>
+
+    <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const authModal = document.getElementById('authModal');
+                    const closeModal = document.querySelectorAll('.closeModal');
+                    const openModal = document.getElementById('openModal');
+                    const closeRegisterModal = document.getElementById('closeRegisterModal');
+                    const continueToPwd = document.getElementById('continueToPwd');
+                    const provideAuthPwd = document.getElementById('provideAuthPwd');
+                    const provideAuthEmail = document.getElementById('provideAuthEmail');
+
+                    // Show the modal
+                    authModal.classList.remove('hidden');
+
+                    // Close the modal
+                    closeModal.forEach((modal) => {
+                        modal.addEventListener('click', function() {
+                            authModal.classList.add('hidden');
+                        });
+                    });
+
+
+
+                    openModal.addEventListener('click', function() {
+                        authModal.classList.remove('hidden');
+                    });
+
+
+
+
+                    closeRegisterModal.addEventListener('click', function() {
+                        authModal.classList.add('hidden');
+                    });
+
+                    // Show password input
+                    continueToPwd.addEventListener('click', function() {
+                        provideAuthEmail.classList.add('hidden');
+                        provideAuthPwd.classList.remove('hidden');
+                    });
+                });
+            </script>
 
 
 @endsection

@@ -165,6 +165,6 @@
         }
     </script>
 
-    <script></script>
+    
 
 @endsection

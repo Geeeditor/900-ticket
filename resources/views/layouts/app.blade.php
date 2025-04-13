@@ -1072,6 +1072,86 @@
     <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>
 
     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('.otp-form');
+        const inputs = document.querySelectorAll('.otp-input');
+        const submitButton = document.querySelector('.button-submit');
+        const timerDisplay = document.getElementById('otp-timer');
+        const requestOtpButton = document.getElementById('request-otp-button');
+
+        const isNumberKey = (key) => /^[0-9]$/.test(key);
+        
+        const handleKeyDown = (e) => {
+            if (!isNumberKey(e.key) && !['Backspace', 'Delete', 'Tab'].includes(e.key) && !e.metaKey) {
+                e.preventDefault();
+            }
+
+            if (['Delete', 'Backspace'].includes(e.key)) {
+                const index = Array.from(inputs).indexOf(e.target);
+                if (index > 0) {
+                    inputs[index - 1].value = '';
+                    inputs[index - 1].focus();
+                }
+            }
+        };
+
+        const handleInput = (e) => {
+            const index = Array.from(inputs).indexOf(e.target);
+            if (e.target.value && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            } else {
+                submitButton.focus();
+            }
+        };
+
+        const handleFocus = (e) => {
+            e.target.select();
+        };
+
+        const handlePaste = (e) => {
+            e.preventDefault();
+            const text = e.clipboardData.getData('text');
+            if (isNumberKey(text) && text.length === inputs.length) {
+                text.split('').forEach((digit, index) => {
+                    inputs[index].value = digit;
+                });
+                submitButton.focus();
+            }
+        };
+
+        const initializeInputEvents = () => {
+            inputs.forEach((input) => {
+                input.addEventListener('input', handleInput);
+                input.addEventListener('keydown', handleKeyDown);
+                input.addEventListener('focus', handleFocus);
+                input.addEventListener('paste', handlePaste);
+            });
+        };
+
+        const startTimer = (duration, display) => {
+            let timer = duration;
+
+            requestOtpButton.disabled = true;
+            const interval = setInterval(() => {
+                const minutes = String(Math.floor(timer / 60)).padStart(2, '0');
+                const seconds = String(timer % 60).padStart(2, '0');
+                display.textContent = `${minutes}:${seconds}`;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    requestOtpButton.disabled = false;
+                    display.textContent = "00:00";
+                }
+            }, 1000);
+        };
+
+        const twoMinutes = 60 * 2; // Duration in seconds
+        initializeInputEvents();
+        startTimer(twoMinutes, timerDisplay);
+    });
+</script>
+
+    <script>
         // Function to show the flash message
         function showFlashMessage() {
             const flashMessage = document.querySelector('.flash-message');
@@ -1099,6 +1179,7 @@
 
             const loginForm = document.getElementById("loginform");
             const registerForm = document.getElementById("registerform");
+            const forcedisplay   = document.querySelector(".forcedisplay");
             const loginLink = document.querySelector(".login");
             const registerLink = document.querySelector(".register");
             const continueButtons = document.querySelectorAll(".continueButton");
@@ -1107,17 +1188,19 @@
             ];
 
             // Initially show login form
-            registerForm.classList.add("hidden");
+            // registerForm.classList.add("hidden");
 
             // Toggle between login and register forms
             loginLink.addEventListener("click", function() {
                 loginForm.classList.toggle("hidden");
                 registerForm.classList.toggle("hidden");
+                forcedisplay.classList.toggle("forcedisplay");
             });
 
             registerLink.addEventListener("click", function() {
                 loginForm.classList.toggle("hidden");
                 registerForm.classList.toggle("hidden");
+                forcedisplay.classList.toggle("forcedisplay");
             });
 
             // Email validation and navigation to password section

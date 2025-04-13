@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <section class="w-full mx-auto">
+    <main class="w-full mx-auto">
         <section
             class="md:px-8 md:py-8 py-4 md:w-[80%] mx-auto  flex items-center justify-center bg-white rounded-b-md  shadow-lg p-1 m-1">
             <div class="hidden md:block w-1/2 ">
@@ -204,7 +204,31 @@
             </div>
 
         </section>
-    </section>
+        <script>
+            const togglePasswords = document.querySelectorAll(".togglePassword");
 
+            togglePasswords.forEach((togglePassword) => {
+                togglePassword.addEventListener("click", function() {
+                    const passwordInput = this
+                        .previousElementSibling; // Assuming input is before the toggle
+                    const type = passwordInput.getAttribute("type") === "password" ? "text" :
+                        "password";
+                    passwordInput.setAttribute("type", type);
 
+                    const strokes = document.querySelectorAll(
+                        '.stroke'); // Use class selector for strokes
+                    strokes.forEach((stroke) => {
+                        stroke.classList.toggle(
+                            "eye-close"); // Toggle the class for each stroke
+                    });
+                });
+            });
+
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+        </script>
+    </main>
 @endsection

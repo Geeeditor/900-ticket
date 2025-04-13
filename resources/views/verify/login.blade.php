@@ -13,32 +13,33 @@
 @endsection
 
 @section('content')
-    <section class="w-full mx-auto">
-        <section class="md:px-8 md:py-8 py-4 md:w-[80%] mx-auto  flex items-center justify-center bg-white rounded-b-md  shadow-lg p-1 m-1">
-                <div class="hidden md:block w-1/2 ">
-                    <img class="object-cover w-full h-full" src="{{asset('image/profilePop1-v3.jpg')}}" alt="lorem ipsum">
-                </div>
-                <div class="w-[100%] md:w-1/2   ">
-
-
-        {{-- Mini Nav --}}
-        <div class="bg-white px-3 py-2">
-
-
-            <div class="flex gap-3 justify-start">
-
-                <a id="" href="{{ route('index.login') }}"
-                    class="signupLink cursor-pointer font-[600]    text-white px-2 py- md:px-4 md:py-2 rounded-md bg-red-700 hover:bg-red-900">Login</a>
-
-                <a id="" href="{{ route('index.register') }}"
-                    class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
+    <div class="w-full mx-auto">
+        <section
+            class="md:px-8 md:py-8 py-4 md:w-[80%] mx-auto  flex items-center justify-center bg-white rounded-b-md  shadow-lg p-1 m-1">
+            <div class="hidden md:block w-1/2 ">
+                <img class="object-cover w-full h-full" src="{{ asset('image/profilePop1-v3.jpg') }}" alt="lorem ipsum">
             </div>
-        </div>
+            <div class="w-[100%] md:w-1/2   ">
 
-        {{-- Login Section --}}
-        <div id="" class="loginSection h-[100%]  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
-            <div>
-                <div>
+
+                {{-- Mini Nav --}}
+                <div class="bg-white px-3 py-2">
+
+
+                    <div class="flex gap-3 justify-start">
+
+                        <a id="" href="{{ route('index.login') }}"
+                            class="signupLink cursor-pointer font-[600]    text-white px-2 py- md:px-4 md:py-2 rounded-md bg-red-700 hover:bg-red-900">Login</a>
+
+                        <a id="" href="{{ route('index.register') }}"
+                            class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
+                    </div>
+                </div>
+
+                {{-- Login Section --}}
+                <div id="" class="loginSection h-[100%]  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
+                    <div>
+                        <div>
                             <div class="mx-auto flex w-full justify-start gap-1 text-lg uppercase font-bold">
                                 <p>Sign in</p>
                             </div>
@@ -47,22 +48,23 @@
                                 ease and <br />
                                 enjoy members-only benefits</p>
                         </div>
-                <form action="{{route('index.login.store')}}" method="post" class="flex flex-col gap-2">
-                    @csrf
-                    <div class="login-field flex flex-col gap-1">
-                        <label class="font-[500]" for="email">Email</label>
-                        <input title="Eg: mark@yokomail.com" class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="text" name="email"
-                            placeholder="Enter your email">
-                        <span class="text-[12px] font-[200] text-red-700">
-                            @error('email')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                        <form action="{{ route('index.login.store') }}" method="post" class="flex flex-col gap-2">
+                            @csrf
+                            <div class="login-field flex flex-col gap-1">
+                                <label class="font-[500]" for="email">Email</label>
+                                <input title="Eg: mark@yokomail.com"
+                                    class="input my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="text"
+                                    name="email" placeholder="Enter your email">
+                                <span class="text-[12px] font-[200] text-red-700">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
 
-                    <div class="flex flex-col gap-1">
-                        <label class="font-[500]" for="password">Password</label>
-                        <div class="relative">
+                            <div class="flex flex-col gap-1">
+                                <label class="font-[500]" for="password">Password</label>
+                                <div class="relative">
 
                                     <input id="password" name="password"
                                         class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="password"
@@ -73,36 +75,64 @@
                                         <div id="" class="stroke"></div>
                                     </div>
                                 </div>
-                        <span class="text-[12px] font-[200] text-red-700">
-                            @error('password')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
-
-                     <div >
-                           <div class="saveLog">
-                                <label class="saveLoginCheckBox">
-                                    <input id="ch1" type="checkbox" name="remember">
-                                    <div class="transition"></div>
-                                </label>
-                                <p>
-                                Remember Me
-                                </p>
+                                <span class="text-[12px] font-[200] text-red-700">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                             </div>
-                        </div>
 
-                    <button class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2  text-start uppercase text-white submit px-2"
-                        type="submit">Login</button>
-                </form>
+                            <div>
+                                <div class="saveLog">
+                                    <label class="saveLoginCheckBox">
+                                        <input id="ch1" type="checkbox" name="remember">
+                                        <div class="transition"></div>
+                                    </label>
+                                    <p>
+                                        Remember Me
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button
+                                class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2  text-start uppercase text-white submit px-2"
+                                type="submit">Login</button>
+                        </form>
 
 
-            </div>
-        </div>
-
+                    </div>
                 </div>
 
+            </div>
+        </section>
+         <script>
+            const togglePasswords = document.querySelectorAll(".togglePassword");
+
+            togglePasswords.forEach((togglePassword) => {
+                togglePassword.addEventListener("click", function() {
+                    const passwordInput = this
+                        .previousElementSibling; // Assuming input is before the toggle
+                    const type = passwordInput.getAttribute("type") === "password" ? "text" :
+                        "password";
+                    passwordInput.setAttribute("type", type);
+
+                    const strokes = document.querySelectorAll(
+                        '.stroke'); // Use class selector for strokes
+                    strokes.forEach((stroke) => {
+                        stroke.classList.toggle(
+                            "eye-close"); // Toggle the class for each stroke
+                    });
+                });
+            });
+
+            // Email validation function
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+        </script>
 
 
-    </section>
+
+    </div>
 @endsection

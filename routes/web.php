@@ -5,10 +5,12 @@ use App\Http\Controllers\Checkout;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DynamicLogin;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DynamicRegister;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController\HomeController;
 use App\Http\Controllers\AdminController\EventController;
+use App\Http\Controllers\Transactions\Payments\PaymentController;
 
 // Route::any('/', function () {
 //     return redirect()->route('index');
@@ -42,8 +44,8 @@ Route::fallback(function() {
 });
 
 Route::get('/dashboard', function () {
-
-   return view('dashboard');
+    $events = Event::latest()->paginate(3);
+   return view('dashboard', ['events' => $events]);
 
 })->middleware('user')->name('dashboard');
 
@@ -51,9 +53,29 @@ Route::get('/product/checkout/{event}', [Checkout::class, 'checkoutPartyTicket']
 
 Route::post('/product/checkout', [Checkout::class, 'getPartyTicketOrder'])->name('checkout.getOrder');
 
+Route::post('/login/product/checkout', [DynamicLogin::class, 'store'])->name('modal.checkout.login');
+
+//Dynamic Register Route
+Route::post('/register/product/checkout', [DynamicRegister::class, 'store'])
+    ->name('modal.checkout.register.store');
+
+//Dynamic Otp Verification Route
+Route::get('/register/otp/product/checkout', [DynamicRegister::class, 'registerVerifyOtp'])
+    ->name('modal.checkout.register.otp');
+
+Route::post('/register/otp/product/checkout', [DynamicRegister::class, 'registerVerifyOtpStore'])
+    ->name('modal.checkout.register.otp.store');
+
+Route::post('/register/resend-otp/product/checkout', [DynamicRegister::class, 'resendOtp'])
+    ->name('modal.checkout.register.otp.resend');
+
+Route::post('/payment', [PaymentController::class, 'pay'])->name('payment.pay');
+
+Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
 
-Route::post('/login/product/checkout', [Checkout::class, 'loginCheckout'])->name('checkout.getOrder.login');
+
+
 
 
 Route::get('/welcome', function () {

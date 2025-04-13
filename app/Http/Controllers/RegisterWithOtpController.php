@@ -65,8 +65,14 @@ class RegisterWithOtpController extends Controller
         $phone = $request->session()->get('register_phone');
         $password = $request->session()->get('register_password');
 
+         if (!$email) {
+            return redirect()->back()->withErrors(['message' => 'No email found in the session.']);
+        }
+
         // Create a new otp
         $otp = rand(100000, 999999);
+
+
 
         // Update Records
 
@@ -91,7 +97,7 @@ class RegisterWithOtpController extends Controller
     }
 
     public function registerVerifyOtp() {
-        return view('verify.register_otp');
+        return view('verify.otp');
     }
 
 
