@@ -39,7 +39,7 @@
         $taxed_total_order = $total_order_value * $tax;
 
         $total_quantity = $regular_ticket_quantity + $vip_ticket_quantity + $vvip_ticket_quantity;
-        $total_price = number_format($taxed_total_order + $total_order_value, 2);
+        $total_price = $taxed_total_order + $total_order_value;
     @endphp
 
     <main>
@@ -61,7 +61,7 @@
 
                     @auth
                         <div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-md">
-                            <h2 class="text-lg font-bold text-black">Hi {{ Auth()->user()->firstname }}!</h2>
+                            <h2 class="text-lg font-bold text-black">Hi {{ $user->firstname }}!</h2>
                             <p class="text-sm text-gray-500 flex flex-col">Below is your order summary
                             </p>
                         </div>
@@ -83,7 +83,42 @@
                         @csrf
                         <h2 class="text-lg font-bold text-black">Order Summary</h2>
                         <div  class="flex flex-col gap-2">
-                            {{-- @csrf --}}
+                            {{-- Hidden Fields --}}
+                            <input type="email" name="email" value="{{ $user->email }}" hidden>
+                            <input type="number" name="user_id" value="{{ $user->id }}" hidden>
+                            <input type="text" name="first_name" value="{{ $user->firstname }}" hidden>
+                            <input type="text" name="last_name" value="{{ $user->lastname }}" hidden>
+
+                            <input type="text" name="phone" value="{{ $user->phone }}" hidden>
+                            <input type="text" name="product_reference" value="{{ $event_reference }}" hidden>
+                            <input type="text" name="product_name" value="{{ $title }}" hidden>
+                            {{-- Regular Ticket Order Quote --}}
+                            <input type="number" name="product_price[]" value="{{ $regular_ticket_price }}" hidden>
+                            <input type="number" name="product_quantity[]" value="{{ $regular_ticket_quantity }}" hidden>
+                            {{-- VIP Ticket Order Quote --}}
+                            <input type="number" name="product_price[]" value="{{ $vip_ticket_price }}" hidden>
+                            <input type="number" name="product_quantity[]" value="{{ $vip_ticket_quantity }}" hidden>
+                            {{-- VVIP Ticket Order Quote --}}
+                            <input type="number" name="product_price[]" value="{{ $vvip_ticket_price }}" hidden>
+                            <input type="number" name="product_quantity[]" value="{{ $vvip_ticket_quantity }}" hidden>
+                            {{-- Taxed Total Order --}}
+                            <input type="number" name="taxed_order" value="{{ $taxed_total_order }}" hidden>
+                            {{--  Order Value --}}
+                            <input type="number" name="product_purchase_cost" value="{{ $total_order_value }}" hidden>
+                            {{-- Total Quantity --}}
+                            <input type="number" name="product_total_quantity" value="{{ $total_quantity }}" hidden>
+                            {{-- Total Order Value with Tax --}}
+                            <input type="number" name="product_total_cost" value="{{ ($total_price) }}" hidden>
+                            {{-- Payment Date --}}
+                            <input type="text" name="product_order_date" value="{{ \Carbon\Carbon::now() }}" hidden>
+                            
+                            
+
+                            
+                            
+
+
+                            
                             <div class="flex justify-between md:flex-row flex-col">
                                 <p class="text-sm text-gray-500">Event Name</p>
                                 {{-- <input type="text" name="" value="{{ $event_id }}" hidden> --}}
@@ -153,7 +188,7 @@
                             <div class="flex justify-between md:flex-row flex-col">
                                 <p class="text-sm text-gray-500">Total Price</p>
                                 <p class="text-sm text-gray-500">
-                                    ₦{{ $total_price }}
+                                    ₦{{ number_format($total_price, 2) }}
                                 </p>
                             </div>
                             <div class="w-full flex justify-end">

@@ -73,9 +73,11 @@ class Checkout extends Controller
         }
 
         $event = Event::where('event_reference', $event_reference)->first();
+        $user = auth()->user();
 
 
         return view('pages.events.checkout', [
+            'user' => $user,
             'event' => $event,
             'event_reference' => $event_reference,
             'regular_unit' => $regular_unit,
