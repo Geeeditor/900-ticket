@@ -26,6 +26,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'gender'
     ];
 
     /**
@@ -66,5 +67,10 @@ class User extends Authenticatable
     public function cart(): HasOne
     {
         return $this->hasOne(Cart::class, 'user_id', 'id');
+    }
+
+    public function transactionHistory(): HasOne
+    {
+        return $this->hasOne(TransactionHistory::class, 'user_id', 'id');
     }
 }

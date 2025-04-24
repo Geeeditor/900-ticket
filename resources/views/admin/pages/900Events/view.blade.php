@@ -1,11 +1,13 @@
 @extends('layouts.admin')
+@section('title', 'View Created Party Tickets')
 @section('content')
     <section>
         <div class="event-hero font-[600] md:mb-10">VIEW CREATED PARTY TICKETS</div>
 
-        @if(session()->has('message')){
-            <span class="text-[20px] font-[600]">{{ session('message') }}</span>
-        }
+        @if (session()->has('success'))
+            <div class="p-2 bg-green-100 text-green-700 rounded mb-4">
+                {{ session('success') }}
+            </div>
         @endif
 
 
@@ -16,8 +18,8 @@
                     <div class="flex flex-col rounded-xl bg-white text-gray-700 shadow-md">
                         <div
                             class="bg-blue-gray-500 shadow-blue-gray-500/40 h-40 overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg">
-                            <img class="h-full w-full object-cover" src="{{ asset( './image/events/' . basename($event->hero_image)) }}"
-                                alt="lorem ipsum">
+                            <img class="h-full w-full object-cover"
+                                src="{{ asset('./image/events/' . basename($event->hero_image)) }}" alt="lorem ipsum">
                         </div>
                         <div class="p-6">
                             <h5 class="text-blue-gray-900 text-xl font-semibold">
@@ -33,7 +35,7 @@
                                 class="flex divide-x overflow-hidden rounded-lg border bg-white rtl:flex-row-reverse dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-900">
                                 <button
                                     class="px-4 py-2 font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:px-6 dark:text-gray-300 dark:hover:bg-gray-800">
-                                    <a href="{{route('admin.event.view', $event->id )}}">
+                                    <a href="{{ route('admin.event.view', $event->id) }}">
                                         <span class="mdi mdi-open-in-new"></span>
                                     </a>
 
@@ -41,26 +43,27 @@
 
                                 <button
                                     class="px-4 py-2 font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:px-6 dark:text-gray-300 dark:hover:bg-gray-800">
-                                     <a href="{{route('admin.events.edit', ['id'=>$event])}}">
+                                    <a href="{{ route('admin.events.edit', ['id' => $event]) }}">
                                         <span class="mdi mdi-file-edit"></span>
 
                                     </a>
                                 </button>
 
-                                <form class="px-4 py-2 font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:px-6 dark:text-gray-300 dark:hover:bg-gray-800" action="{{route('admin.events.delete', ['id'=>$event])}}" method="post">
-                                    <button type="submit"
-                                    >
+                                <form
+                                    class="px-4 py-2 font-medium text-gray-600 transition-colors duration-200 hover:bg-gray-100 sm:px-6 dark:text-gray-300 dark:hover:bg-gray-800"
+                                    action="{{ route('admin.events.delete', ['id' => $event]) }}" method="post">
+                                    <button type="submit">
 
                                         <span class="mdi mdi-delete-empty-outline"></span>
-    <input class="btn btn-default" type="submit" value="Delete" />
-    @method('delete')
-    @csrf
+                                        <input class="btn btn-default" type="submit" value="Delete" />
+                                        @method('delete')
+                                        @csrf
 
-                                     {{-- <a href="{{route('admin.events.delete', ['id'=>$event])}}"> --}}
+                                        {{-- <a href="{{route('admin.events.delete', ['id'=>$event])}}"> --}}
 
 
-                                    {{-- </a> --}}
-                                </button>
+                                        {{-- </a> --}}
+                                    </button>
                                 </form>
 
                             </div>

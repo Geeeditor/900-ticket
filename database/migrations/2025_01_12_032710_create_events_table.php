@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->decimal('vip_ticket_price', 10, 2)->nullable();
             $table->decimal('vvip_ticket_price', 10, 2)->nullable();
             $table->string('category')->default('event');
+            $table->string('ticket_passcode');
             $table->timestamps();
         });
     }

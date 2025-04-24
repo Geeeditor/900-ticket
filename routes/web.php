@@ -10,11 +10,17 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController\HomeController;
 use App\Http\Controllers\AdminController\EventController;
-use App\Http\Controllers\Transactions\Payments\PaymentController;
+use App\Http\Controllers\Transactions\TransactionHistory;
+use App\Http\Controllers\Transactions\Payments\PartyTicketPayments;
+// use App\Http\Controllers\Transactions\PartyTicketPayments\PartyTicketPaymentController;
 
 // Route::any('/', function () {
 //     return redirect()->route('index');
 // });
+
+Route::get('/', function (){
+        return redirect()->route('index');
+    });
 
 
 Route::get('/home' , function () {
@@ -23,35 +29,19 @@ Route::get('/home' , function () {
 
 Route::post('/event/item', [CartController::class, 'storePartyTicket'])->name('event.addtocart');
 
-// Route::get('/auth', [authController::class, 'index'])->name('login');
 
-// Route::get('/auth/otp', function() {
-//     return view('auth.auth');
-// })->name('auth.otp')->middleware('auth');
-
-// Route::post('/auth/login', [authController::class, 'login'])->name('auth.login');
-
-// Route::post('/auth/register', [authController::class, 'register'])->name('auth.register');
-
-// Route::get('/flight', function () {
-//     return view('pages/flight-views/index');
-// })->name('index.flight')->middleware('auth');
-
-// Route::get('/logout', [authController::class, 'logout'])->name('logout');
 
 Route::fallback(function() {
     return view('fallback');
 });
 
-Route::get('/dashboard', function () {
-    $events = Event::latest()->paginate(3);
-   return view('dashboard', ['events' => $events]);
+Route::get('/private-policy', function () {
+    return 'Privacy Policy';
+})->name('index.privacy-policy');
 
-})->middleware('user')->name('dashboard');
-
-Route::get('/product/checkout/{event}', [Checkout::class, 'checkoutPartyTicket'])->name('checkout.index');
-
-Route::post('/product/checkout', [Checkout::class, 'getPartyTicketOrder'])->name('checkout.getOrder');
+Route::get('/terms-and-conditions', function () {
+    return 'Terms and Conditions';
+})->name('index.terms-and-conditions');
 
 Route::post('/login/product/checkout', [DynamicLogin::class, 'store'])->name('modal.checkout.login');
 
@@ -69,9 +59,7 @@ Route::post('/register/otp/product/checkout', [DynamicRegister::class, 'register
 Route::post('/register/resend-otp/product/checkout', [DynamicRegister::class, 'resendOtp'])
     ->name('modal.checkout.register.otp.resend');
 
-Route::post('/payment', [PaymentController::class, 'pay'])->name('payment.pay');
 
-Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
 
 
@@ -79,13 +67,53 @@ Route::get('/payment/callback', [PaymentController::class, 'callback'])->name('p
 
 
 Route::get('/welcome', function () {
+
     $events = Event::latest()->paginate(3);
-    return view('welcome', ['events' => $events]);
-    })->name('index');
 
-// Route::get('/')
+    if (Auth::check() && Auth::user()->usertype == 'user') {
+            return redirect()->route('dashboard')->with(['regsuccess'=> 'Welcome to 900ticket', 'firstname' => Auth::user()->firstname, 'lastname' => Auth::user()->lastname]);
+        }
 
-Route::middleware('admin')->group(function() {
+    elseif (Auth::check() && Auth::user()->usertype == 'admin') {
+
+        return redirect()->route('admin.index')->with(['regsuccess'=> 'Welcome to 900ticket', 'firstname' => Auth::user()->firstname, 'lastname' => Auth::user()->lastname]);
+
+    }
+
+    else {
+       return view('welcome', ['events' => $events]);
+    }
+}
+    )->name('index');
+
+
+// User Routes
+  Route::post('/product/checkout', [Checkout::class, 'getPartyTicketOrder'])->name('checkout.getOrder');
+
+Route::middleware('user')->group(function () {
+    Route::get('/product/checkout/{event}', [Checkout::class, 'checkoutPartyTicket'])->name('checkout.index');
+
+
+
+    Route::get('/dashboard', function () {
+        $events = Event::latest()->paginate(3);
+        return view('dashboard', ['events' => $events]);
+    })->name('dashboard');
+
+    Route::post('/payment', [PartyTicketPayments::class, 'pay'])->name('payment.pay');
+
+    Route::get('/payment/callback', [PartyTicketPayments::class, 'callback'])->name('payment.callback');
+
+    Route::get('/payment/summary/{id}', [TransactionHistory::class, 'index'])->name('payment.summary');
+
+    // Route::get('/download/party-ticket/{id}', [TransactionHistory::class, 'downloadPartyTicket'])->name('payment.download');
+
+    Route::get('/download/party-ticket', [TransactionHistory::class, 'downloadPartyTicket'])->name('payment.download');
+
+
+});
+
+Route::middleware(['admin','web'])->group(function() {
 
     Route::get('/admin', [HomeController::class, 'dashboard'])->name('admin.index');
 
@@ -132,7 +160,7 @@ Route::get('/event', function () {
 })->name('event.index');
 
 Route::get('/event/item/{event}', function (Event $event) {
-   
+
     if (!$event) {
         return redirect()->back()->with('error', 'Party ticket not found.');
     }

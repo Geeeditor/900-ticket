@@ -18,7 +18,9 @@ class User
     {
         if (Auth::check() && Auth::user()->usertype == 'user') {
             return $next($request);
-        }
+        } elseif (Auth::check() && Auth::user()->usertype == 'admin') {
+            return abort(403, 'Admin login detected. Please log out and log in again a user account or create a new account');
+        } 
 
 
 

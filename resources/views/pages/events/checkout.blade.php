@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Checkout')
 @section('hero')
-    <div class="relative top-[0] flex h-[14vh] w-full justify-center bg-black md:h-[20vh] ">
-        {{-- <img class="h-full w-full object-cover " src="{{ asset('image/eventhero.png') }}" alt="lorem ipsum"> --}}
+    <div class="relative top-[0] flex h-[14vh] w-full justify-center bg-black md:h-[20vh]">
+        {{-- <img class="h-full w-full object-cover" src="{{ asset('image/eventhero.png') }}" alt="lorem ipsum"> --}}
         {{-- hero content --}}
 
 
@@ -43,7 +43,7 @@
     @endphp
 
     <main>
-        <div class="mx-auto my-3 w-[85%] md:w-[80%] ">
+        <div class="mx-auto my-3 w-[85%] md:w-[80%]">
             <a class="text-black" href="{{ url()->previous() }}">
                 <i class="fa-solid fa-arrow-left-long">
                     Back
@@ -51,10 +51,10 @@
             </a>
         </div>
 
-        <section class="mx-auto  w-[85%] md:w-[80%]">
-            <div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-md ">
+        <section class="mx-auto w-[85%] md:w-[80%]">
+            <div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-md">
                 <div>
-                    <h1 class="md:text-2xl font-bold text-black uppercase">Checkout Your order</h1>
+                    <h1 class="font-bold uppercase text-black md:text-2xl">Checkout Your order</h1>
                 </div>
 
                 <div class="flex flex-col gap-2">
@@ -62,7 +62,7 @@
                     @auth
                         <div class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-md">
                             <h2 class="text-lg font-bold text-black">Hi {{ $user->firstname }}!</h2>
-                            <p class="text-sm text-gray-500 flex flex-col">Below is your order summary
+                            <p class="flex flex-col text-sm text-gray-500">Below is your order summary
                             </p>
                         </div>
                     @endauth
@@ -71,9 +71,9 @@
 
                         <div class="flex flex-col gap-1 rounded-lg bg-white p-4 shadow-md">
                             <h2 class="text-lg font-bold text-black">Hi Guest!</h2>
-                            <p class="text-sm text-gray-500 flex flex-col">Below is your order summary
+                            <p class="flex flex-col text-sm text-gray-500">Below is your order summary
                             </p>
-                            <p class="text-start text-[0.7rem] hover:underline text-gray-500 flex flex-col ">Login/create an
+                            <p class="flex flex-col text-start text-[0.7rem] text-gray-500 hover:underline">Login/create an
                                 Account to complete checkout</p>
                         </div>
 
@@ -111,33 +111,41 @@
                             <input type="number" name="product_total_cost" value="{{ ($total_price) }}" hidden>
                             {{-- Payment Date --}}
                             <input type="text" name="product_order_date" value="{{ \Carbon\Carbon::now() }}" hidden>
-                            
-                            
 
-                            
-                            
+                            <input type="text" name="event_date" value="{{ $event->date }} " hidden>
+
+                            <input type="text" name="event_location" value="{{ $event->location }} " hidden>
+
+                            <input type="text" name="event_time" value="{{ $event->time }} " hidden>
 
 
-                            
-                            <div class="flex justify-between md:flex-row flex-col">
+
+
+
+
+
+
+
+
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Event Name</p>
                                 {{-- <input type="text" name="" value="{{ $event_id }}" hidden> --}}
                                 <p class="text-sm text-gray-500">{{ $title }}</p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Event Date</p>
                                 <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($date)->format('l, F j, Y') }}
                                 </p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Event Reference</p>
                                 <p class="text-sm text-gray-500">{{ $event_reference }}</p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Time</p>
                                 <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($time)->format('H:iA') }}</p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Regular Ticket Price</p>
                                 <p class="text-sm text-gray-500">
                                     <span>
@@ -150,7 +158,7 @@
                                     </span>
                                 </p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">VIP Ticket Price</p>
                                 <p class="text-sm text-gray-500">
                                     <span>
@@ -163,7 +171,7 @@
                                     </span>
                                 </p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">VVIP Ticket Price</p>
                                 <p class="text-sm text-gray-500">
                                     <span>
@@ -176,7 +184,7 @@
                                     </span>
                                 </p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Fee</p>
                                 <p class="text-sm text-gray-500">
                                     <span>
@@ -185,23 +193,23 @@
 
                                 </p>
                             </div>
-                            <div class="flex justify-between md:flex-row flex-col">
+                            <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Total Price</p>
                                 <p class="text-sm text-gray-500">
                                     ₦{{ number_format($total_price, 2) }}
                                 </p>
                             </div>
-                            <div class="w-full flex justify-end">
-                           
+                            <div class="flex w-full justify-end">
+
                                     <button type="submit"
-                                        class="ld-ext-right rounded-md bg-[#cc2121] px-4 py-2 text-white ld-ext-right"
+                                        class="ld-ext-right rounded-md bg-[#cc2121] px-4 py-2 text-white"
                                         onclick="this.classList.toggle('running')">
 
                                         Pay Now
                                         <div class="ld ld-ring ld-spin"></div>
 
                                     </button>
-                               
+
 
 
 

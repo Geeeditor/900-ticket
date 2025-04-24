@@ -26,7 +26,8 @@ class Event extends Model
         'vip_ticket_price',
         'vvip_ticket_price',
         'event_reference',
-        'category'
+        // 'category',
+        'ticket_passcode'
         // Add any other fields as needed
     ];
 

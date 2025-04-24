@@ -18,9 +18,7 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
 Route::middleware('guest')->group(function () {
 
-    Route::get('/', function (){
-        return redirect()->route('index');
-    });
+    
 
     // Route::get('/welcome', function(){
     //     return view('welcome');

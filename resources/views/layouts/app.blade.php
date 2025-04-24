@@ -983,10 +983,10 @@
                         <h2 class="mb-6 text-sm font-semibold uppercase text-white">Usefull Links</h2>
                         <ul class="flex flex-col gap-y-2 font-medium text-white">
                             <li>
-                                <a href="" class="hover:underline">Privacy and policy</a>
+                                <a href="{{route('index.privacy-policy')}}" class="hover:underline">Privacy and policy</a>
                             </li>
                             <li>
-                                <a href="" class="hover:underline">Terms and Conditions</a>
+                                <a href="{{route('index.terms-and-conditions')}}" class="hover:underline">Terms and Conditions</a>
                             </li>
                             <li>
                                 <a href="" class="hover:underline">Flights Schedules</a>
@@ -1004,10 +1004,11 @@
                             <h2 class="mb-6 text-sm font-semibold uppercase text-white">Legal</h2>
                             <ul class="font-medium text-white">
                                 <li class="mb-4">
-                                    <a href="#" class="hover:underline">Privacy Policy</a>
+                                    <a href="{{route('index.privacy-policy')}}" class="hover:underline">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                                    
+                                    <a href="{{route('index.terms-and-conditions')}}" class="hover:underline">Terms &amp; Conditions</a>
                                 </li>
                             </ul>
                         </div>
@@ -1067,6 +1068,29 @@
             "languages": ["en", "fr"],
             "wrapper_selector": ".gtranslate_wrapper"
         }
+    </script>
+
+    <script>
+        document.querySelectorAll('.copy-link').forEach(link => {
+    link.addEventListener('click', async (e) => {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Ensure the link has a valid href
+        const currentUrl = link.getAttribute('href');
+
+        if (currentUrl) {
+            try {
+                // Copy to clipboard
+                await navigator.clipboard.writeText(currentUrl);
+                alert("Link copied to clipboard!");
+            } catch (err) {
+                console.error("Failed to copy: ", err);
+            }
+        } else {
+            console.error("Link href is undefined");
+        }
+    });
+});
     </script>
 
     <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>

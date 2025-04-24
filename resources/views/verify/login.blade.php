@@ -7,40 +7,40 @@
 
 @section('hero')
     <div style="background: url('./image/eventhero.png')"
-        class="w-full relative top-[0] bg-black md:h-[20vh] h-[17.5vh]   flex justify-center">
+        class="relative top-[0] flex h-[17.5vh] w-full justify-center bg-black md:h-[20vh]">
         {{-- hero content --}}
     </div>
 @endsection
 
 @section('content')
-    <div class="w-full mx-auto">
+    <div class="mx-auto w-full">
         <section
-            class="md:px-8 md:py-8 py-4 md:w-[80%] mx-auto  flex items-center justify-center bg-white rounded-b-md  shadow-lg p-1 m-1">
-            <div class="hidden md:block w-1/2 ">
-                <img class="object-cover w-full h-full" src="{{ asset('image/profilePop1-v3.jpg') }}" alt="lorem ipsum">
+            class="m-1 mx-auto flex items-center justify-center rounded-b-md bg-white p-1 py-4 shadow-lg md:w-[80%] md:px-8 md:py-8">
+            <div class="hidden w-1/2 md:block">
+                <img class="h-full w-full object-cover" src="{{ asset('image/profilePoP2-v3.jpg') }}" alt="lorem ipsum">
             </div>
-            <div class="w-[100%] md:w-1/2   ">
+            <div class="w-[100%] md:w-1/2">
 
 
                 {{-- Mini Nav --}}
                 <div class="bg-white px-3 py-2">
 
 
-                    <div class="flex gap-3 justify-start">
+                    <div class="flex justify-start gap-3">
 
                         <a id="" href="{{ route('index.login') }}"
-                            class="signupLink cursor-pointer font-[600]    text-white px-2 py- md:px-4 md:py-2 rounded-md bg-red-700 hover:bg-red-900">Login</a>
+                            class="signupLink py- cursor-pointer rounded-md bg-red-700 px-2 font-[600] text-white hover:bg-red-900 md:px-4 md:py-2">Login</a>
 
                         <a id="" href="{{ route('index.register') }}"
-                            class="loginLink cursor-pointer font-[600]   bg-red-700 text-white px-2 py- md:px-4 md:py-2 rounded-md hover:bg-red-900">Register</a>
+                            class="loginLink py- cursor-pointer rounded-md bg-red-700 px-2 font-[600] text-white hover:bg-red-900 md:px-4 md:py-2">Register</a>
                     </div>
                 </div>
 
                 {{-- Login Section --}}
-                <div id="" class="loginSection h-[100%]  flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
+                <div id="" class="loginSection h-[100%] flex-col gap-2 rounded-sm bg-white px-3 py-2 shadow-lg">
                     <div>
                         <div>
-                            <div class="mx-auto flex w-full justify-start gap-1 text-lg uppercase font-bold">
+                            <div class="mx-auto flex w-full justify-start gap-1 text-lg font-bold uppercase">
                                 <p>Sign in</p>
                             </div>
 
@@ -70,7 +70,7 @@
                                         class="my-2 w-full border border-gray-200 px-2 py-2 md:border-2" type="password"
                                         placeholder="Enter your password" />
                                     <div id=""
-                                        class="password-visibility absolute right-[5px] top-[17px] cursor-pointer togglePassword">
+                                        class="password-visibility togglePassword absolute right-[5px] top-[17px] cursor-pointer">
                                         <img class="h-[25px]" src="{{ asset('image/eye.svg') }}" alt="Toggle visibility">
                                         <div id="" class="stroke"></div>
                                     </div>
@@ -95,8 +95,14 @@
                             </div>
 
                             <button
-                                class="hover:red-alt-800 w-full rounded-md bg-red-700 hover:bg-red-900 py-2  text-start uppercase text-white submit px-2"
+                                class="hover:red-alt-800 submit w-full rounded-md bg-red-700 px-2 py-2 text-start uppercase text-white hover:bg-red-900"
                                 type="submit">Login</button>
+
+                                <p class="my-2 text-center text-sm md:text-left"> By signing in or registering I confirm that I
+                                have read and agreed to
+                                900Tickets <a class="text-red-500" href="{{route('index.terms-and-conditions')}}">terms and conditions</a> and <a
+                                    class="text-red-500" href="{{route('index.privacy-policy')}}">privacy policy</a>
+                            </p>
                         </form>
 
 

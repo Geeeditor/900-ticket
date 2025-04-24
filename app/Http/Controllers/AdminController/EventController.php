@@ -22,9 +22,7 @@ class EventController extends Controller
     public function store(Request $request, Event $event) {
 
         // Checking if user is a usertype of admin before requesting or validating a data
-
-        if (Auth::user()->usertype === 'admin') {
-            $request->validate(
+        $data = $request->validate(
             [
                 'title' => ['required', 'max:225'],
                 'date' => ['required', 'date'],
@@ -36,8 +34,15 @@ class EventController extends Controller
                 'regular_ticket_price' => ['numeric', 'between:0,99999999.99'],
                 'vip_ticket_price' => ['numeric', 'between:0,999999.99'],
                 'vvip_ticket_price' => ['numeric', 'between:0,999999.99'],
+                // 'ticket_passcode' => ['required', 'string', 'max:255', 'unique:events,ticket_passcode'],
+                'ticket_passcode' => ['required', 'string', 'max:255'],
             ]
             );
+
+        // dd($data);
+
+        if (Auth::user()->usertype === 'admin') {
+            
 
             if ($request->hasFile('hero_image')) {
                 $heroImage = $request->file('hero_image');
@@ -47,10 +52,9 @@ class EventController extends Controller
             // dd('Event Validated');
             $admin = Auth::user(); //  using Laravel's authentication
 
-            /* $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $eventRef =  '900Ticket/' . mt_rand(10000, 99999) . '/' .mt_rand(1000000, 9999999) . $characters[rand(0, strlen($characters) - 1 )] ; */
+         
 
-            $eventRef = '900Ticket/' . Str::random(4) . substr(time(), 6,8) . Str::random(4);
+            $eventRef = '900Tickets/event/' . Str::random(4) . substr(time(), 6,8) . Str::random(4);
 
                 // Create the event with the associated admin
                 $event = $admin->events()->create([
@@ -64,10 +68,12 @@ class EventController extends Controller
                     'regular_ticket_price' => $request->regular_ticket_price == 0 ? null : $request->regular_ticket_price  ,
                     'vip_ticket_price' => $request->vip_ticket_price == 0 ? null :  $request->vip_ticket_price  ,
                     'vvip_ticket_price' => $request->vvip_ticket_price == 0 ? null : $request->vvip_ticket_price  ,
-                    'event_reference' => $eventRef
+                    'event_reference' => $eventRef,
+                    'ticket_passcode' => $request->ticket_passcode,
                 ]);
 
-                return redirect()->back()->with('success', 'You successfully created an Event. Visit event page to view created event');
+                return redirect()->route('admin.events')->with('success', 'Party Ticket updated successfully');
+
 
             } else {
         // If the user is not an admin, you can redirect them back or show an error message
@@ -146,7 +152,7 @@ class EventController extends Controller
         // $updatableData->update();
         // Update the event with the new data
         $event->update($updatableData);
-        return redirect()->route('admin.events')->with('success', 'Oops! You do not have permission to update events');
+        return redirect()->route('admin.events')->with('success', 'Party Ticket updated successfully');
         // Find the event by ID
     } else {
         // If the user is not an admin, show an error message

@@ -107,14 +107,18 @@
                     <div class="grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-3">
                         @forelse ($latestEvents as $latestEvent)
                             <div class="rounded-md border border-gray-200 bg-white py-2 shadow shadow-gray-300">
-                                <div class="w-full">
+
+
+
+                                <div
+                                    class="bg-blue-gray-500 shadow-blue-gray-500/40 h-40 overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg">
                                     @if ($latestEvent->hero_image !== null && $latestEvent->hero_image !== '')
-                                        <img class="h-full rounded-b-md object-cover"
+                                        <img class="h-full w-full object-cover"
                                             src="{{ asset('image/events/' . basename($latestEvent->hero_image)) }}"
                                             alt="lorem ipsum">
                                     @else
-                                        <img class="h-full rounded-b-md object-contain"
-                                            src="{{ asset('image/imgdefault.png') }}" alt="lorem ipsum">
+                                        <img class="h-full w-full object-cover" src="{{ asset('image/imgdefault.png') }}"
+                                            alt="lorem ipsum">
                                     @endif
 
                                 </div>
@@ -127,8 +131,8 @@
                                         </div>
 
                                         <div
-                                            class="flex h-[70%] w-[20%] items-center justify-center rounded-full bg-red-700 p-2">
-                                            <a href="javascript:void(0)">
+                                            class="copy-link flex h-[70%] w-[20%] items-center justify-center rounded-full bg-red-700 p-2">
+                                            <a class="copy-link" href="{{ route('event.metadata', $latestEvent->id) }}">
 
                                                 <img class="w-[20px]" src="{{ asset('image/icons/clipboard.svg') }}"
                                                     alt="lorem ipsum">
@@ -165,7 +169,7 @@
                                                 @if ($latestEvent->regular_ticket_price == null)
                                                     <span>0.00</span>
                                                 @else
-                                                    <span>{{ $latestEvent->regular_ticket_price }}
+                                                    <span>{{ number_format($latestEvent->regular_ticket_price, 2) }}
 
                                                     </span>
                                                 @endif
@@ -183,13 +187,17 @@
                                 </div>
 
                             </div>
-                        @empty
-                            <div>
+                         @empty
+                            <div class="col-span-4 py-5 md:py-10">
                                 <div class="flex flex-col items-center justify-center gap-0">
                                     <img src="{{ asset('image/error.svg') }}" alt="lorem ipsum">
-                                    Sorry no Party Ticket Sales
-                                    <div class="text-[13px] font-[300]">
-                                        Stay tuned..
+                                    <span class="capitalize font-bold text-1xl md:text-2xl py-1">
+                                        Sorry no Party Ticket Available For This Category
+                                    </span>
+                                    <div class=" font-thin">
+                                        <span>
+                                            Stay tuned..
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -219,15 +227,18 @@
                         @forelse ($allEvents as $allEvent)
                             <div class="rounded-md border border-gray-200 bg-white py-2 shadow shadow-gray-300">
                                 <div class="w-full">
+                                    <div
+                                    class="bg-blue-gray-500 shadow-blue-gray-500/40 h-40 overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg">
                                     @if ($allEvent->hero_image !== null && $allEvent->hero_image !== '')
-                                        <img class="h-full rounded-b-md object-cover"
+                                        <img class="h-full w-full object-cover"
                                             src="{{ asset('image/events/' . basename($allEvent->hero_image)) }}"
                                             alt="lorem ipsum">
                                     @else
-                                        <img class="h-full rounded-b-md object-contain"
-                                            src="{{ asset('image/imgdefault.png') }}" alt="lorem ipsum">
+                                        <img class="h-full w-full object-cover" src="{{ asset('image/imgdefault.png') }}"
+                                            alt="lorem ipsum">
                                     @endif
 
+                                </div>
                                 </div>
                                 <div class="px-2 py-2">
                                     <div class="flex w-full flex-row items-center gap-1">
@@ -239,7 +250,7 @@
 
                                         <div
                                             class="flex h-[70%] w-[20%] items-center justify-center rounded-full bg-red-700 p-2">
-                                            <a href="javascript:void(0)">
+                                            <a class="copy-link" href="{{ route('event.metadata', $allEvent->id) }}">
 
                                                 <img class="w-[20px]" src="{{ asset('image/icons/clipboard.svg') }}"
                                                     alt="lorem ipsum">
@@ -277,7 +288,7 @@
                                                 @if ($allEvent->regular_ticket_price == null)
                                                     <span>0.00</span>
                                                 @else
-                                                    <span>{{ $allEvent->regular_ticket_price }}
+                                                    <span>{{ number_format($allEvent->regular_ticket_price, 2) }}
 
                                                     </span>
                                                 @endif
@@ -296,12 +307,16 @@
 
                             </div>
                         @empty
-                            <div>
+                            <div class="col-span-4 py-5 md:py-10">
                                 <div class="flex flex-col items-center justify-center gap-0">
                                     <img src="{{ asset('image/error.svg') }}" alt="lorem ipsum">
-                                    Sorry no Party Ticket Sales
-                                    <div class="text-[13px] font-[300]">
-                                        Stay tuned..
+                                    <span class="capitalize font-bold text-1xl md:text-2xl py-1">
+                                        Sorry no Party Ticket Available For This Category
+                                    </span>
+                                    <div class=" font-thin">
+                                        <span>
+                                            Stay tuned..
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -412,7 +427,7 @@
                                 <div class="flex flex-col items-center justify-center gap-0">
                                     <img src="{{ asset('image/error.svg') }}" alt="lorem ipsum">
                                     <span class="capitalize font-bold text-1xl md:text-2xl py-1">
-                                        Sorry no Featured Party Ticket Available
+                                        Sorry no Party Ticket Available For This Category
                                     </span>
                                     <div class=" font-thin">
                                         <span>

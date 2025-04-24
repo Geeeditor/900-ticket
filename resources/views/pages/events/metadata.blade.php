@@ -21,19 +21,19 @@
 
 
                 <div
-                    class="{{session()->has('otp-form') ? 'hidden' : ''}}  bg-white items-center justify-center gap-2  flex lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
+                    class="{{ session()->has('otp-form') ? 'hidden' : '' }}  bg-white items-center justify-center gap-2  flex lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
                     <div class="hidden lg:block">
                         <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
                             alt="random img" />
                     </div>
 
                     <div class="p-2">
-                        <div id="loginform" class="{{session()->has('register-form') ? 'hidden' : ''}}">
-                        
+                        <div id="loginform" class="{{ session()->has('register-form') ? 'hidden' : '' }}">
 
 
-                            <svg    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
 
@@ -137,25 +137,27 @@
                             </div>
                         </div>
                         <p class="hidden">
-                            {{$form = true}}
+                            {{ $form = true }}
                         </p>
                         @if (session()->has('register-form') || $form)
                             <style>
-                                .forcedisplay{
+                                .forcedisplay {
                                     display: block !important;
                                 }
                             </style>
-                            <div class="{{session()->has('register-form') ? 'forcedisplay' : 'hidden'}}" id="registerform">
-                                <svg  xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
+                            <div class="{{ session()->has('register-form') ? 'forcedisplay' : 'hidden' }}" id="registerform">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                    stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
 
-                                <div class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
+                                <div
+                                    class="mx-auto flex w-full justify-center md:justify-start gap-1 text-lg uppercase font-bold">
                                     <p>Create an account</p>
                                 </div>
 
-                                <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings with
+                                <p class="my-2 text-center md:text-left text-sm capitalize text-gray-400">Manage your bookings
+                                    with
                                     ease and <br />
                                     enjoy members-only benefits</p>
 
@@ -165,12 +167,12 @@
                                     <div id="sectionOne" class="flex flex-col">
                                         <label class="capitalize font-bold text-center md:text-left">First Name</label>
                                         <input value="{{ old('firstname') }}" name="firstname"
-                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                            placeholder="Enter your First Name" />
+                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                            type="text" placeholder="Enter your First Name" />
                                         <label class="capitalize font-bold text-center md:text-left">Last Name</label>
                                         <input value="{{ old('lastname') }}" name="lastname"
-                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input" type="text"
-                                            placeholder="Enter your Last Name" />
+                                            class="my-2 border w-full border-gray-200 px-2 py-2 md:border-2 input"
+                                            type="text" placeholder="Enter your Last Name" />
                                         <button type="button"
                                             class="continueButton my-2 rounded-sm bg-red-600 hover:bg-red-900 py-2 capitalize text-white w-full">Continue</button>
                                     </div>
@@ -258,88 +260,92 @@
                                 </div>
                             </div>
                         @endif
-                        
+
                     </div>
                 </div>
-            @if(session()->has('otp-form'))
-                <div
-                    class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
-                    <div class="hidden lg:block">
-                        <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
-                            alt="random img" />
-                    </div>
+                @if (session()->has('otp-form'))
+                    <div
+                        class="flex bg-white items-center justify-center gap-2   lg:w-[70%]   w-[85%] rounded-lg border border-gray-200  md:border-2">
+                        <div class="hidden lg:block">
+                            <img class="h-fit w-[600px] object-cover p-1" src="{{ asset('image/profilePoP2-v3.jpg') }}"
+                                alt="random img" />
+                        </div>
 
-                    
+
                         <div class="">
-                        {{-- <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            {{-- <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="closeModal ml-[90%] size-6 text-black">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg> --}}
-                        <div class="mx-auto   rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8">
-                            <section class="mb-8">
-                                <h1 class="mb-1 text-2xl font-bold">Email Verification</h1>
-                                <p class="text-[15px] text-slate-500">Enter the 6-digit verification code that was sent to your
-                                    email.</p>
-                                <div>
-                                    @if (session('message'))
-                                        <div>
-                                            <strong style="color: #7a0909">{{ session('message') }}</strong>
+                            <div class="mx-auto   rounded-xl bg-white px-4 py-10 text-center shadow sm:px-8">
+                                <section class="mb-8">
+                                    <h1 class="mb-1 text-2xl font-bold">Email Verification</h1>
+                                    <p class="text-[15px] text-slate-500">Enter the 6-digit verification code that was sent to
+                                        your
+                                        email.</p>
+                                    <div>
+                                        @if (session('message'))
+                                            <div>
+                                                <strong style="color: #7a0909">{{ session('message') }}</strong>
 
-                                        </div>
-                                    @endif
-                                </div>
-                            </section>
-                            <form method="post" action="{{ route('modal.checkout.register.otp.store') }}" class="otp-form">
-                                @csrf
-                                <div class="flex items-center justify-center gap-3">
-                                    <input type="hidden" name="redirect_to" value="back">
-                                    <input type="text" name="otp1"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14 appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required />
-                                    <input type="text" name="otp2"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required/>
-                                    <input type="text" name="otp3"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required/>
-                                    <input type="text" name="otp4"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required/>
-                                    <input type="text" name="otp5"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required />
-                                    <input type="text" name="otp6"
-                                        class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
-                                        pattern="\d*" maxlength="1" required />
+                                            </div>
+                                        @endif
+                                    </div>
+                                </section>
+                                <form method="post" action="{{ route('modal.checkout.register.otp.store') }}"
+                                    class="otp-form">
+                                    @csrf
+                                    <div class="flex items-center justify-center gap-3">
+                                        <input type="hidden" name="redirect_to" value="back">
+                                        <input type="text" name="otp1"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14 appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp2"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp3"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp4"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp5"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
+                                        <input type="text" name="otp6"
+                                            class="otp-input h-[45px] md:h-14 w-[45px] md:w-14  appearance-none rounded border border-gray-300 bg-slate-100 p-4 text-center text-2xl font-extrabold text-black outline-none hover:border-slate-200 focus:border-blue-300 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                                            pattern="\d*" maxlength="1" required />
 
 
-                                </div>
-                                <div class="mx-auto mt-4 max-w-[260px]">
-                                    <button type="submit"
-                                        class="inline-flex w-full justify-center whitespace-nowrap rounded-lg bg-red-700 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 transition-colors duration-150 hover:bg-red-900 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 button-submit">
-                                        Verify Account
-                                    </button>
-                                </div>
-                            </form>
-                            <form class="my-2" action="{{ route('modal.checkout.register.otp.resend') }}" method="post">
-                                @csrf
-                                <div class="text-sm text-gray-600">You can get a new OTP in
-                                    <span id="otp-timer">00:00</span>
-                                    <button type="submit" id="request-otp-button"
-                                        class="text-red-400 underline hover:text-red-500" disabled>Request
-                                        OTP</button>
-                                </div>
-                            </form>
-                            <a href="{{ url()->previous() }}" class="text-sm text-gray-500"><i class="fa-solid fa-arrow-left-long ">
-                   
-                </i> Back</a>
-                            {{-- <div class="mt-4 text-sm text-slate-500">Didn't receive code? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Resend</a></div> --}}
+                                    </div>
+                                    <div class="mx-auto mt-4 max-w-[260px]">
+                                        <button type="submit"
+                                            class="inline-flex w-full justify-center whitespace-nowrap rounded-lg bg-red-700 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 transition-colors duration-150 hover:bg-red-900 focus:outline-none focus:ring focus:ring-indigo-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 button-submit">
+                                            Verify Account
+                                        </button>
+                                    </div>
+                                </form>
+                                <form class="my-2" action="{{ route('modal.checkout.register.otp.resend') }}"
+                                    method="post">
+                                    @csrf
+                                    <div class="text-sm text-gray-600">You can get a new OTP in
+                                        <span id="otp-timer">00:00</span>
+                                        <button type="submit" id="request-otp-button"
+                                            class="text-red-400 underline hover:text-red-500" disabled>Request
+                                            OTP</button>
+                                    </div>
+                                </form>
+                                <a href="{{ url()->previous() }}" class="text-sm text-gray-500"><i
+                                        class="fa-solid fa-arrow-left-long ">
+
+                                    </i> Back</a>
+                                {{-- <div class="mt-4 text-sm text-slate-500">Didn't receive code? <a class="font-medium text-indigo-500 hover:text-indigo-600" href="#0">Resend</a></div> --}}
+                            </div>
                         </div>
-                    </div>
-                    
 
-                    
-                </div>
+
+
+                    </div>
                 @endif
 
             </section>
@@ -382,8 +388,8 @@
                                     alt="lorem ipsum">
                             @endif
 
-                            <a href="javascript:void(0)"
-                                class="absolute bottom-0 right-1 flex w-[50px] items-center justify-center rounded-full bg-red-700 px-1 py-3 shadow-sm shadow-gray-600 hover:bg-red-800 focus:bg-red-600">
+                            <a href="{{ route('event.metadata', $event->id) }}"
+                                class="copy-link absolute bottom-0 right-1 flex w-[50px] items-center justify-center rounded-full bg-red-700 px-1 py-3 shadow-sm shadow-gray-600 hover:bg-red-800 focus:bg-red-600">
                                 <img class="h-[15px] object-contain" src="{{ asset('image/icons/clipboard.svg') }}"
                                     alt="lorem ipsum">
                             </a>
@@ -838,7 +844,7 @@
                             authModal.classList.add('hidden');
                         });
                     });
-                   
+
 
 
                     openModal.addEventListener('click', function() {
