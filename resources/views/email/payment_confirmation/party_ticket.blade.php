@@ -43,7 +43,6 @@
             <span style="text-transform: uppercase;">
                 {{ $mode_of_payment }}
             </span>
-
         </li>
         <li><strong>Party Ticket Title:</strong> {{ $product_name }}</li>
         <li><strong>Purchased Ticket:</strong>

@@ -135,8 +135,8 @@
                             <div class="flex flex-col justify-between md:flex-row">
                                 <p class="text-sm text-gray-500">Event Date</p>
                                 <p class="text-sm text-gray-500">
-                                    {{ \Carbon\Carbon::parse($transactionReceipt->event_date)->format('l F j, Y') }}</p>
-
+                                    {{ \Carbon\Carbon::parse($transactionReceipt->event_date)->format('l F j, Y') }}
+                                </p>
                             </div>
 
                             <div class="flex flex-col justify-between md:flex-row">

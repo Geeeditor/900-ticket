@@ -18,7 +18,9 @@ use App\Http\Controllers\Transactions\Payments\PartyTicketPayments;
 //     return redirect()->route('index');
 // });
 
-Route::get('/', function (){
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::get('/', function () {
         return redirect()->route('index');
     });
 
@@ -90,7 +92,11 @@ Route::get('/welcome', function () {
 // User Routes
   Route::post('/product/checkout', [Checkout::class, 'getPartyTicketOrder'])->name('checkout.getOrder');
 
-Route::middleware('user')->group(function () {
+   Route::delete('/party-ticket-cart/delete/{id}', [CartController::class, 'destroy'])->name('party-ticket.cart.delete');
+
+   Route::delete('/cart/delete', [CartController::class, 'emptyCart'])->name('cart.empty');
+
+    Route::middleware('user')->group(function () {
     Route::get('/product/checkout/{event}', [Checkout::class, 'checkoutPartyTicket'])->name('checkout.index');
 
 

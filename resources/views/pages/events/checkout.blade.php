@@ -67,18 +67,6 @@
                         </div>
                     @endauth
 
-                    @guest
-
-                        <div class="flex flex-col gap-1 rounded-lg bg-white p-4 shadow-md">
-                            <h2 class="text-lg font-bold text-black">Hi Guest!</h2>
-                            <p class="flex flex-col text-sm text-gray-500">Below is your order summary
-                            </p>
-                            <p class="flex flex-col text-start text-[0.7rem] text-gray-500 hover:underline">Login/create an
-                                Account to complete checkout</p>
-                        </div>
-
-                    @endguest
-
                     <form method="POST" action="{{ route('payment.pay') }}"   class="flex flex-col gap-2 rounded-lg bg-white p-4 shadow-md">
                         @csrf
                         <h2 class="text-lg font-bold text-black">Order Summary</h2>

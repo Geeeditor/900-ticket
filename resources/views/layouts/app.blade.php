@@ -320,7 +320,7 @@
                 d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z"
                 data-original="#ea2d3f" />
         </svg>
-        <span class="text-[12px] font-[200] text-red-700 text-start flex flex-col gap-1">
+        <span class="flex flex-col gap-1 text-start text-[12px] font-[200] text-red-700">
             @foreach ($errors->all() as $error)
                 <span class="block">{{ $error }}</span>
             @endforeach
@@ -383,8 +383,8 @@
                                         class="absolute top-[40px] z-[999] rounded-md bg-white shadow-sm">
                                         <div>
 
-                                            <div style="display: block; color:black" class="text-black px-2">
-                                                <h2 class="mb-[5px] font-[700] text-black text-sm" style="text-align:center;">
+                                            <div style="display: block; color:black" class="px-2 text-black">
+                                                <h2 class="mb-[5px] text-sm font-[700] text-black" style="text-align:center;">
                                                     Select Language
                                                 </h2>
                                                 {{-- <input type="radio" id="en" name="lang" value="30">
@@ -442,7 +442,7 @@
 
                                                 </div>
                                                 <a class="text-sm font-[200] underline hover:no-underline"
-                                                    href="">View Items</a>
+                                                    href="{{route('cart.index')}}">View Items</a>
                                             @endif
 
                                         </div>
@@ -461,7 +461,7 @@
                                     @endguest
                                     @auth
                                         <div @click="authMenu = !authMenu"
-                                            class="relative flex gap-1 text-white bg-white rounded-full">
+                                            class="relative flex gap-1 rounded-full bg-white text-white">
                                             <img class="h-auto w-[25px] rounded-md"
                                                 src="{{ asset('image/profile-alt.svg') }}" alt="lorem ipsum">
 
@@ -691,7 +691,7 @@
         </main>
     </section>
 
-   
+
 
 
     <section id="hero">
@@ -1007,7 +1007,7 @@
                                     <a href="{{route('index.privacy-policy')}}" class="hover:underline">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    
+
                                     <a href="{{route('index.terms-and-conditions')}}" class="hover:underline">Terms &amp; Conditions</a>
                                 </li>
                             </ul>
@@ -1104,7 +1104,7 @@
         const requestOtpButton = document.getElementById('request-otp-button');
 
         const isNumberKey = (key) => /^[0-9]$/.test(key);
-        
+
         const handleKeyDown = (e) => {
             if (!isNumberKey(e.key) && !['Backspace', 'Delete', 'Tab'].includes(e.key) && !e.metaKey) {
                 e.preventDefault();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\PartyTicketCart;
 use App\Http\Controllers\Controller;
@@ -16,9 +17,31 @@ class CartController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+{
+    $user = Auth::user();
+    $tax = 0.02; // 5% tax
+
+    // Retrieve the user's cart with related items
+    $carts = $user->cart()
+        ->with('partyTicketCart', 'shortletCart', 'flightBookingCart', 'hotelBookingCart')
+        ->get();
+
+    $cartItems = [];
+
+    if ($carts->isNotEmpty()) {
+        foreach ($carts as $cartItem) {
+            // Access each cart type and store them in the array
+            $cartItems['partyTicketCart'] = $cartItem->partyTicketCart;
+            $cartItems['shortletCart'] = $cartItem->shortletCart;
+            $cartItems['flightBookingCart'] = $cartItem->flightBookingCart;
+            $cartItems['hotelBookingCart'] = $cartItem->hotelBookingCart;
+
+
+        }
     }
+
+    return view('cart', compact('cartItems', 'tax'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -53,6 +76,11 @@ class CartController extends Controller
                 $cart = new Cart();
                 $user->cart()->save($cart);
             }
+
+            if(is_null($data['regular_unit']) && is_null($data['vip_unit']) && is_null($data['vvip_unit'])) {
+                return redirect()->back()->with('warning', 'You must have atleast one of the ticket variation.');
+            }
+
 
             $partyTicketCart = new PartyTicketCart([
                 'event_reference' => $data['event_reference'],
@@ -94,8 +122,27 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy(Cart $cart, $id)
     {
-        //
+         if (Auth::user()) {
+            $event = PartyTicketCart::findOrFail($id);
+            $event->delete();
+            return redirect()->back()->with('success', 'Cart deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'Oops! You do not have permission to delete events');
+        }
+    }
+
+    public function emptyCart(Cart $cart, Request $request)
+    {
+        $user = Auth::user();
+        $cart = $user->cart;
+
+        if ($cart) {
+            $cart->partyTicketCart()->delete();
+            return redirect()->back()->with('success', 'Cart emptied successfully');
+        } else {
+            return redirect()->back()->with('error', 'No cart found to empty');
+        }
     }
 }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class Checkout extends Controller
 {
     //
-    
+
 
     public function getPartyTicketOrder(Request $request) {
         // Check if the user is authenticated
@@ -26,6 +26,7 @@ class Checkout extends Controller
             'vvip_unit' => 'required|integer',
         ]);
 
+
             // Clear previous session values
         $request->session()->forget([
             'event_reference',
@@ -38,6 +39,11 @@ class Checkout extends Controller
         $data['regular_unit'] = $data['regular_unit'] == 0 ? null : $data['regular_unit'];
         $data['vip_unit'] = $data['vip_unit'] == 0 ? null : $data['vip_unit'];
         $data['vvip_unit'] = $data['vvip_unit'] == 0 ? null : $data['vvip_unit'];
+
+               if(is_null($data['regular_unit']) && is_null($data['vip_unit']) && is_null($data['vvip_unit'])) {
+                return redirect()->back()->with('warning', 'You don`t have any ticket selected :) .');
+            }
+
 
         $event = Event::where('event_reference', $data['event_reference'])->first();
 
@@ -52,15 +58,15 @@ class Checkout extends Controller
             'regular_unit' => $data['regular_unit'],
             'vip_unit' => $data['vip_unit'],
             'vvip_unit' => $data['vvip_unit'],
-        ]); 
+        ]);
 
 
         // dd($data);
-        
+
     }
-    
+
     public function checkoutPartyTicket(Event $event, Request $request)
-    {   
+    {
 
         $event_reference = $request->session()->get('event_reference');
         $regular_unit = $request->session()->get('regular_unit');
@@ -86,5 +92,5 @@ class Checkout extends Controller
         ]);
     }
 
-  
+
 }
