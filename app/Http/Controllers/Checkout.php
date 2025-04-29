@@ -41,7 +41,7 @@ class Checkout extends Controller
         $data['vvip_unit'] = $data['vvip_unit'] == 0 ? null : $data['vvip_unit'];
 
                if(is_null($data['regular_unit']) && is_null($data['vip_unit']) && is_null($data['vvip_unit'])) {
-                return redirect()->back()->with('warning', 'You don`t have any ticket selected :) .');
+                return redirect()->back()->with('warning', 'You don`t have any ticket selected :)');
             }
 
 

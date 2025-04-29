@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('shortlet_carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            // $table->timestamps();
              $table->foreignId('cart_id')->constrained()->onDelete('cascade'); // Link to Cart
             $table->string('property_name');
             $table->integer('nights');
+            $table->timestamp('expired_at');
+            $table->timestamps();
         });
     }
 

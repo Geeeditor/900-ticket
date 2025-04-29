@@ -21,8 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @yield('style')
-       <link  rel="stylesheet" type="text/css"  href="{{ asset('css/buttonloader.css') }}">
-           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/buttonloader.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Styles / Scripts -->
@@ -64,18 +65,21 @@
             color: var(--gray-600);
         }
 
-        @media  (max-width: 600px) {
+        @media (max-width: 600px) {
 
-            .input-label{
+            .input-label {
                 display: block;
                 width: 100%;
             }
-        .input-label, .input {
-            text-align: center !important;
-        }
-        .input::placeholder {
-            text-align: center;
-        }
+
+            .input-label,
+            .input {
+                text-align: center !important;
+            }
+
+            .input::placeholder {
+                text-align: center;
+            }
 
 
 
@@ -208,12 +212,12 @@
             }
 
             .saveLog {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            justify-content: center
-        }
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                justify-content: center
+            }
 
 
         }
@@ -252,7 +256,7 @@
                         data-original="#000" />
                 </svg>
                 <span class="text-[15px] font-semibold tracking-wide">
-                      {{ session('loginsuccess') }} {{ session('firstname') }} {{ session('lastname') }} !
+                    {{ session('loginsuccess') }} {{ session('firstname') }} {{ session('lastname') }} !
                 </span>
             </div>
         @elseif (session()->has('regsuccess') && session()->has('firstname') && session()->has('lastname'))
@@ -267,8 +271,8 @@
                 </svg>
                 <span class="text-[15px] font-semibold tracking-wide">
                     {{ session('regsuccess') }}
-                    {{  session('firstname')}}
-                    {{  session('lastname')}}
+                    {{ session('firstname') }}
+                    {{ session('lastname') }}
                 </span>
             </div>
         @elseif (session()->has('warning'))
@@ -313,20 +317,22 @@
             </div>
         @endif
 
-       @if ($errors->any())
-    <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]" role="alert">
-        <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-red-600" viewBox="0 0 32 32">
-            <path
-                d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z"
-                data-original="#ea2d3f" />
-        </svg>
-        <span class="flex flex-col gap-1 text-start text-[12px] font-[200] text-red-700">
-            @foreach ($errors->all() as $error)
-                <span class="block">{{ $error }}</span>
-            @endforeach
-        </span>
-    </div>
-@endif
+        @if ($errors->any())
+            <div class="flex w-max max-w-sm items-center rounded-md bg-white p-4 text-slate-900 shadow-[0_3px_10px_-3px_rgba(6,81,237,0.3)]"
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 inline w-[18px] shrink-0 fill-red-600"
+                    viewBox="0 0 32 32">
+                    <path
+                        d="M16 1a15 15 0 1 0 15 15A15 15 0 0 0 16 1zm6.36 20L21 22.36l-5-4.95-4.95 4.95L9.64 21l4.95-5-4.95-4.95 1.41-1.41L16 14.59l5-4.95 1.41 1.41-5 4.95z"
+                        data-original="#ea2d3f" />
+                </svg>
+                <span class="flex flex-col gap-1 text-start text-[12px] font-[200] text-red-700">
+                    @foreach ($errors->all() as $error)
+                        <span class="block">{{ $error }}</span>
+                    @endforeach
+                </span>
+            </div>
+        @endif
 
 
     </div>
@@ -353,8 +359,8 @@
                     <div class="mx-auto flex w-[90%] items-center justify-between py-4 md:w-[80%]">
                         <div class="flex w-[50%] items-center gap-2">
                             <svg @click="sideNav = true" class="bar icons h-[35px] text-white md:hidden"
-                                id="show-side-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                id="show-side-bar" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                             </svg>
@@ -379,12 +385,14 @@
                                             EN | NGN
                                         </span>
                                     </div>
-                                    <div x-transition x-show="langCur" @click.outside="langCur = false" id="lang-cur"
+                                    <div x-transition x-show="langCur" @click.outside="langCur = false"
+                                        id="lang-cur"
                                         class="absolute top-[40px] z-[999] rounded-md bg-white shadow-sm">
                                         <div>
 
                                             <div style="display: block; color:black" class="px-2 text-black">
-                                                <h2 class="mb-[5px] text-sm font-[700] text-black" style="text-align:center;">
+                                                <h2 class="mb-[5px] text-sm font-[700] text-black"
+                                                    style="text-align:center;">
                                                     Select Language
                                                 </h2>
                                                 {{-- <input type="radio" id="en" name="lang" value="30">
@@ -442,7 +450,7 @@
 
                                                 </div>
                                                 <a class="text-sm font-[200] underline hover:no-underline"
-                                                    href="{{route('cart.index')}}">View Items</a>
+                                                    href="{{ route('cart.index') }}">View Items</a>
                                             @endif
 
                                         </div>
@@ -515,19 +523,33 @@
                                                 <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
-                                                    <button type='submit' class="flex items-center justify-start gap-[5px]" >
+                                                        <button type='submit'
+                                                            class="flex items-center justify-start gap-[5px]">
 
-                                                        <img class="h-[20px] w-[20px] rotate-180"
-                                                            src="{{ asset('image/login.svg') }}" alt="Login">
+                                                            <img class="h-[20px] w-[20px] rotate-180"
+                                                                src="{{ asset('image/login.svg') }}" alt="Login">
 
 
 
-                                                            <span  class="block">
+                                                            <span class="block">
                                                                 Logout
-                                                            </span >
+                                                            </span>
 
-                                                    </button>
+                                                        </button>
                                                     </form>
+                                                </li>
+                                                <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
+                                                    <a class="flex items-center justify-start gap-[5px]" href="{{route('index.transaction')}}">
+
+                                                        <img class="h-[20px] w-[20px]"
+                                                            src="{{ asset('image/credit.svg') }}" alt="Login">
+
+
+                                                        <span class="block">
+                                                            Transaction History
+                                                        </span>
+                                                    </a>
+
                                                 </li>
                                                 <li class="w-full rounded-lg py-2 pr-[10px] hover:bg-gray-200">
                                                     <a class="flex items-center justify-start gap-[5px]" href="">
@@ -596,7 +618,7 @@
                             Sign in to get a personalized experience
                         @endguest
                         @auth
-                            Hello, {{$firstname}}!
+                            Hello, {{ $firstname }}!
                         @endauth
                     </p>
                 </div>
@@ -648,11 +670,17 @@
                 @auth
 
 
+
+
                     <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                         <img class="w-[25px]" src="{{ asset('image/sideBar/Vector (3).png') }}" alt="Flights Icon">
-                        <a href="" class="">Manage Cart</a>
+                        <a href="{{route('cart.index')}}" class="">Manage Cart</a>
                     </div>
 
+                    <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
+                        <img class="w-[25px]" src="{{ asset('image/credit.svg') }}" alt="Flights Icon">
+                        <a href="{{route('index.transaction')}}" class="">Transaction History</a>
+                    </div>
                     <div class="flex items-center gap-2 rounded-md py-2 hover:bg-gray-200">
                         <img class="w-[25px]" src="{{ asset('image/sideBar/Vector (4).png') }}" alt="Flights Icon">
                         <a href="" class="">Manage Profile</a>
@@ -910,12 +938,23 @@
                         <h2 class="my-4 text-sm font-semibold uppercase text-white">Connect with us </h2>
                         <ul class="flex list-none items-center justify-start gap-2">
                             <li class="icon-content relative">
-                                <a href="https://www.facebook.com/share/1AQitxKZkM/" aria-label="LinkedIn" data-social="linkedin"
+                                <a href="https://www.facebook.com/share/1AQitxKZkM/" aria-label="LinkedIn"
+                                    data-social="linkedin"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-blue-600 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#b9b1b1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 12.05C19.9813 10.5255 19.5273 9.03809 18.6915 7.76295C17.8557 6.48781 16.673 5.47804 15.2826 4.85257C13.8921 4.2271 12.3519 4.01198 10.8433 4.23253C9.33473 4.45309 7.92057 5.10013 6.7674 6.09748C5.61422 7.09482 4.77005 8.40092 4.3343 9.86195C3.89856 11.323 3.88938 12.8781 4.30786 14.3442C4.72634 15.8103 5.55504 17.1262 6.69637 18.1371C7.83769 19.148 9.24412 19.8117 10.75 20.05V14.38H8.75001V12.05H10.75V10.28C10.7037 9.86846 10.7483 9.45175 10.8807 9.05931C11.0131 8.66687 11.23 8.30827 11.5161 8.00882C11.8022 7.70936 12.1505 7.47635 12.5365 7.32624C12.9225 7.17612 13.3368 7.11255 13.75 7.14003C14.3498 7.14824 14.9482 7.20173 15.54 7.30003V9.30003H14.54C14.3676 9.27828 14.1924 9.29556 14.0276 9.35059C13.8627 9.40562 13.7123 9.49699 13.5875 9.61795C13.4627 9.73891 13.3667 9.88637 13.3066 10.0494C13.2464 10.2125 13.2237 10.387 13.24 10.56V12.07H15.46L15.1 14.4H13.25V20C15.1399 19.7011 16.8601 18.7347 18.0985 17.2761C19.3369 15.8175 20.0115 13.9634 20 12.05Z" fill="#b9b1b1"></path> </g></svg>
+                                    <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" stroke="#b9b1b1">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M20 12.05C19.9813 10.5255 19.5273 9.03809 18.6915 7.76295C17.8557 6.48781 16.673 5.47804 15.2826 4.85257C13.8921 4.2271 12.3519 4.01198 10.8433 4.23253C9.33473 4.45309 7.92057 5.10013 6.7674 6.09748C5.61422 7.09482 4.77005 8.40092 4.3343 9.86195C3.89856 11.323 3.88938 12.8781 4.30786 14.3442C4.72634 15.8103 5.55504 17.1262 6.69637 18.1371C7.83769 19.148 9.24412 19.8117 10.75 20.05V14.38H8.75001V12.05H10.75V10.28C10.7037 9.86846 10.7483 9.45175 10.8807 9.05931C11.0131 8.66687 11.23 8.30827 11.5161 8.00882C11.8022 7.70936 12.1505 7.47635 12.5365 7.32624C12.9225 7.17612 13.3368 7.11255 13.75 7.14003C14.3498 7.14824 14.9482 7.20173 15.54 7.30003V9.30003H14.54C14.3676 9.27828 14.1924 9.29556 14.0276 9.35059C13.8627 9.40562 13.7123 9.49699 13.5875 9.61795C13.4627 9.73891 13.3667 9.88637 13.3066 10.0494C13.2464 10.2125 13.2237 10.387 13.24 10.56V12.07H15.46L15.1 14.4H13.25V20C15.1399 19.7011 16.8601 18.7347 18.0985 17.2761C19.3369 15.8175 20.0115 13.9634 20 12.05Z"
+                                                fill="#b9b1b1"></path>
+                                        </g>
+                                    </svg>
                                 </a>
 
                             </li>
@@ -935,22 +974,66 @@
 
                             </li> --}}
                             <li class="icon-content relative">
-                                <a href="https://www.instagram.com/register900ticket?igsh=MW1lN2lzdXdyczQwcA==" aria-label="Instagram" data-social="instagram"
+                                <a href="https://www.instagram.com/register900ticket?igsh=MW1lN2lzdXdyczQwcA=="
+                                    aria-label="Instagram" data-social="instagram"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-gradient-to-r from-blue-500 to-pink-500 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg width="16px" height="16px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 5H9.5C7.29086 5 5.5 6.79086 5.5 9V15C5.5 17.2091 7.29086 19 9.5 19H15.5C17.7091 19 19.5 17.2091 19.5 15V9C19.5 6.79086 17.7091 5 15.5 5Z" stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 15C10.8431 15 9.5 13.6569 9.5 12C9.5 10.3431 10.8431 9 12.5 9C14.1569 9 15.5 10.3431 15.5 12C15.5 12.7956 15.1839 13.5587 14.6213 14.1213C14.0587 14.6839 13.2956 15 12.5 15Z" stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <rect x="15.5" y="9" width="2" height="2" rx="1" transform="rotate(-90 15.5 9)" fill="#b9b1b1"></rect> <rect x="16" y="8.5" width="1" height="1" rx="0.5" transform="rotate(-90 16 8.5)" stroke="#b9b1b1" stroke-linecap="round"></rect> </g></svg>
+                                    <svg width="16px" height="16px" viewBox="0 -0.5 25 25" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15.5 5H9.5C7.29086 5 5.5 6.79086 5.5 9V15C5.5 17.2091 7.29086 19 9.5 19H15.5C17.7091 19 19.5 17.2091 19.5 15V9C19.5 6.79086 17.7091 5 15.5 5Z"
+                                                stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.5 15C10.8431 15 9.5 13.6569 9.5 12C9.5 10.3431 10.8431 9 12.5 9C14.1569 9 15.5 10.3431 15.5 12C15.5 12.7956 15.1839 13.5587 14.6213 14.1213C14.0587 14.6839 13.2956 15 12.5 15Z"
+                                                stroke="#b9b1b1" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                            <rect x="15.5" y="9" width="2" height="2" rx="1"
+                                                transform="rotate(-90 15.5 9)" fill="#b9b1b1"></rect>
+                                            <rect x="16" y="8.5" width="1" height="1" rx="0.5"
+                                                transform="rotate(-90 16 8.5)" stroke="#b9b1b1"
+                                                stroke-linecap="round"></rect>
+                                        </g>
+                                    </svg>
                                 </a>
 
                             </li>
                             <li class="icon-content relative">
-                                <a href="https://x.com/900Ticketing?t=3_HJOYdMVieLd_w9YJg65A&s=09" aria-label="Youtube" data-social="youtube"
+                                <a href="https://x.com/900Ticketing?t=3_HJOYdMVieLd_w9YJg65A&s=09"
+                                    aria-label="Youtube" data-social="youtube"
                                     class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white text-gray-600 transition-all duration-300 ease-in-out hover:text-white hover:shadow-lg">
                                     <div
                                         class="filled absolute inset-0 h-0 bg-red-600 transition-all duration-300 ease-in-out">
                                     </div>
-                                    <svg width="16px" height="16px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>twitter [#b9b1b1]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-60.000000, -7521.000000)" fill="#b9b1b1"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M10.29,7377 C17.837,7377 21.965,7370.84365 21.965,7365.50546 C21.965,7365.33021 21.965,7365.15595 21.953,7364.98267 C22.756,7364.41163 23.449,7363.70276 24,7362.8915 C23.252,7363.21837 22.457,7363.433 21.644,7363.52751 C22.5,7363.02244 23.141,7362.2289 23.448,7361.2926 C22.642,7361.76321 21.761,7362.095 20.842,7362.27321 C19.288,7360.64674 16.689,7360.56798 15.036,7362.09796 C13.971,7363.08447 13.518,7364.55538 13.849,7365.95835 C10.55,7365.79492 7.476,7364.261 5.392,7361.73762 C4.303,7363.58363 4.86,7365.94457 6.663,7367.12996 C6.01,7367.11125 5.371,7366.93797 4.8,7366.62489 L4.8,7366.67608 C4.801,7368.5989 6.178,7370.2549 8.092,7370.63591 C7.488,7370.79836 6.854,7370.82199 6.24,7370.70483 C6.777,7372.35099 8.318,7373.47829 10.073,7373.51078 C8.62,7374.63513 6.825,7375.24554 4.977,7375.24358 C4.651,7375.24259 4.325,7375.22388 4,7375.18549 C5.877,7376.37088 8.06,7377 10.29,7376.99705" id="twitter-[#b9b1b1]"> </path> </g> </g> </g> </g></svg>
+                                    <svg width="16px" height="16px" viewBox="0 -2 20 20" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        fill="#000000">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                        </g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <title>twitter [#b9b1b1]</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <defs> </defs>
+                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                fill-rule="evenodd">
+                                                <g id="Dribbble-Light-Preview"
+                                                    transform="translate(-60.000000, -7521.000000)" fill="#b9b1b1">
+                                                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                        <path
+                                                            d="M10.29,7377 C17.837,7377 21.965,7370.84365 21.965,7365.50546 C21.965,7365.33021 21.965,7365.15595 21.953,7364.98267 C22.756,7364.41163 23.449,7363.70276 24,7362.8915 C23.252,7363.21837 22.457,7363.433 21.644,7363.52751 C22.5,7363.02244 23.141,7362.2289 23.448,7361.2926 C22.642,7361.76321 21.761,7362.095 20.842,7362.27321 C19.288,7360.64674 16.689,7360.56798 15.036,7362.09796 C13.971,7363.08447 13.518,7364.55538 13.849,7365.95835 C10.55,7365.79492 7.476,7364.261 5.392,7361.73762 C4.303,7363.58363 4.86,7365.94457 6.663,7367.12996 C6.01,7367.11125 5.371,7366.93797 4.8,7366.62489 L4.8,7366.67608 C4.801,7368.5989 6.178,7370.2549 8.092,7370.63591 C7.488,7370.79836 6.854,7370.82199 6.24,7370.70483 C6.777,7372.35099 8.318,7373.47829 10.073,7373.51078 C8.62,7374.63513 6.825,7375.24554 4.977,7375.24358 C4.651,7375.24259 4.325,7375.22388 4,7375.18549 C5.877,7376.37088 8.06,7377 10.29,7376.99705"
+                                                            id="twitter-[#b9b1b1]"> </path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
                                 </a>
 
                             </li>
@@ -983,10 +1066,12 @@
                         <h2 class="mb-6 text-sm font-semibold uppercase text-white">Usefull Links</h2>
                         <ul class="flex flex-col gap-y-2 font-medium text-white">
                             <li>
-                                <a href="{{route('index.privacy-policy')}}" class="hover:underline">Privacy and policy</a>
+                                <a href="{{ route('index.privacy-policy') }}" class="hover:underline">Privacy and
+                                    policy</a>
                             </li>
                             <li>
-                                <a href="{{route('index.terms-and-conditions')}}" class="hover:underline">Terms and Conditions</a>
+                                <a href="{{ route('index.terms-and-conditions') }}" class="hover:underline">Terms and
+                                    Conditions</a>
                             </li>
                             <li>
                                 <a href="" class="hover:underline">Flights Schedules</a>
@@ -1004,11 +1089,13 @@
                             <h2 class="mb-6 text-sm font-semibold uppercase text-white">Legal</h2>
                             <ul class="font-medium text-white">
                                 <li class="mb-4">
-                                    <a href="{{route('index.privacy-policy')}}" class="hover:underline">Privacy Policy</a>
+                                    <a href="{{ route('index.privacy-policy') }}" class="hover:underline">Privacy
+                                        Policy</a>
                                 </li>
                                 <li>
 
-                                    <a href="{{route('index.terms-and-conditions')}}" class="hover:underline">Terms &amp; Conditions</a>
+                                    <a href="{{ route('index.terms-and-conditions') }}" class="hover:underline">Terms
+                                        &amp; Conditions</a>
                                 </li>
                             </ul>
                         </div>
@@ -1072,108 +1159,108 @@
 
     <script>
         document.querySelectorAll('.copy-link').forEach(link => {
-    link.addEventListener('click', async (e) => {
-        e.preventDefault(); // Prevent default link behavior
+            link.addEventListener('click', async (e) => {
+                e.preventDefault(); // Prevent default link behavior
 
-        // Ensure the link has a valid href
-        const currentUrl = link.getAttribute('href');
+                // Ensure the link has a valid href
+                const currentUrl = link.getAttribute('href');
 
-        if (currentUrl) {
-            try {
-                // Copy to clipboard
-                await navigator.clipboard.writeText(currentUrl);
-                alert("Link copied to clipboard!");
-            } catch (err) {
-                console.error("Failed to copy: ", err);
-            }
-        } else {
-            console.error("Link href is undefined");
-        }
-    });
-});
+                if (currentUrl) {
+                    try {
+                        // Copy to clipboard
+                        await navigator.clipboard.writeText(currentUrl);
+                        alert("Link copied to clipboard!");
+                    } catch (err) {
+                        console.error("Failed to copy: ", err);
+                    }
+                } else {
+                    console.error("Link href is undefined");
+                }
+            });
+        });
     </script>
 
     <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('.otp-form');
-        const inputs = document.querySelectorAll('.otp-input');
-        const submitButton = document.querySelector('.button-submit');
-        const timerDisplay = document.getElementById('otp-timer');
-        const requestOtpButton = document.getElementById('request-otp-button');
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.otp-form');
+            const inputs = document.querySelectorAll('.otp-input');
+            const submitButton = document.querySelector('.button-submit');
+            const timerDisplay = document.getElementById('otp-timer');
+            const requestOtpButton = document.getElementById('request-otp-button');
 
-        const isNumberKey = (key) => /^[0-9]$/.test(key);
+            const isNumberKey = (key) => /^[0-9]$/.test(key);
 
-        const handleKeyDown = (e) => {
-            if (!isNumberKey(e.key) && !['Backspace', 'Delete', 'Tab'].includes(e.key) && !e.metaKey) {
-                e.preventDefault();
-            }
+            const handleKeyDown = (e) => {
+                if (!isNumberKey(e.key) && !['Backspace', 'Delete', 'Tab'].includes(e.key) && !e.metaKey) {
+                    e.preventDefault();
+                }
 
-            if (['Delete', 'Backspace'].includes(e.key)) {
+                if (['Delete', 'Backspace'].includes(e.key)) {
+                    const index = Array.from(inputs).indexOf(e.target);
+                    if (index > 0) {
+                        inputs[index - 1].value = '';
+                        inputs[index - 1].focus();
+                    }
+                }
+            };
+
+            const handleInput = (e) => {
                 const index = Array.from(inputs).indexOf(e.target);
-                if (index > 0) {
-                    inputs[index - 1].value = '';
-                    inputs[index - 1].focus();
+                if (e.target.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                } else {
+                    submitButton.focus();
                 }
-            }
-        };
+            };
 
-        const handleInput = (e) => {
-            const index = Array.from(inputs).indexOf(e.target);
-            if (e.target.value && index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            } else {
-                submitButton.focus();
-            }
-        };
+            const handleFocus = (e) => {
+                e.target.select();
+            };
 
-        const handleFocus = (e) => {
-            e.target.select();
-        };
+            const handlePaste = (e) => {
+                e.preventDefault();
+                const text = e.clipboardData.getData('text');
+                if (isNumberKey(text) && text.length === inputs.length) {
+                    text.split('').forEach((digit, index) => {
+                        inputs[index].value = digit;
+                    });
+                    submitButton.focus();
+                }
+            };
 
-        const handlePaste = (e) => {
-            e.preventDefault();
-            const text = e.clipboardData.getData('text');
-            if (isNumberKey(text) && text.length === inputs.length) {
-                text.split('').forEach((digit, index) => {
-                    inputs[index].value = digit;
+            const initializeInputEvents = () => {
+                inputs.forEach((input) => {
+                    input.addEventListener('input', handleInput);
+                    input.addEventListener('keydown', handleKeyDown);
+                    input.addEventListener('focus', handleFocus);
+                    input.addEventListener('paste', handlePaste);
                 });
-                submitButton.focus();
-            }
-        };
+            };
 
-        const initializeInputEvents = () => {
-            inputs.forEach((input) => {
-                input.addEventListener('input', handleInput);
-                input.addEventListener('keydown', handleKeyDown);
-                input.addEventListener('focus', handleFocus);
-                input.addEventListener('paste', handlePaste);
-            });
-        };
+            const startTimer = (duration, display) => {
+                let timer = duration;
 
-        const startTimer = (duration, display) => {
-            let timer = duration;
+                requestOtpButton.disabled = true;
+                const interval = setInterval(() => {
+                    const minutes = String(Math.floor(timer / 60)).padStart(2, '0');
+                    const seconds = String(timer % 60).padStart(2, '0');
+                    display.textContent = `${minutes}:${seconds}`;
 
-            requestOtpButton.disabled = true;
-            const interval = setInterval(() => {
-                const minutes = String(Math.floor(timer / 60)).padStart(2, '0');
-                const seconds = String(timer % 60).padStart(2, '0');
-                display.textContent = `${minutes}:${seconds}`;
+                    if (--timer < 0) {
+                        clearInterval(interval);
+                        requestOtpButton.disabled = false;
+                        display.textContent = "00:00";
+                    }
+                }, 1000);
+            };
 
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    requestOtpButton.disabled = false;
-                    display.textContent = "00:00";
-                }
-            }, 1000);
-        };
-
-        const twoMinutes = 60 * 2; // Duration in seconds
-        initializeInputEvents();
-        startTimer(twoMinutes, timerDisplay);
-    });
-</script>
+            const twoMinutes = 60 * 2; // Duration in seconds
+            initializeInputEvents();
+            startTimer(twoMinutes, timerDisplay);
+        });
+    </script>
 
     <script>
         // Function to show the flash message
@@ -1203,7 +1290,7 @@
 
             const loginForm = document.getElementById("loginform");
             const registerForm = document.getElementById("registerform");
-            const forcedisplay   = document.querySelector(".forcedisplay");
+            const forcedisplay = document.querySelector(".forcedisplay");
             const loginLink = document.querySelector(".login");
             const registerLink = document.querySelector(".register");
             const continueButtons = document.querySelectorAll(".continueButton");

@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('party_ticket_carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
              $table->foreignId('cart_id')->constrained()->onDelete('cascade'); // Link to Cart
             $table->string('event_reference');
             $table->integer('regular_unit')->nullable();
             $table->integer('vip_unit')->nullable();
             $table->integer('vvip_unit')->nullable();
+            $table->timestamp('expired_at');
+            $table->timestamps();
         });
     }
 

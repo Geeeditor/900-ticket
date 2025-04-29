@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('flight_booking_carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            // $table->timestamps();
             $table->foreignId('cart_id')->constrained()->onDelete('cascade'); // Link to Cart
             $table->string('flight_number');
             $table->date('departure_date');
+            $table->timestamp('expired_at');
+            $table->timestamps();
         });
     }
 

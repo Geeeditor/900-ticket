@@ -110,11 +110,13 @@ Route::get('/welcome', function () {
 
     Route::get('/payment/callback', [PartyTicketPayments::class, 'callback'])->name('payment.callback');
 
-    Route::get('/payment/summary/{id}', [TransactionHistory::class, 'index'])->name('payment.summary');
+    Route::get('/payment/summary/{id}', [TransactionHistory::class, 'paymentSummary'])->name('payment.summary');
 
     // Route::get('/download/party-ticket/{id}', [TransactionHistory::class, 'downloadPartyTicket'])->name('payment.download');
 
-    Route::get('/download/party-ticket', [TransactionHistory::class, 'downloadPartyTicket'])->name('payment.download');
+    Route::get('/download/party-ticket/{id}', [TransactionHistory::class, 'downloadPartyTicket'])->name('payment.download');
+
+    Route::get('/transactions', [TransactionHistory::class, 'index'])->name('index.transaction');
 
 
 });

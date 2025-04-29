@@ -12,27 +12,59 @@
             <img class="w-[80px] shadow shadow-white" src="{{asset('image/logo_alt.svg')}}" alt="900 logo">
 
             <div class="text-right text-lg font-bold text-white md:text-base">
-                <div id="clock" class="text-md font-mono"></div>
-                <div id="date" class="text-md font-mono"></div>
+                <div id="clock" class="text-md font-mono">
+                    <span class="block text-[70%] font-thin">Event Time</span>
+                    {{ \Carbon\Carbon::parse($transactionData->event_time )->format('H:i A') }}  </div>
+                <div id="date" class="text-md font-mono">
+                    <span class="block text-[70%] font-thin">Event Date</span>
+                    {{ \Carbon\Carbon::parse($transactionData->event_date )->format('F j, Y') }}
+                </div>
             </div>
         </div>
         <div class="mt-8 text-lg font-bold capitalize text-white md:text-base">
-            <p>blockchain builders meetup </p>
+            <p>
+                <span class="block text-[70%] font-thin">Event Title</span>
+                {{ $transactionData->product_name }}
+             </p>
 
             <div class="mt-6">
                 <h4 class="text-md">address</h4>
-                <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, ut!</p>
+                <p class="text-xs">{{ $transactionData->event_location }}</p>
             </div>
         </div>
 
         <div class="mt-8 flex items-center justify-between text-lg font-bold capitalize text-white md:text-base">
             <div>
                 <h4 class="text-md">guest</h4>
-                <p class="text-sm">chigozie godwin</p>
+                <p class="text-sm">{{ $user->firstname . ' ' . $user->firstname}}</p>
+                <br>
+                <h4 class="text-md">Registered Email</h4>
+                <p class="text-sm lowercase">{{ $user->email}}</p>
             </div>
-            <div>
-                <h4 class="text-md">host</h4>
-                <p class="text-sm">900Tickets</p>
+
+            <div class="text-right">
+                <h4 class="block text-[70%] font-thin">Tickets Paid For</h4>
+                <li class="list-none">
+                @if (isset($transactionData->product_quantity[0]) && $transactionData->product_quantity[0] !== 0 && $transactionData->product_quantity[0] !== "")
+                    <ul>
+                        Regular Ticket:  (unit: {{ $transactionData->product_quantity[0]  }})
+                    </ul>
+                @endif
+                @if (isset($transactionData->product_quantity[1]) && $transactionData->product_quantity[1] !== 0 && $transactionData->product_quantity[1] !== "")
+                    <ul>
+                        VIP Ticket:  (unit: {{ $transactionData->product_quantity[1]  }})
+                    </ul>
+                @endif
+                @if (isset($transactionData->product_quantity[2]) && $transactionData->product_quantity[2] !== 0 && $transactionData->product_quantity[2] !== "")
+                    <ul>
+                        VVIP Ticket:  (unit: {{ $transactionData->product_quantity[2]  }})
+                    </ul>
+                @endif
+
+                <input type="text" id="ticket_passcode" value="{{ $transactionData->ticket_pass_code }}" hidden>
+
+
+            </li>
             </div>
         </div>
         <div id="qrcode" class="mt-10 flex items-center justify-center"></div>
@@ -40,47 +72,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
-      function updateClock() {
-      const now = new Date();
 
 
-      let hours = now.getHours();
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
+        // Get the ticket passcode from the input field
+        const ticketPasscode = document.getElementById("ticket_passcode").value;
+        const qrText = "https://example.com?ticket_passcode=" + ticketPasscode;
 
-
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-
-
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-
-
-      const timeString = `${hours}:${minutes} ${ampm}`;
-      document.getElementById('clock').textContent = timeString;
-    }
-
-
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    function updateDate() {
-      const now = new Date();
-      const monthNames = [
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
-      ];
-      const month = monthNames[now.getMonth()];
-      const day = now.getDate();
-      const year = now.getFullYear();
-      const dateString = `${month} ${day}, ${year}`;
-      document.getElementById('date').textContent = dateString;
-    }
-
-    updateDate();
-
-
-        const qrText = "https://example.com";
+        console.log(qrText);
 
         const qrcode = new QRCode(document.getElementById("qrcode"), {
           text: qrText,

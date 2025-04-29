@@ -169,13 +169,17 @@
 
                             <div class="flex w-full justify-end">
 
+                                <a href="{{ route('payment.download', [
+                                    'id' => $transactionReceipt->id,
+                                ]) }}">
                                 <button type="submit" class="ld-ext-right rounded-md bg-[#cc2121] px-4 py-2 text-white"
                                     onclick="this.classList.toggle('running')">
 
-                                    Download Ticket
+                                    View E-Ticket
                                     <div class="ld ld-ring ld-spin"></div>
 
                                 </button>
+                                </a>
 
 
 

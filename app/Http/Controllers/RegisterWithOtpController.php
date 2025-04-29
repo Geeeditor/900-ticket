@@ -79,7 +79,7 @@ class RegisterWithOtpController extends Controller
         EmailOtp::updateOrCreate(['email' => $email], [
             'email' => $email,
             'otp' => $otp,
-            'expired_at' => Carbon::now()->addMinute(10)
+
         ]);
 
         // Send user otp code

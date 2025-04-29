@@ -517,7 +517,7 @@
             x-show="checkoutModal" @click.outside="checkoutModal = false"
             class="fixed top-0 z-[999] flex h-full w-full justify-center overflow-y-auto py-5 md:overflow-y-hidden">
             <div class="relative mx-auto w-full md:mt-[132px] md:w-[100%]">
-                <div class="rounded-md bg-white px-[1rem] py-4 shadow-md md:px-8" action="" method="post">
+                <div class="rounded-md bg-white px-[1rem] py-4 shadow-md md:px-8"  method="post">
                     @csrf
                     <div class="my-4 w-full">
                         <h3 class="text-center text-[20px] font-[700] md:text-left md:text-[25px]"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Event;
@@ -16,8 +17,14 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-{
+    public function index() {
+        // Check if the user is authenticated
+        if (!auth()->check()) {
+            return redirect()->back()->with('warning', 'Oops! You need to create an account or login to continue.');
+        } elseif (auth()->user()->usertype === 'admin') {
+            return redirect()->back('admin.index')->with('error', 'You are not allowed to access this page.');
+        }
+
     $user = Auth::user();
     $tax = 0.02; // 5% tax
 
@@ -87,6 +94,7 @@ class CartController extends Controller
                 'regular_unit' => $data['regular_unit'],
                 'vip_unit' => $data['vip_unit'],
                 'vvip_unit' => $data['vvip_unit'],
+                'expired_at' => Carbon::now()->addMinute(120)
             ]);
 
             $cart->partyTicketCart()->save($partyTicketCart);
